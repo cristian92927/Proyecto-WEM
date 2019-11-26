@@ -7,8 +7,8 @@ body {
 }
 
 .login-box {
-  width: 320px;
-  height: 420px;
+  width: 420px;
+  height: 520px;
   background: #000;
   color: #fff;
   top: 50%;
@@ -17,14 +17,15 @@ body {
   transform: translate(-50%, -50%);
   box-sizing: border-box;
   padding: 70px 30px;
+  border-radius: 7%;
 }
 
 .login-box .avatar {
   width: 100px;
-  height: 100px;
+  height: 50px;
   border-radius: 50%;
   position: absolute;
-  top: -15px;
+  top: 5px;
   left: calc(50% - 50px);
 }
 
