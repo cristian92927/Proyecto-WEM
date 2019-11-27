@@ -1,13 +1,15 @@
 *{margin: 0; padding: 0;}
 div#nav{
-  background-color: #333;
   width: 100%;
-  height: 50px;
+  height: 55px;
+  background-color: white;
+  border-bottom: 1px solid rgb(199, 199, 199);
 }
 div#nav img{
   width: 100px;
   height: 50px;
   float: left;
+  margin:0 100px;
 }
 div#nav ul {
     list-style-type: none;
@@ -19,27 +21,42 @@ div#nav ul li {
 }
   div#nav ul li a{
     display: block;
-    color: white;
     text-align: center;
-    padding: 15px 25px;
+    padding: 18px 23px;
     text-decoration: none;
     font-family:Arial, Helvetica, sans-serif;
-  }
-  div#nav ul li ul li a{
-    padding: 15px 18px;
+    color: black;
   }
   div#nav ul li a:hover{
-    background-color: #111;
+    background-color: rgb(252, 115, 35);
+    color:white;
   }
   div#nav ul li ul{
     display: none;
   }
   div#nav ul li ul li{
     clear: both;
-    background-color: #333;
-    width: 100%;
+    width: 148px;
+    border:1px solid rgb(252, 115, 35);
+    background-color: white;
   }
   div#nav ul li:hover > ul{
     display: inline;
   }
-  
+  div#header{
+    width: 100%;
+    height: 600px;
+    background-color: #edf0f2;
+  }
+  div#header h1{
+    position: absolute;
+    top: 35%;
+    left: calc(25% - 170px);
+    font-size: 70px;
+  }
+  div#header div#img{
+    width: 50%;
+    height: 600px;
+    border: 1px solid red;
+    float: right;
+  }
