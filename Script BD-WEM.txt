@@ -1,0 +1,361 @@
+mysql> create database GAT;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> use GAT;
+Database changed
+mysql> create table Instructor(
+    -> idInstructor int primary key,
+    -> usuario varchar(20),
+    -> contrase¤a varchar(20),
+    -> nombres varchar(30),
+    -> apellidos varchar(30),
+    -> correoSena varchar(40));
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> create table Horario (
+    -> idHorario int primary key,
+    -> dia varchar (12),
+    -> jornada varchar(10));
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> create table Admin(
+    -> idAdmin int primary key,
+    -> usuario varchar (20),
+    -> contrase¤a varchar(20));
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> create table TipoContrato(
+    -> idTipoContrato int primary key,
+    -> descripcion varchar (50),
+    -> horas int,
+    -> fechaExpedicion date,
+    -> vigencia date);
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> create table Ambiente(
+    -> idAmbiente int primary key,
+    -> nombre varchar(20),
+    -> descripcion varchar (50));
+Query OK, 0 rows affected (0.29 sec)
+
+mysql> create table Trimestre(
+    -> idTrimestre int primary key,
+    -> fechaInicio date,
+    -> fechaFin date);
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> create table Competencia(
+    -> idCompetencia int primary key,
+    -> descripcion varchar (50),
+    -> nombre varchar (40));
+Query OK, 0 rows affected (0.18 sec)
+
+mysql> create table Ficha(
+    -> idFicha int primary key,
+    -> gestor varchar (50));
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_gat |
++---------------+
+| admin         |
+| ambiente      |
+| competencia   |
+| ficha         |
+| horario       |
+| instructor    |
+| tipocontrato  |
+| trimestre     |
++---------------+
+8 rows in set (0.04 sec)
+
+mysql> create table HorarioxCompetencia(
+    -> idHorario int,
+    -> idCompetencia int,
+    -> FOREIGN KEY (idHorario) REFERENCES Horario(idHorario),
+    -> FOREIGN KEY (idCompetencia) REFERENCES Competencia(idCompetencia));
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> create table HorarioxAmbiente(
+    -> idHorario int,
+    -> idAmbiente int,
+    -> FOREIGN KEY (idHorario) REFERENCES Horario(idHorario),
+    -> FOREIGN KEY (idAmbiente) REFERENCES Ambiente(idAmbiente),
+    -> horaInicio datetime,
+    -> horaFin datetime);
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_gat       |
++---------------------+
+| admin               |
+| ambiente            |
+| competencia         |
+| ficha               |
+| horario             |
+| horarioxambiente    |
+| horarioxcompetencia |
+| instructor          |
+| tipocontrato        |
+| trimestre           |
++---------------------+
+10 rows in set (0.00 sec)
+
+mysql> alter table Instructor add idHorario int;
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Instructor add idAdmin int;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Instructor add idTipoContrato int;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Instructor add FOREIGN KEY (idHorario) references Horario(idHorario);
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Instructor add FOREIGN KEY (idAdmin) references Admin(idAdmin);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Instructor add FOREIGN KEY (idTipoContrato) references tipocontrato(idAdmin);
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Instructor add FOREIGN KEY (idTipoContrato) references tipocontrato(idTipoContrato);
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> Select * from tipocontrato
+    -> ;
+Empty set (0.00 sec)
+
+mysql> describe tipocontrato;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| idTipoContrato  | int(11)     | NO   | PRI | NULL    |       |
+| descripcion     | varchar(50) | YES  |     | NULL    |       |
+| horas           | int(11)     | YES  |     | NULL    |       |
+| fechaExpedicion | date        | YES  |     | NULL    |       |
+| vigencia        | date        | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.04 sec)
+
+mysql> describe instructor;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| idInstructor   | int(11)     | NO   | PRI | NULL    |       |
+| usuario        | varchar(20) | YES  |     | NULL    |       |
+| contrase¤a     | varchar(20) | YES  |     | NULL    |       |
+| nombres        | varchar(30) | YES  |     | NULL    |       |
+| apellidos      | varchar(30) | YES  |     | NULL    |       |
+| correoSena     | varchar(40) | YES  |     | NULL    |       |
+| idHorario      | int(11)     | YES  | MUL | NULL    |       |
+| idAdmin        | int(11)     | YES  | MUL | NULL    |       |
+| idTipoContrato | int(11)     | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> describe horario;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| idHorario | int(11)     | NO   | PRI | NULL    |       |
+| dia       | varchar(12) | YES  |     | NULL    |       |
+| jornada   | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table Horario add idTrimestre int;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table competencia add idFicha int;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe ficha;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| idFicha | int(11)     | NO   | PRI | NULL    |       |
+| gestor  | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> describe competencia;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| idCompetencia | int(11)     | NO   | PRI | NULL    |       |
+| descripcion   | varchar(50) | YES  |     | NULL    |       |
+| nombre        | varchar(40) | YES  |     | NULL    |       |
+| idFicha       | int(11)     | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> describe horarioxcompetencia;
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| idHorario     | int(11) | YES  | MUL | NULL    |       |
+| idCompetencia | int(11) | YES  | MUL | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> describe trimestre;
++-------------+---------+------+-----+---------+-------+
+| Field       | Type    | Null | Key | Default | Extra |
++-------------+---------+------+-----+---------+-------+
+| idTrimestre | int(11) | NO   | PRI | NULL    |       |
+| fechaInicio | date    | YES  |     | NULL    |       |
+| fechaFin    | date    | YES  |     | NULL    |       |
++-------------+---------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> describe Horario;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| idHorario   | int(11)     | NO   | PRI | NULL    |       |
+| dia         | varchar(12) | YES  |     | NULL    |       |
+| jornada     | varchar(10) | YES  |     | NULL    |       |
+| idTrimestre | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> describe Instructor;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| idInstructor   | int(11)     | NO   | PRI | NULL    |       |
+| usuario        | varchar(20) | YES  |     | NULL    |       |
+| contrase¤a     | varchar(20) | YES  |     | NULL    |       |
+| nombres        | varchar(30) | YES  |     | NULL    |       |
+| apellidos      | varchar(30) | YES  |     | NULL    |       |
+| correoSena     | varchar(40) | YES  |     | NULL    |       |
+| idHorario      | int(11)     | YES  | MUL | NULL    |       |
+| idAdmin        | int(11)     | YES  | MUL | NULL    |       |
+| idTipoContrato | int(11)     | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> Describe horarioxambiente;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| idHorario  | int(11)  | YES  | MUL | NULL    |       |
+| idAmbiente | int(11)  | YES  | MUL | NULL    |       |
+| horaInicio | datetime | YES  |     | NULL    |       |
+| horaFin    | datetime | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> describe admin;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| idAdmin    | int(11)     | NO   | PRI | NULL    |       |
+| usuario    | varchar(20) | YES  |     | NULL    |       |
+| contrase¤a | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> describe tipocontrato;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| idTipoContrato  | int(11)     | NO   | PRI | NULL    |       |
+| descripcion     | varchar(50) | YES  |     | NULL    |       |
+| horas           | int(11)     | YES  |     | NULL    |       |
+| fechaExpedicion | date        | YES  |     | NULL    |       |
+| vigencia        | date        | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> describe ambiente;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| idAmbiente  | int(11)     | NO   | PRI | NULL    |       |
+| nombre      | varchar(20) | YES  |     | NULL    |       |
+| descripcion | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table competencia add FOREIGN KEY (idFicha) references ficha(idFicha);
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table horario add FOREIGN KEY (idTrimestre) references trimestre(idTrimestre);
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++---------------------+
+| Tables_in_gat       |
++---------------------+
+| admin               |
+| ambiente            |
+| competencia         |
+| ficha               |
+| horario             |
+| horarioxambiente    |
+| horarioxcompetencia |
+| instructor          |
+| tipocontrato        |
+| trimestre           |
++---------------------+
+10 rows in set (0.00 sec)
+
+ create procedure registrarInstructor(
+    -> in id_Instructor int(11),
+    -> in Usuario varchar(20),
+    -> in Contrasena varchar(20),
+    -> in Nombres varchar(30),
+    -> in Apellidos varchar(30),
+    -> in e_mail_Sena varchar(40))
+    -> begin
+    -> INSERT INTO Instructor(id_Instructor,Usuario,Contrasena,Nombres,Apellidos,e_mail_Sena)Values
+    -> (id_Instructor,Usuario,Contrasena,Nombres,Apellidos,e_mail_Sena);
+    -> END
+    -> $$
+Query OK, 0 rows affected (0.127 sec)
+
+ create procedure eliminarInstructor(
+    -> in id_Instructor int(11))
+    -> begin
+    -> delete from Instructor where id_Instructor=id_Instructor;
+    -> END
+    -> $$
+Query OK, 0 rows affected (0.170 sec)
+
+create procedure actualizarInstructor(
+    -> in id_Instructor int(11),
+    -> in Usuario varchar(20),
+    -> in Contrasena varchar(20),
+    -> in Nombres varchar(30),
+    -> in Apellidos varchar(30),
+    -> in e_mail_Sena varchar(40))
+    -> begin
+    -> update Instructor set id_Instructor=id_Instructor,Usuario=Usuario,Contrasena=Contrasena,Nombres=Nombres,Apellidos=Apellidos,e_mail_Sena=e_mail_Sena WHERE id_Instructor=id_Instructor;
+    -> END
+    -> $$
+Query OK, 0 rows affected (0.121 sec)
+
+CREATE PROCEDURE consultarInstructor(
+    -> in id_Instructor int(11))
+    -> BEGIN
+    -> SELECT * FROM Instructor WHERE id_Instructor = id_Instructor;
+    -> END$$
+Query OK, 0 rows affected (0.560 sec)
+
+mysql> notee;
+Outfile disabled.
