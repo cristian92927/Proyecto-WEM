@@ -1,0 +1,117 @@
+ CREATE DATABASE ProyectoWem;
+Query OK, 1 row affected (0.038 sec)
+
+ USE ProyectoWem;
+Database changed
+MariaDB [ProyectoWem]> CREATE TABLE Ambiente(
+    -> id_Ambiente int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    -> Nombre_Amb varchar(20),
+    -> Descripcion_Amb varchar(200));
+Query OK, 0 rows affected (0.290 sec)
+
+ CREATE TABLE Competencia(
+    -> id_Competencia int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    -> Nombre_Comp varchar(50) NOT NULL,
+    -> Descripcion_Comp varchar(200));
+Query OK, 0 rows affected (0.359 sec)
+
+ CREATE TABLE Trimestre(
+    -> id_Trimestre int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    -> Fecha_Inicio date,
+    -> Fecha_Fin date);
+Query OK, 0 rows affected (0.248 sec)
+
+CREATE TABLE Horario(
+-> id_Horario int NOT NULL AUTO_INCREMENT,
+-> Jornada varchar(50),
+-> Dia varchar(50),
+-> id_Trimestre int,
+-> PRIMARY KEY (id_Horario),
+-> FOREIGN KEY(id_Trimestre) REFERENCES  Trimestre (id_Trimestre));
+Query OK, 0 rows affected (0.248 sec)
+
+CREATE TABLE Programa_Formacion(
+-> id_Programa int NOT NULL AUTO_INCREMENT,
+-> Nombre_Pro varchar(50),
+-> Descripcion_Pro varchar(100),
+-> PRIMARY KEY (id_Programa));
+Query OK, 0 rows affected (0.350 sec)
+
+CREATE TABLE Ficha(
+-> id_Ficha int NOT NULL AUTO_INCREMENT,
+-> Numero_Ficha varchar(50) NOT NULL,
+-> Nombre_Gestor varchar(100) NOT NULL,
+-> PRIMARY KEY (id_Ficha),
+-> id_Programa int,
+-> id_Horario int,
+-> FOREIGN KEY (id_Programa) REFERENCES Programa_Formacion(id_Programa),
+-> FOREIGN KEY (id_Horario) REFERENCES Horario (id_Horario));
+Query OK, 0 rows affected (0.395 sec)
+
+CREATE TABLE Rol(
+-> id_Rol int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+-> Nombre_Rol varchar(100));
+Query OK, 0 rows affected (0.567 sec)
+
+CREATE TABLE TipoContrato(
+    -> id_Contrato int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    -> Descripcion_Cont varchar(100),
+    -> Horas_Cont int);
+Query OK, 0 rows affected (0.647 sec)
+
+CREATE TABLE Usuario(
+    -> id_Usuario int NOT NULL AUTO_INCREMENT,
+    -> Usuario varchar(50) NOT NULL,
+    -> Contrasena varchar(50) NOT NULL,
+    -> Correo varchar(50) NOT NULL,
+    -> Nombres varchar(50),
+    -> Apellidos varchar(50),
+    -> PRIMARY KEY (id_Usuario),
+    -> id_Horario int,
+    -> id_Contrato int,
+    -> id_Rol int,
+    -> FOREIGN KEY(id_Horario) REFERENCES Horario (id_Horario),
+    -> FOREIGN KEY(id_Contrato) REFERENCES TipoContrato(id_Contrato),
+    -> FOREIGN KEY(id_Rol) REFERENCES Rol (id_Rol));
+Query OK, 0 rows affected (0.252 sec)
+
+DELIMITER $$
+CREATE PROCEDURE InsertarUsuario(
+    -> in usuario varchar(50),
+    -> in contrasena varchar(50),
+    -> in correo varchar(50),
+    -> in nombres varchar(50),
+    -> in apellidos varchar(50))
+    -> BEGIN
+    -> insert into Usuario(Usuario,Contrasena,Correo,Nombres,Apellidos) values(usuario,contrasena,correo,nombres,apellidos);
+    -> END$$
+Query OK, 0 rows affected (0.167 sec)
+
+CREATE PROCEDURE ActualizarUsuario(
+    -> in id_usuario int(11),
+    -> in usuario varchar(50),
+    -> in contrasena varchar(50),
+    -> in correo varchar(50),
+    -> in nombres varchar(50),
+    -> in apellidos varchar(50))
+    -> BEGIN
+    -> UPDATE Usuario SET id_Usuario = id_usuario,Usuario=usuario,Contrasena=contrasena,Correo=correo,Nombres=nombres,Apellidos=apellidos WHERE id_Usuario=id_usuario;
+    -> END$$
+Query OK, 0 rows affected (0.167 sec)
+
+CREATE PROCEDURE ConsultarUsuario(
+    -> in id_usuario int(11))
+    -> BEGIN
+    -> SELECT * FROM Usuario WHERE id_Usuario = id_usuario;
+    -> END$$
+Query OK, 0 rows affected (0.167 sec)
+
+DELIMITER $$
+CREATE PROCEDURE EliminarUsuario(
+    -> in id_usuario int(11))
+    -> BEGIN
+    -> DELETE FROM Usuario WHERE id_Usuario = id_usuario;
+    -> END$$
+Query OK, 0 rows affected (0.502 sec)
+
+ 
