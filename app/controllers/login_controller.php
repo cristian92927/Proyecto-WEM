@@ -29,7 +29,7 @@ class login_controller{
     }
     public function consult($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * from usuarios WHERE Correo = ? AND Contrasena = MD5(?) ";
+        $sql = "SELECT * from usuario WHERE Correo = ? AND Contrasena = MD5(?) ";
         $stmt=$conexion->prepare($sql);
         $stmt->bind_param("ss",$array[0],$array[1]);
         $stmt->execute();
@@ -38,11 +38,11 @@ class login_controller{
     }
     public function insert($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * from usuarios WHERE Correo = '$array[2]' ";
+        $sql = "SELECT * from usuario WHERE Correo = '$array[2]' ";
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){
-        $stmt=$conexion->prepare("INSERT INTO usuarios(Nombres, Apellidos, Correo, Contrasena) 
+        $stmt=$conexion->prepare("INSERT INTO usuario(Nombres, Apellidos, Correo, Contrasena) 
             VALUES( ?, ?, ?, MD5(?))");
         $stmt->bind_param("ssss",$array[0],$array[1],$array[2],$array[3]);
         $stmt->execute();

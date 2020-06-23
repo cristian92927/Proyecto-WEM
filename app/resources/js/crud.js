@@ -1,11 +1,12 @@
 function allowDrop(ev){
 	ev.preventDefault();
 }
+var a = 0;
 var copia;
 function drag(ev){
-	copia = "<div class='caja' style='background-color:"+ev.target.style.backgroundColor+";'><p>" + ev.target.childNodes[1].innerHTML + "</p></div>";
+	copia = "<div class='caja' style='background-color:"+ev.target.style.backgroundColor+";'><p>" + ev.target.childNodes[1].innerHTML + "</p><div class='opciones'><i class='icon-cog'></i></div><div class='menu c'><a class='detalles'>Detalles</a><a class='eliminar'>Eliminar</a></div></div>";
 	ev.dataTransfer.setData('text', copia);
-	console.log(ev.target.getAttribute('docid'));
+	console.log(ev.target.getAttribute('id'));
 };
 function drop(ev){
 	ev.preventDefault();
@@ -41,3 +42,17 @@ function texto(){
 		}
 	}
 }
+var bool = true;
+$(document).on('click', '.opciones', function(e){
+	if(bool){
+		$('.menu').css('top', e.pageY);
+		$('.menu').css('left', e.pageX);
+		$('.menu').removeClass('c');
+		$('.menu').addClass('a');
+		bool = false;
+	}else{
+		$('.menu').removeClass('a');
+		$('.menu').addClass('c');
+		bool = true;
+	}
+});

@@ -113,7 +113,7 @@ if(!isset($_SESSION['user'])){
                     <th colspan="1">V</th>
                 </tr>
                 <tr>
-                    <th class="horas">AM</th>
+                    <th class="horas">6:00-9:00AM</th>
                     <td class="drops" id="drop1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -121,7 +121,7 @@ if(!isset($_SESSION['user'])){
                     <td class="drops" id="drop5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
-                    <th class="horas">AM</th>
+                    <th class="horas">9:00-12:00PM</th>
                     <td class="drops" id="drop6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -129,7 +129,7 @@ if(!isset($_SESSION['user'])){
                     <td class="drops" id="drop10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
-                    <th class="horas">AM</th>
+                    <th class="horas">12:00-3:00PM</th>
                     <td class="drops" id="drop11" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop12" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop13" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -137,7 +137,7 @@ if(!isset($_SESSION['user'])){
                     <td class="drops" id="drop15" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
-                    <th class="horas">AM</th>
+                    <th class="horas">3:00-6:00PM</th>
                     <td class="drops" id="drop16" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop17" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop18" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -145,94 +145,15 @@ if(!isset($_SESSION['user'])){
                     <td class="drops" id="drop20" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
-                    <th class="horas">AM</th>
+                    <th class="horas">6:00-9:00PM</th>
                     <td class="drops" id="drop21" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop22" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop23" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop24" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop25" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop26" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop27" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop28" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop29" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop30" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop31" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop32" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop33" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop34" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop35" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop36" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop37" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop38" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop39" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop40" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop41" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop42" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop43" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop44" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop45" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop46" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop47" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop48" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop49" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop50" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop51" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop52" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop53" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop54" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop55" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop56" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop57" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop58" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop59" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop60" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop61" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop62" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop63" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop64" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop65" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop66" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop67" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop68" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop69" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop70" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
-                <tr>
-                    <th class="horas">AM</th>
-                    <td class="drops" id="drop71" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop72" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop73" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop74" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop75" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                </tr>
             </table>
+            
         </div>
     </div>
 </main>
