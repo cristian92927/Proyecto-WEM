@@ -31,8 +31,8 @@
                 </div>
                 <div class="enlaces" id="enlaces">
                     <a href="#" id="enlace-inicio" class="btn-header">Inicio</a>
-                    <a href="#" id="enlace-equipo" class="btn-header">Equipo</a>
-                    <a href="#" id="enlace-caracteristica" class="btn-header">Caracteristicas</a>
+                    <a id="enlace-equipo" class="btn-header">Equipo</a>
+                    <a id="enlace-caracteristica" class="btn-header">Caracteristicas</a>
                     <a href="#" id="enlace-servicios" class="btn-header">Servicios</a>
                     <a href="#" id="enlace-contacto" class="btn-header">Contacto</a>
                     <a href="index.php?v=sesion" id="iniciar-sesion" class="btn-header">Iniciar Sesión</a>
@@ -90,17 +90,17 @@
                 <p class="after">Nos caracterizamos por ser comprometidos con las dudad que se le puedan presentar a nuestros
                 clientes, y estamos prestos a colaborar en su ambiente de trabajo.</p>
                 <div class="caracteristicas">
-                    <div class="caja caja-caracteristicas">
+                    <div class="caja-caracteristicas">
                         <img src="app/resources/img/sabiduria.png" alt="">
                         <h4>Sabiduría</h4>
                         <p>Sabemos lo importante que es para nuestros clientes la seguridad.</p>
                     </div>
-                    <div class="caja caja-caracteristicas">
+                    <div class="caja-caracteristicas">
                         <img src="app/resources/img/rendimiento.png" alt="">
                         <h4>Gran rendimineto</h4>
                         <p>Queremos que su tiempo pueda ser utilizado en sus labores mas importantes.</p>
                     </div>
-                    <div class="caja caja-caracteristicas">
+                    <div class="caja-caracteristicas">
                         <img src="app/resources/img/limpio.png" alt="">
                         <h4>Diseño limpio</h4>
                         <p>Queremos que nuentros clientes tengan la mejor experiencia de usuario.</p>
@@ -112,7 +112,7 @@
             <div class="contenedor">
                 <h3>Nosotros</h3>
                 <div class="about-img">
-                    <img src="app/resources/img/about1.png" alt="">
+                    <img src="app/resources/img/reloj.png" alt="">
                 </div>
                 <div class="about-text">
                     <p>
@@ -130,18 +130,18 @@
                 <h3>Nuestros Servicios</h3>
                 <p class="after">Siempre mejorando para ti</p>
                 <div class="servicios">
-                    <div class="caja caja-servicios">
-                        <img src="app/resources/img/about1.jpg" alt="">
+                    <div class="caja-servicios">
+                        <img src="app/resources/img/idea.png" alt="">
                         <h4>Creativos y asombrosos</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
                     </div>
-                    <div class="caja caja-servicios">
-                        <img src="app/resources/img/about1.jpg" alt="">
+                    <div class="caja-servicios">
+                        <img src="app/resources/img/calendario.png" alt="">
                         <h4>Creativos y asombrosos</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
                     </div>
-                    <div class="caja caja-servicios">
-                        <img src="app/resources/img/about1.jpg" alt="">
+                    <div class="caja-servicios">
+                        <img src="app/resources/img/velocidad.png" alt="">
                         <h4>Creativos y asombrosos</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
                     </div>
@@ -152,6 +152,12 @@
     <!----------------- FOOTER ----------------->
     <footer id="contacto">
         <div class="footer">
+            <div class="marca-logo">
+                <img src="app/resources/img/Logo.png" alt="">
+            </div>
+            <div id="frase">
+                <p>La pasión e innovación es lo que nos distingue del resto.</p>
+            </div>
             <div class="iconos">
                 <ul>
                     <li><a href=""><i class="icon icon-facebook">Facebook</i></a></li>
@@ -161,13 +167,6 @@
                     <li><a href=""><i class="icon icon-linkedin">LinkedIn</i></a></li>
                 </ul>
             </div>
-            <div class="marca-logo">
-                <img src="app/resources/img/Logo.png" alt="">
-            </div>
-            <div id="frase">
-                <p>La pasión e innovación es lo que nos distingue del resto.</p>
-            </div>
-            
         </div>
     </footer> 
     <!--- Javascriprt ----> 

@@ -258,27 +258,25 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
   background-position: center;
   background-size: cover;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 table{
+  width: 70%;
   border-spacing: 0;
   border: 1px solid black;
-  width: 100%;
 }
 th.horas{
   width: 50px;
   height: 32px;
 }
-
-td {
+td{
   background: rgba(100, 100, 100, 0.4);
   border:1px solid black;
   text-align: center;
   z-index: 20;
-  max-width: 80px;
-}
-th{
-  width: 80px;
+  width: 100px;
+  height: 30px;
 }
 th{
   background: var(--fondo);
@@ -287,6 +285,9 @@ th{
   z-index: 20;
   text-align: center;
   height: 30px;
+  width: 100px;
+  opacity: .8;
+  padding: 5px 0;
 }
 .horario{
   width: 50%;
@@ -322,7 +323,7 @@ th{
 
 /* cajas */
 .cajas{
-  padding: 10px 0;
+  padding: 0 0 10px;
   width: 20%;
   height: auto;
   background: rgba(255, 255, 255, .3);
@@ -331,29 +332,23 @@ th{
   justify-content: center;
   position: relative;
   flex-direction: column;
-  float: left;
   z-index: 1;
   margin: 0 auto;
 }
-.cajas:before{
-  content:'Instructores';
-  background: var(--fondo);
-  color:var(--color1);
-  padding: 10px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 50px;
-  position: absolute;
+#titulo{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 50px;
+  background: var(--fondo);
+  color: var(--color1);
+  font-weight: 600;
+  opacity: .8;
 }
 .cont_caja{
   width: 100%;
   height: auto;
-  margin-top: 70px;
 }
 .caja{
   cursor: pointer;
@@ -379,7 +374,7 @@ th{
   justify-content: space-around;
 }
 .editar, .borrar{
-  width: 30%;
+  width: 30px;
   padding: 5px;
   display: flex;
   justify-content: center;
@@ -389,32 +384,39 @@ th{
   color: black;
   background: darkorange;
   cursor: pointer;
-  text-shadow: none;
+  box-shadow: 0 0 4px 0 black;
 }
 .borrar:hover{
   color: black;
   background: #D50505;
   cursor: pointer;
-  text-shadow:none;
+  box-shadow: 0 0 4px 0 black;
 }
 /* footer */
+.footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 100px;
+}
 .marca-logo{
-  width: 30%;
-  margin:auto;
-  margin-bottom: var(--espacios);
+  width: 35%;
+  padding: 8px;
+  text-align: center;
 }
 .marca-logo img{
-  width: 100%;
+  width: 80%;
+  height: 130px;
 }
-.iconos{
-  display: flex;
-  margin: auto;
-  justify-content: space-around;
-  width: 100%;
+.iconos > ul{
+  list-style: none;
+}
+.iconos > ul > li{
+  padding:2px 10px;
+  display: inline-block;
 }
 .icon{
-  font-size: 30px;
-  margin-bottom: var(--espacios-contenido);
+  font-size: 20px;
   display: inline-block;
 }
 .icon-facebook{
@@ -429,90 +431,142 @@ th{
 .icon-instagram{
   color: brown;
 }
+#frase{
+  width: 50%;
+  text-align: center;
+  padding: 8px;
+}
 footer p{
   margin-top: var(--espacios);
   color:var(--color1);
 }
 
-@media screen and (max-width: 1000px){
-  .nav2{
-    color:white;
-  }
-  .icono{
-    display:block;
-    cursor: pointer;
-  }
-  .enlaces{
-    position:fixed;
-    top:80px;
-    background: linear-gradient(to right, hsla(176, 73%, 25%, .85), hsla(176, 73%, 25%, .85), rgba(252, 115, 35, .65));
-    left:60%;
-    height:0px;
-    transition: 1s;
-    width: 40%;
-    overflow: hidden;
-    box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.5);
-  }
-  .enlaces a{
-    display:block;
-    width:100%;
-    height: 40px;
-    line-height: 2;
-    text-align: center;
-    color:white;
-  }
-  .enlaces2{
-    position:fixed;
-    top:80px;
-    background:white;
-    left:60%;
-    height:0px;
-    transition: 1s;
-    width: 40%;
-    overflow: hidden;
-  }
-  .enlaces2 a{
-    display:block;
-    width:100%;
-    height: 40px;
-    line-height: 2;
-    text-align: center;
-    background: var(--fondo);
-    color:black;
-  }
-  nav .enlaces #usuario, nav .enlaces2 #usuario{margin-left: 0px;}
-  .table{
-    padding: 10px;
-  }
-  :root{
-    --margenes:30px;
-  }
-  #right{
-    right:1%;
-  }
-  #left{
-    left:35%;
-    display: none;
-  }
+@media (min-width: 992px) and (max-width: 1280px) {
+
+  nav .enlaces #usuario, nav .enlaces2 #usuario{margin-left: 10px; transition: 1s;}
+
 }
-@media screen and (max-width: 700px){
-  :root{
-    --espacios-contenido:25px;
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+  */
+  @media (max-width: 991px) {
+    .nav2{
+      color:white;
+    }
+    .icono{
+      display:block;
+      cursor: pointer;
+    }
+    .enlaces{
+      position:fixed;
+      top:80px;
+      background: linear-gradient(to right, hsla(176, 73%, 25%, .85), hsla(176, 73%, 25%, .85), rgba(252, 115, 35, .65));
+      left:60%;
+      height:0px;
+      transition: 1s;
+      width: 40%;
+      overflow: hidden;
+      box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.5);
+    }
+    .enlaces a{
+      display:block;
+      width:100%;
+      height: 40px;
+      line-height: 2;
+      text-align: center;
+      color:white;
+    }
+    .enlaces2{
+      position:fixed;
+      top:80px;
+      background:white;
+      left:60%;
+      height:0px;
+      transition: 1s;
+      width: 40%;
+      overflow: hidden;
+    }
+    .enlaces2 a{
+      display:block;
+      width:100%;
+      height: 40px;
+      line-height: 2;
+      text-align: center;
+      background: var(--fondo);
+      color:black;
+    }
+    nav .enlaces #usuario, nav .enlaces2 #usuario{margin-left: 0px;}
+    
+    .table{
+      flex-direction: column;
+    }
+    table{
+      width: 100%;
+    }
+    .cajas{
+      width: 50%;
+    }
+    .footer{
+      padding: 20px 30px;
+    }
+    .iconos{
+      text-align: center;
+      padding: 5px;
+    }
+    .iconos > ul > li{
+      padding: 2px;
+    }
+    #frase{
+      width: 80%;
+      text-align: center;
+    }
   }
-  .marca-logo{
-    width: 80%;
+  @media (min-width: 768px) and (max-width: 1024px) {
+
+
+
   }
-  .iconos{
-    margin:auto;
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+  */
+
+  @media (min-width: 481px) and (max-width: 767px) {
+
+    :root{
+      --espacios-contenido:25px;
+    }
+    .content-card{
+      width:90%;
+    }
+    .caja-servicios{
+      width:90%;
+      margin-bottom: var(--margenes);
+    }
+    .cont-work{
+      width: 85%;
+    }
+    .marca-logo{
+      width: 80%;
+    }
+    .iconos{
+      margin:auto;
+    }
+
   }
-  .table{
-    padding: 0px;
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+  */
+
+  @media (min-width: 320px) and (max-width: 480px) {
+
+    :root{
+      --espacios-contenido:25px;
+    }
+
   }
-  #right{
-    right:0%;
-  }
-  #left{
-    left:35%;
-    display: none;
-  }
-}

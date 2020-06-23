@@ -62,23 +62,23 @@ body{
     border-width: 15px;
   }
 }
-
-/* ---- fondo ----*/
+/*-----fondo -------*/
 body > img{
   width: 100%;
   height: 100vh;
   position: absolute;
   z-index: -1;
-  filter: blur(3px);
+  filter: blur(0px);
+  background-size: cover;
 }
-/*---- form ------*/
+/*----- form ----*/
 .container{
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background:linear-gradient(to right, hsla(176, 73%, 25%, .6), hsla(176, 73%, 25%, .6), rgba(252, 115, 35, .5));
+  background:linear-gradient(to right, hsla(176, 73%, 25%, .6), hsla(176, 73%, 25%, .6), rgba(252, 115, 35, .6));
 }
 .login-box{
   width: 500px;
@@ -103,10 +103,11 @@ body > img{
   border:none;
   border-bottom:3px solid var(--color2);
   margin:5px 0;
+  color: black;
   opacity: 0.5;
-  text-align: center;
   font-size: 17px;
   font-weight: 600;
+  text-align: center;
   font-family: 'Raleway', sans-serif;
 }
 *::-webkit-input-placeholder {
@@ -136,7 +137,7 @@ body > img{
   font-family: 'Raleway', sans-serif;
 }
 .login-box p{
-  color: white;
+  color:white;
   font-family: 'Raleway', sans-serif;
 }
 .login-box a:hover{

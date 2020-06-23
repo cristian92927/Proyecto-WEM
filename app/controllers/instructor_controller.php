@@ -50,7 +50,7 @@ class Instructor_controller{
     }
     public function update($array){
         $conexion=Conexion::connection();
-        $sql = "UPDATE instructor SET Nombres=?,Apellidos=?,Correo=?,Horas=?,Color=? WHERE id_Instructor=?";
+        $sql = "UPDATE instructor SET Nombres=?,Apellidos=?,Correo=?,Horas=?,Color=? WHERE id=?";
         $stmt = $conexion->prepare($sql);
         $stmt->bind_param("sssssi",$array[0],$array[1],$array[2],$array[3],$array[4],$array[5]);
         $stmt->execute();
@@ -59,14 +59,14 @@ class Instructor_controller{
 
     public function delete($array){
         $conexion=Conexion::connection();
-        $sql = "DELETE FROM instructor WHERE id_Instructor = ? ";
+        $sql = "DELETE FROM instructor WHERE id = ? ";
         $stmt=$conexion->prepare($sql);
         $stmt->bind_param("i",$array[0]);
         $stmt->execute();
     }
     public function consultUpdate($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * FROM instructor WHERE id_Instructor = $array[0]";
+        $sql = "SELECT * FROM instructor WHERE id = $array[0]";
         $result = $conexion->query($sql);
         return $result;
     }

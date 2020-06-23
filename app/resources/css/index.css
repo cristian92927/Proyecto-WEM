@@ -1,8 +1,8 @@
 :root{
 	--color1: #fc7424;
 	--color2: hsla(176, 73%, 25%, 1);
-  	--color3: rgba(252, 115, 35, 0.7);
-  	--color4: rgb(255, 94, 0);
+	--color3: rgba(252, 115, 35, 0.7);
+	--color4: rgb(255, 94, 0);
 	--fondo: #f2f2f2;
 	--titulos: 33px;
 	--subtitulos: 18px;
@@ -123,7 +123,7 @@ nav .enlaces a, nav .enlaces2 a{
 	text-decoration: none;
 	border-bottom: 3px solid transparent;
 }
-nav .enlaces #iniciar-sesion,nav .enlaces2 #iniciar-sesion{margin-left: 120px;transition: 1s;}
+nav .enlaces #iniciar-sesion,nav .enlaces2 #iniciar-sesion{margin-left: 120px;}
 nav .enlaces a:hover, nav .enlaces2 a:hover{
 	border-bottom: 3px solid rgb(252, 115, 35);
 	transition: 0.6s;
@@ -209,6 +209,9 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
 }
 .content-card{
 	width: 31%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
 	overflow: hidden;
 	height: 400px;
@@ -224,7 +227,7 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
 .texto-team{
 	height: 20%;
 	width: 100%;
-	padding: var(--espacios) 0;
+	padding: 20px 0;
 	color:var(--color1);
 }
 .features{
@@ -242,9 +245,13 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
 .service p, .features p{
 	color: white;
 }
+.caja-caracteristicas{
+	width: 30%;
+	padding: 10px;
+}
 .caja-caracteristicas > img, .caja-servicios > img{
 	width: 110px;
-	height: 90px;
+	height: 100px;
 }
 .servicios, .caracteristicas{
 	display: flex;
@@ -277,7 +284,8 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
 	float: left;
 }
 .about-img > img{
-	width: 100%;
+	width: 90%;
+	height: 340px;
 }
 .about-text{
 	width: 60%;
@@ -291,29 +299,25 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
 /* footer */
 .footer{
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	align-items: center;
 	padding: 20px 100px;
 }
 .marca-logo{
-	width: 33%;
-	padding: 20px;
+	width: 35%;
+	padding: 8px;
+	text-align: center;
 }
 .marca-logo img{
 	width: 80%;
-	height: 120px;
-}
-.iconos{
-	width: 33%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	height: 130px;
 }
 .iconos > ul{
 	list-style: none;
 }
 .iconos > ul > li{
-	padding:2px;
+	padding:2px 10px;
+	display: inline-block;
 }
 .icon{
 	font-size: 20px;
@@ -332,130 +336,163 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
 	color: brown;
 }
 #frase{
-	width: 20%;
+	width: 50%;
+	text-align: center;
+	padding: 8px;
 }
 footer p{
 	color:var(--color1);
 }
 
 @media (min-width: 992px) and (max-width: 1280px) {
-  
-  nav .enlaces #iniciar-sesion, nav .enlaces2 #iniciar-sesion{margin-left: 10px; transition: 1s;}
-  
+
+	nav .enlaces #iniciar-sesion, nav .enlaces2 #iniciar-sesion{margin-left: 10px; transition: 1s;}
+
 }
 
 /* 
   ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px
-*/
-@media (max-width: 991px) {
-	.nav2{
-		color:white;
-	}
-	.icono{
-		display:block;
-		cursor: pointer;
-	}
-	.enlaces{
-		position:fixed;
-		top:80px;
-		background: linear-gradient(to right, hsla(176, 73%, 25%, .85), hsla(176, 73%, 25%, .85), rgba(252, 115, 35, .65));
-		left:60%;
-		height:0px;
-		transition: 1s;
-		width: 40%;
-		overflow: hidden;
-		box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.5);
-	}
-	.enlaces a{
-		display:block;
-		width:100%;
-		height: 40px;
-		line-height: 2;
-		text-align: center;
-		color:white;
-	}
-	.enlaces2{
-		position:fixed;
-		top:80px;
-		background:white;
-		left:60%;
-		height:0px;
-		transition: 1s;
-		width: 40%;
-		overflow: hidden;
-	}
-	.enlaces2 a{
-		display:block;
-		width:100%;
-		height: 40px;
-		line-height: 2;
-		text-align: center;
-		background: var(--fondo);
-		color:black;
-	}
-	
-	nav .enlaces #iniciar-sesion, nav .enlaces2 #iniciar-sesion{margin-left: 0px;}
-	.textos > h1{font-size: 45px;}
-	.textos > h2{font-size: 25px;}
-	.textos > a > button{margin-top: 20px;}
-	.content-card{
-		width: 48%;
-		margin-bottom: var(--margenes);
-	}
-	:root{
-		--margenes:30px;
-	}
-	.about-img, .about-text{
-		width: 90%;
-		margin: auto;
-		float: none;
-	}
-}
-@media (min-width: 768px) and (max-width: 1024px) {
-  
-  	
-  
-}
+  */
+  @media (max-width: 991px) {
+  	.nav2{
+  		color:white;
+  	}
+  	.icono{
+  		display:block;
+  		cursor: pointer;
+  	}
+  	.enlaces{
+  		position:fixed;
+  		top:80px;
+  		background: linear-gradient(to right, hsla(176, 73%, 25%, .85), hsla(176, 73%, 25%, .85), rgba(252, 115, 35, .65));
+  		left:60%;
+  		height:0px;
+  		transition: 1s;
+  		width: 40%;
+  		overflow: hidden;
+  		box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.5);
+  	}
+  	.enlaces a{
+  		display:block;
+  		width:100%;
+  		height: 40px;
+  		line-height: 2;
+  		text-align: center;
+  		color:white;
+  	}
+  	.enlaces2{
+  		position:fixed;
+  		top:80px;
+  		background:white;
+  		left:60%;
+  		height:0px;
+  		transition: 1s;
+  		width: 40%;
+  		overflow: hidden;
+  	}
+  	.enlaces2 a{
+  		display:block;
+  		width:100%;
+  		height: 40px;
+  		line-height: 2;
+  		text-align: center;
+  		background: var(--fondo);
+  		color:black;
+  	}
+
+  	nav .enlaces #iniciar-sesion, nav .enlaces2 #iniciar-sesion{margin-left: 0px;}
+  	.textos > h1{font-size: 45px;}
+  	.textos > h2{font-size: 25px;}
+  	.textos > a > button{margin-top: 20px;}
+  	.content-card{
+  		width: 48%;
+  		margin-bottom: var(--margenes);
+  	}
+  	:root{
+  		--margenes:30px;
+  	}
+  	.about-img, .about-text{
+  		width: 100%;
+  		float: none;
+  	}
+  	.about-img > img{
+  		width: 60%;
+  		height: 280px;
+  	}
+  	.servicios, .caracteristicas{
+  		width: 100%;
+  		flex-direction: column;
+  	}
+  	.caja-caracteristicas{
+  		width: 60%;
+  		padding: 20px;
+  		margin: 0 auto;
+  	}
+  	.caja-servicios{
+  		width: 60%;
+  		padding: 20px;
+  		margin: 0 auto;
+  	}
+  	.footer{
+  		padding: 20px 30px;
+  	}
+  	.iconos{
+  		text-align: center;
+  		padding: 5px;
+  	}
+  	.iconos > ul > li{
+  		padding: 2px;
+  	}
+  	#frase{
+  		width: 80%;
+  		text-align: center;
+  	}
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+
+
+
+  }
 
 /* 
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
   ##Screen = B/w 481px to 767px
-*/
+  */
 
-@media (min-width: 481px) and (max-width: 767px) {
-  
-  :root{
-		--espacios-contenido:25px;
-	}
-	.content-card{
-		width:90%;
-	}
-	.caja-servicios{
-		width:90%;
-		margin-bottom: var(--margenes);
-	}
-	.cont-work{
-		width: 85%;
-	}
-	.marca-logo{
-		width: 80%;
-	}
-	.iconos{
-		margin:auto;
-	}
-  
-}
+  @media (min-width: 481px) and (max-width: 767px) {
+
+  	:root{
+  		--espacios-contenido:25px;
+  	}
+  	.content-card{
+  		width:90%;
+  	}
+  	.caja-servicios{
+  		width:90%;
+  		margin-bottom: var(--margenes);
+  	}
+  	.cont-work{
+  		width: 85%;
+  	}
+  	.marca-logo{
+  		width: 80%;
+  	}
+  	.iconos{
+  		margin:auto;
+  	}
+
+  }
 
 /* 
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
-*/
+  */
 
-@media (min-width: 320px) and (max-width: 480px) {
-  
-  :root{
-		--espacios-contenido:25px;
-	}
-  
-}
+  @media (min-width: 320px) and (max-width: 480px) {
+
+  	:root{
+  		--espacios-contenido:25px;
+  	}
+
+  }
