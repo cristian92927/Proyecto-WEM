@@ -17,7 +17,7 @@ if($resultado != null){
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>WEM | Restablecer Contraseña</title>
 	<link rel="stylesheet" href="app/resources/css/recuperarPw.css">
 </head>
 <body class="hidden">
