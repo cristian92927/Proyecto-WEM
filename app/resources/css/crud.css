@@ -81,57 +81,104 @@ header{
   background-position: center;
   background-size: cover;
 }
-nav{
+#nav{
   width: 100%;
   position:fixed;
   box-shadow: 0 0 10px 0 rgba(0 , 0, 0, .6);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#logo{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logo, #logo img{
+  height: 80px;
 }
 .nav1{
   background:transparent;
   height: 80px;
-  color:white;
   z-index: 2;
+}
+.nav1 #desplegable,
+.nav2 #desplegable{
+  background: var(--fondo);
+}
+.nav1 #desplegable a,
+.nav2 #desplegable a{
+  color: black;
+}
+.nav1 a{
+  color:white;
 }
 .nav2{
   background: var(--fondo);
   height: 100px;
-  color: black;
   z-index: 2;
 }
-.contenedor-nav{
+.nav2 a{
+  color: black;
+}
+#enlaces{
+  width: 70%;
   display: flex;
-  margin: auto;
-  width: 90%;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  max-width: 1000px;
-  height: inherit;
-  overflow: hidden;
 }
-nav .enlaces a{
-  color:white;
-}
-nav .enlaces2 a{
-  color:black;
-}
-nav .enlaces a, nav .enlaces2 a{
-  display: inline-block;
-  padding: 5px 0;
-  margin-right: 17px;
-  font-size: 17px;
-  font-weight: 300;
+#enlaces a{
   text-decoration: none;
-  border-bottom: 3px solid transparent;
-}
-nav .enlaces #usuario,nav .enlaces2 #usuario{margin-left: 120px;}
-nav .enlaces a:hover, nav .enlaces2 a:hover{
-  border-bottom: 3px solid rgb(252, 115, 35);
-  transition: 0.6s;
   cursor: pointer;
 }
-.logo, .logo img{
-  height: 80px;
+#menu,
+#desplegable{
+  list-style: none;
+  font-size: 17px;
 }
+#menu{
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+}
+#menu > li > a,
+#desplegable > li > a{
+  display: inline-block;
+  border-bottom: 3px solid transparent;
+}
+#menu > li > a{
+  padding: 10px;
+}
+#menu > li:hover > a,
+#desplegable > li:hover > a{
+  border-bottom: 3px solid orange;
+  transition: border .5s ease;
+}
+#desplegar{
+  position: relative;
+}
+#desplegable{
+  width: 140px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  box-shadow: 0 0 3px 0 black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: none;
+}
+#desplegable > li > a{
+  padding: 8px 0;
+}
+#desplegar:hover > #desplegable{
+  display: block;
+}
+
+
 
 .icono{
   display: none;

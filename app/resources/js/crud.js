@@ -55,4 +55,7 @@ $(document).on('click', '.opciones', function(e){
 		$('.menu').addClass('c');
 		bool = true;
 	}
+	$(document).on('click', '.eliminar', function(e){
+		console.log(e.target.parentElement);
+	});
 });

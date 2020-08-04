@@ -13,8 +13,4 @@
     }else{
         $controller->index();
     }
-
-
-
-
 ?>

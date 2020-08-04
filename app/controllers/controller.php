@@ -23,5 +23,8 @@ class controller{
 	function crud(){
 		include_once('app/vistas/crud.php');
 	}
+	function recuperarPw(){
+		include_once('app/vistas/recuperarPw.php');
+	}
 }
 ?>

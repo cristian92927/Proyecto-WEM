@@ -68,19 +68,27 @@ if(!isset($_SESSION['user'])){
     <!------------ NAV--------------->
     <header>
         <nav id="nav" class="nav1">
-            <div class="contenedor-nav">
-                <div class="logo">
-                    <img src="app/resources/img/logo.png" alt="">
-                </div>
-                <div class="enlaces" id="enlaces">
-                    <a id="enlace-crear" class="btn-header">Crear Instructor</a>
-                    <a id="enlace-guardar" class="btn-header">Guardar Horario</a>
-                    <a href="#" id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></i></a>
-                    <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
-                </div>
-                <div class="icono" id="open">
-                    <span>&#9776;</span>
-                </div>
+            <div id="logo">
+                <img src="app/resources/img/logo.png" alt="">
+            </div>
+            <div id="enlaces" class="enlaces">
+                <ul id="menu">
+                    <li id="desplegar">
+                        <a>Registro</a>
+                        <ul id="desplegable">
+                            <li><a id="enlace-crear" class="btn-header">Crear Instructor</a></li>
+                            <li><a>Crear Ficha</a></li>
+                            <li><a>Crear Trimestre</a></li>
+                            <li><a>Registrar Ficha</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="enlace-guardar" class="btn-header">Guardar Horario</a></li>
+                    <li><a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a></li>
+                    <li><a href="app/models/salir.php" id="salir" class="btn-header">Salir</a></li>
+                </ul>
+            </div>
+            <div class="icono" id="open">
+                <span>&#9776;</span>
             </div>
         </nav>
     </header>
