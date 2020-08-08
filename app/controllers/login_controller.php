@@ -36,6 +36,7 @@ class login_controller{
         }
         return $result;
     }
+
     public function consult($array){
         $conexion=Conexion::connection();
         $sql = "SELECT * from usuario WHERE Correo = ? AND Contrasena = MD5(?) ";
@@ -47,12 +48,11 @@ class login_controller{
     }
     public function insert($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * from usuario WHERE Correo = '$array[2]' ";
+        $sql = "SELECT * from usuario WHERE Correo = '$array[2]'";
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){
-            $stmt=$conexion->prepare("INSERT INTO usuario(Nombres, Apellidos, Correo, Contrasena) 
-                VALUES( ?, ?, ?, MD5(?))");
+            $stmt=$conexion->prepare("CALL InsertarUsuario(?, ?, ?, MD5(?))");
             $stmt->bind_param("ssss",$array[0],$array[1],$array[2],$array[3]);
             $stmt->execute();
             echo "<script>
@@ -106,7 +106,7 @@ class login_controller{
                 <h1>Restablecer contraseña</h1>
                 <p>Para restablecer su contraseña haga click en el siguiente boton: </p>
 
-                <a href='http://localhost/Proyecto-WEM/index.php?v=recuperarPw&token=".$array[0]."'><button class='boton'>Restablecer Contraseña</button></a>
+                <a href='http://localhost/WEM%20practica/index.php?v=recuperarPw&token=".$array[0]."'><button class='boton'>Restablecer Contraseña</button></a>
               </div>
             ";  
             $message .= "</body></html>";

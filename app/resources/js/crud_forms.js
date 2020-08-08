@@ -31,7 +31,7 @@ cont.addEventListener('click', function(e){
 
 function buscar(){
 	$.ajax({
-		url: "mostrar.php",
+		url: "http://localhost/WEMpractica/index.php?v=peticionesAjax&p=mostrar",
 		type: "GET",
 		success: function(response){
 			const instructores = JSON.parse(response);
@@ -62,7 +62,7 @@ $('#agregar').submit(function(ev){
 		color: $('#color').val()
 	};
 	$.ajax({
-		url: "agregar.php",
+		url: "http://localhost/WEMpractica/index.php?v=peticionesAjax&p=agregar",
 		type: "POST",
 		data: datos,
 		success: function(response){
@@ -77,7 +77,7 @@ $(document).on('click', '.borrar', function(){
 	if(confirm('Está seguro de eliminar este instructor?')){
 		let elementId = $(this)[0].parentElement.parentElement.id;
 		$.ajax({
-			url: "eliminar.php",
+			url: "http://localhost/WEMpractica/index.php?v=peticionesAjax&p=eliminar",
 			type: "POST",
 			data: {elementId},
 			success: function(response){
@@ -99,7 +99,7 @@ $(document).on("click", ".editar", function(){
         //En este ajax se insertan los valores de la base de datos en los diferentes input
         //Que tiene el formulario4, con una peticion de consulta que se hace en el servlet obtenerId
         $.ajax({
-        	url: "obtenerDatos.php",
+        	url: "http://localhost/WEMpractica/index.php?v=peticionesAjax&p=obtenerdatos",
         	type: "POST",
         	data: {elemento},
         	success: function (response) {
@@ -126,7 +126,7 @@ $('#editar').submit(e => {
         };
         // Este ajax envía la informacion modificada mediante el Servlet Editar 
         $.ajax({
-        	url: "editar.php",
+        	url: "http://localhost/WEMpractica/index.php?v=peticionesAjax&p=editar",
         	type: "POST",
         	data: postData,
         	success: function (response) {
