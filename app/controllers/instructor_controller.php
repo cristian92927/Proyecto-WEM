@@ -38,19 +38,18 @@ class Instructor_controller{
     }
     public function insert($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * from instructor WHERE Documento = '$array[0]' ";
+        $sql = "CALL ConsultarInstructorDocumento('$array[2]')";
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){
-            $stmt=$conexion->prepare("INSERT INTO instructor(Nombres, Apellidos, Documento, Correo, Horas, Color) 
-                VALUES( ?, ?, ?, ?, ?, ?)");
+            $stmt=$conexion->prepare("CALL InsertarInstructor(?, ?, ?, ?, ? , ?)");
             $stmt->bind_param("ssssis",$array[0],$array[1],$array[2],$array[3],$array[4],$array[5]);
             $stmt->execute();
         }
     }
     public function update($array){
         $conexion=Conexion::connection();
-        $sql = "UPDATE instructor SET Nombres=?,Apellidos=?,Correo=?,Horas=?,Color=? WHERE id_Instructor=?";
+        $sql = "CALL ActualizarInstructor( ?, ?, ?, ?, ?, ?)";
         $stmt = $conexion->prepare($sql);
         $stmt->bind_param("sssssi",$array[0],$array[1],$array[2],$array[3],$array[4],$array[5]);
         $stmt->execute();
@@ -59,14 +58,14 @@ class Instructor_controller{
 
     public function delete($array){
         $conexion=Conexion::connection();
-        $sql = "DELETE FROM instructor WHERE id_Instructor = ? ";
+        $sql = "CALL EliminarInstructorID(?)";
         $stmt=$conexion->prepare($sql);
         $stmt->bind_param("i",$array[0]);
         $stmt->execute();
     }
     public function consultUpdate($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT id_Instructor, Nombres, Apellidos, Correo, Horas, Color FROM instructor WHERE id_Instructor = $array[0]";
+        $sql = "CALL ConsultarInstructorID('$array[0]')";
         $result = $conexion->query($sql);
         return $result;
     }

@@ -120,7 +120,7 @@ class login_controller{
             $mail->Username   = 'proyectowemsena@gmail.com';                     // SMTP username
             $mail->Password   = 'proyectowem1234';                               // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->Port       = 25;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
             //Recipients
             $mail->setFrom('proyectowemsena@gmail.com', 'Proyecto Wem');
@@ -134,10 +134,10 @@ class login_controller{
             if($mail->send()){
                 echo '<script>alert("Se envio correctamente"); </script>';
 
-                $sql = "CREATE EVENT borrar_token
+                $sql2 = "CREATE EVENT borrar_token
                         ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE
                         DO UPDATE usuario SET token = null WHERE token = '$array[0]'";
-                $conexion->query($sql);
+                $conexion->query($sql2);
 
             }else{
                 echo '<script>alert("No se envio el correo"); </script>';
