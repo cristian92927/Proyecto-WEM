@@ -51,9 +51,10 @@ if(isset($_POST['enviar'])){
         <form method="POST">
           <input type="text" name="receptor" placeholder="example@example.edu.co">
           <button type="submit" name="enviar">Recuperar Contraseña</button>
+          <p>Volver a <a id="volver">Inicio de Sesion</a></p>
         </form>
       </div>  
-      <div class="login-box">
+      <div class="login-box" id="containerSesion">
         <a href="index.php"><img src="app/resources/img/Logo.png" alt="Avatar Image"></a>
         <h1>Inicio de sesión</h1>
         <p><?php echo $loginE; ?></p>
@@ -61,7 +62,7 @@ if(isset($_POST['enviar'])){
           <input type="text" name="correo" placeholder="example@example.edu.co" required>
           <input type="password" name="pw" placeholder="Ingrese su contraseña" required>
           <button type="submit" name="ingresar">Iniciar sesión</button>
-          <p>¿Has olvidado tu contraseña? <a id="recuperar">Clck aqui</a></p>
+          <p>¿Has olvidado tu contraseña? <a id="recuperar">Click aqui</a></p>
           <p>¿No tienes una cuenta? <a href="index.php?v=registrar">Registrate</a></p>
         </form>
       </div>
