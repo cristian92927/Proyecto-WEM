@@ -106,7 +106,7 @@ class login_controller{
                 <h1>Restablecer contraseña</h1>
                 <p>Para restablecer su contraseña haga click en el siguiente boton: </p>
 
-                <a href='http://localhost/WEM%20practica/index.php?v=recuperarPw&token=".$array[0]."'><button class='boton'>Restablecer Contraseña</button></a>
+                <a href='http://localhost/WEMpractica/index.php?v=recuperarPw&token=".$array[0]."'><button class='boton'>Restablecer Contraseña</button></a>
               </div>
             ";  
             $message .= "</body></html>";
@@ -117,13 +117,13 @@ class login_controller{
             $mail->CharSet ='UTF-8';                                         // Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                       // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'pikador.pikador40@gmail.com';                     // SMTP username
-            $mail->Password   = '1238938482Jpg.';                               // SMTP password
+            $mail->Username   = 'proyectowemsena@gmail.com';                     // SMTP username
+            $mail->Password   = 'proyectowem1234';                               // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
             //Recipients
-            $mail->setFrom('pikador.pikador40@gmail.com', 'Proyecto Wem');
+            $mail->setFrom('proyectowemsena@gmail.com', 'Proyecto Wem');
             $mail->addAddress($array[1]);     // Add a recipient
 
             // Content
@@ -132,7 +132,13 @@ class login_controller{
             $mail->Body    = $message;
 
             if($mail->send()){
-                echo '<script>alert("Se envio correctamente"); </script>';    
+                echo '<script>alert("Se envio correctamente"); </script>';
+
+                $sql = "CREATE EVENT borrar_token
+                        ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE
+                        DO UPDATE usuario SET token = null WHERE token = '$array[0]'";
+                $conexion->query($sql);
+
             }else{
                 echo '<script>alert("No se envio el correo"); </script>';
             }
