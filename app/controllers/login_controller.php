@@ -106,7 +106,7 @@ class login_controller{
                 <h1>Restablecer contraseña</h1>
                 <p>Para restablecer su contraseña haga click en el siguiente boton: </p>
 
-                <a href='http://localhost/WEMpractica/index.php?v=recuperarPw&token=".$array[0]."'><button class='boton'>Restablecer Contraseña</button></a>
+                <a href='http://localhost/Proyecto-WEM/index.php?v=recuperarPw&token=".$array[0]."'><button class='boton'>Restablecer Contraseña</button></a>
               </div>
             ";  
             $message .= "</body></html>";
