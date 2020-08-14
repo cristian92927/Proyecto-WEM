@@ -46,7 +46,7 @@ if(!isset($_SESSION['user'])){
                 <input type="text" id="horas" placeholder="Cantidad de horas">
                 <div><label>Elige un color: </label><input type="color" id="color" value="#ffffff"></div>
 
-                <button id="agregar"  class="horas"name="agregar">Crear</button>
+                <button id="agregar" name="agregar">Crear</button>
             </form>
             <!------------ formulario editar ------------->
             <form id="editar" action="crud.php" method="POST">
@@ -59,36 +59,28 @@ if(!isset($_SESSION['user'])){
                 <div><label>Elige un color: </label><input type="color" id="Ncolor"></div>
                 
 
-                <button type="submit" id="agregar"  class="horas"name="agregar">Modificar</button>
+                <button type="submit" id="agregar" name="agregar">Modificar</button>
             </form>
-            
         </div>
     </div>
     
     <!------------ NAV--------------->
     <header>
         <nav id="nav" class="nav1">
-            <div id="logo">
-                <img src="app/resources/img/logo.png" alt="">
-            </div>
-            <div id="enlaces" class="enlaces">
-                <ul id="menu">
-                    <li id="desplegar">
-                        <a>Registro</a>
-                        <ul id="desplegable">
-                            <li><a id="enlace-crear" class="btn-header">Crear Instructor</a></li>
-                            <li><a>Crear Ficha</a></li>
-                            <li><a>Crear Trimestre</a></li>
-                            <li><a>Registrar Ficha</a></li>
-                        </ul>
-                    </li>
-                    <li><a id="enlace-guardar" class="btn-header">Guardar Horario</a></li>
-                    <li><a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a></li>
-                    <li><a href="app/models/salir.php" id="salir" class="btn-header">Salir</a></li>
-                </ul>
-            </div>
-            <div class="icono" id="open">
-                <span>&#9776;</span>
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="app/resources/img/logo.png" alt="">
+                </div>
+                <div id="enlaces" class="enlaces">
+                    <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>
+                    <a id="enlace-crear" class="btn-header">Crear Instructor</a>
+                    <a id="enlace-guardar" class="btn-header">Guardar Horario</a></li>
+                    <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
+                    <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
+                </div>
+                <div class="icono" id="open">
+                    <span>&#9776;</span>
+                </div>
             </div>
         </nav>
     </header>
@@ -107,13 +99,13 @@ if(!isset($_SESSION['user'])){
 
             <table>
                 <tr>
-                    <th colspan="6" id="trimestre">Trimestre:</th>
+                    <th colspan="6">Trimestre: <span></span></th>
                 </tr>
                 <tr>
-                    <th colspan="6" id="aula">Lugar:</th>
+                    <th colspan="6">Lugar: <span></span></th>
                 </tr>
                 <tr>
-                    <th colspan="1">Horas</th>
+                    <th colspan="1">Hora</th>
                     <th colspan="1">L</th>
                     <th colspan="1">M</th>
                     <th colspan="1">X</th>
@@ -122,69 +114,49 @@ if(!isset($_SESSION['user'])){
                 </tr>
                 <tr>
                     <th class="horas">6:00-9:00AM</th>
-                    <td class="drops" id="drop1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop1" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop2" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop3" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop4" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop5" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
                     <th class="horas">9:00-12:00PM</th>
-                    <td class="drops" id="drop6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop6" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop7" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop8" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop9" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop10" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
                     <th class="horas">12:00-3:00PM</th>
-                    <td class="drops" id="drop11" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop12" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop13" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop14" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop15" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop11" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop12" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop13" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop14" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop15" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
                     <th class="horas">3:00-6:00PM</th>
-                    <td class="drops" id="drop16" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop17" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop18" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop19" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop20" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop16" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop17" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop18" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop19" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop20" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
                     <th class="horas">6:00-9:00PM</th>
-                    <td class="drops" id="drop21" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop22" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop23" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop24" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop25" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop21" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop22" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop23" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop24" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop25" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
             </table>
             
         </div>
     </div>
 </main>
-<!----------------- FOOTER ----------------->
-<footer id="contacto">
-    <div class="footer">
-        <div class="marca-logo">
-            <img src="app/resources/img/Logo.png" alt="">
-        </div>
-        <div id="frase">
-            <p>La pasión e innovación es lo que nos distingue del resto.</p>
-        </div>
-        <div class="iconos">
-            <ul>
-                <li><a href=""><i class="icon icon-facebook">Facebook</i></a></li>
-                <li><a href=""><i class="icon icon-github">GitHub</i></a></li>
-                <li><a href=""><i class="icon icon-youtube">Youtube</i></a></li>
-                <li><a href=""><i class="icon icon-instagram">Instagram</i></a></li>
-                <li><a href=""><i class="icon icon-linkedin">LinkedIn</i></a></li>
-            </ul>
-        </div>
-    </div>
-</footer> 
 <!--- Javascriprt ---->
 
 <script

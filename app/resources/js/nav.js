@@ -15,10 +15,10 @@ function apertura(){
 }
 function menus(){
 	let desplazamiento_actual = window.pageYOffset;
-	if(desplazamiento_actual<=148){
+	if(desplazamiento_actual<=10){
 		nav.classList.remove('nav2');
 		nav.className = ('nav1');
-		nav.style.transition = '1s';
+		nav.style.transition = 'all 1s ease';
 		menu.classList.remove('enlaces2');
 		menu.className = ('enlaces');
 		menu.style.top='80px';
@@ -26,7 +26,7 @@ function menus(){
 	}else{
 		nav.classList.remove('nav1');
 		nav.className = ('nav2');
-		nav.style.transition = '1s';
+		nav.style.transition = 'all 1s ease';
 		menu.classList.remove('enlaces');
 		menu.className = ('enlaces2');
 		menu.style.top='100px';

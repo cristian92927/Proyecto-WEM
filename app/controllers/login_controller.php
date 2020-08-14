@@ -134,10 +134,12 @@ class login_controller{
             if($mail->send()){
                 echo '<script>alert("Se envio correctamente"); </script>';
 
-                $sql2 = "CREATE EVENT borrar_token
-                        ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE
-                        DO UPDATE usuario SET token = null WHERE token = '$array[0]'";
-                $conexion->query($sql2);
+                $sql = "CREATE EVENT borrar_token
+                        ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 2 MINUTE
+                        DO UPDATE usuario SET token = null WHERE token = ?";
+                $stmt = $conexion->prepare($sql);
+                $stmt->bind_param("s",$array[0]);
+                $stmt->execute();
 
             }else{
                 echo '<script>alert("No se envio el correo"); </script>';

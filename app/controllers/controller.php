@@ -23,6 +23,9 @@ class controller{
 	function crud(){
 		include_once('app/vistas/crud.php');
 	}
+	function forms(){
+		include_once('app/vistas/forms.php');
+	}
 	function recuperarPw(){
 		include_once('app/vistas/recuperarPw.php');
 	}
@@ -61,6 +64,10 @@ class controller{
 			array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['correo'], $_POST['cantidadHoras'], $_POST['color'], $_POST['id']);
 			$editar = new controller();
 			$result = $editar->instructor(4,$array);
+			break;
+
+			case 'guardarHorario':
+			
 			break;
 		}
 		
