@@ -10,6 +10,7 @@ if(!isset($_SESSION['user'])){
 <head>
 	<meta charset="UTF-8">
 	<title>Registros</title>
+    <link rel="stylesheet" href="app/resources/iconos/icomoon/style.css">
 	<link rel="stylesheet" type="text/css" href="app/resources/css/forms.css">
 </head>
 <body class="hidden">
@@ -56,16 +57,16 @@ if(!isset($_SESSION['user'])){
 				<div class="cont-forms">
 					<!------------ formulario agregar ------------->
 					<div class="form show" id="registrar_instructor">
-						<form method="POST">
+						<form id="agregar_instructor" method="POST">
 							<h1>Registrar Instructor</h1>
 							<input type="text" id="nombres" placeholder="Nombres">
 							<input type="text" id="apellidos" placeholder="Apellidos">
 							<input type="text" id="documento" placeholder="Documento">
 							<input type="text" id="correo" placeholder="Correo electronico">
 							<input type="text" id="horas" placeholder="Cantidad de horas">
-							<div><label>Elige un color: </label><input type="color" id="color" value="#000"></div>
+							<div><label>Elige un color: </label><input type="color" id="color"></div>
 
-							<button id="agregar_instructor">Crear</button>
+							<button type="submit">Crear</button>
 						</form>
 					</div>
 					<div class="form" id="registrar_ambiente">
@@ -97,14 +98,19 @@ if(!isset($_SESSION['user'])){
 					<div class="lista">
 						<h2>Lista</h2>
 						<table>
-							<tr>
-								<th>Nombres</th>
-								<th>Apellidos</th>
-								<th>Documento</th>
-								<th>Correo</th>
-								<th>Horas</th>
-								<th>Color</th>
-							</tr>
+							<thead>
+								<tr>
+									<th>Nombres</th>
+									<th>Apellidos</th>
+									<th>Documento</th>
+									<th>Correo</th>
+									<th>Horas</th>
+									<th>Color</th>
+								</tr>
+							</thead>
+							<tbody id="lista">
+								
+							</tbody>
 						</table>
 					</div>
 				</div>
@@ -112,7 +118,10 @@ if(!isset($_SESSION['user'])){
 		</div>
 	</main>
 </body>
-
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
 <script src="app/resources/js/loader.js"></script>
 <script src="app/resources/js/nav.js"></script>
 <script src="app/resources/js/forms.js"></script>
