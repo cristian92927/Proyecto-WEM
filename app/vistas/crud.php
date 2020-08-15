@@ -32,38 +32,6 @@ if(!isset($_SESSION['user'])){
             <h3>Loading...</h3>
         </section>
     </div>
-    <!------------ forms ------------->
-    <div class="container" >
-        <div id="form">
-            <i class="icon-cross" id="cerrar"></i>
-            <!------------ formulario agregar ------------->
-            <form id="agregar" action="crud.php" method="POST">
-                <h1>Crear</h1>
-                <input type="text" id="nombres" placeholder="Nombres">
-                <input type="text" id="apellidos" placeholder="Apellidos">
-                <input type="text" id="documento" placeholder="Documento">
-                <input type="text" id="correo" placeholder="Correo electronico">
-                <input type="text" id="horas" placeholder="Cantidad de horas">
-                <div><label>Elige un color: </label><input type="color" id="color" value="#ffffff"></div>
-
-                <button id="agregar" name="agregar">Crear</button>
-            </form>
-            <!------------ formulario editar ------------->
-            <form id="editar" action="crud.php" method="POST">
-                <h1>Modificar</h1>
-                <input type="hidden" id="id">
-                <input type="text" id="Nnombres" placeholder="Nombres">
-                <input type="text" id="Napellidos" placeholder="Apellidos">
-                <input type="text" id="Ncorreo" placeholder="Correo electronico">
-                <input type="text" id="Ncantidad_horas" placeholder="Cantidad de horas">
-                <div><label>Elige un color: </label><input type="color" id="Ncolor"></div>
-                
-
-                <button type="submit" id="agregar" name="agregar">Modificar</button>
-            </form>
-        </div>
-    </div>
-    
     <!------------ NAV--------------->
     <header>
         <nav id="nav" class="nav1">

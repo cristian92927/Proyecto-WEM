@@ -65,7 +65,7 @@ class instructor_controller{
     }
     public function consultUpdate($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT id_Instructor, Nombres, Apellidos, Correo, Horas, Color FROM instructor WHERE id_Instructor = $array[0]";
+        $sql = "SELECT * FROM instructor WHERE id_Instructor = $array[0]";
         $result = $conexion->query($sql);
         return $result;
     }

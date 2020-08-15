@@ -10,7 +10,7 @@ if(!isset($_SESSION['user'])){
 <head>
 	<meta charset="UTF-8">
 	<title>Registros</title>
-    <link rel="stylesheet" href="app/resources/iconos/icomoon/style.css">
+	<link rel="stylesheet" href="app/resources/iconos/icomoon/style.css">
 	<link rel="stylesheet" type="text/css" href="app/resources/css/forms.css">
 </head>
 <body class="hidden">
@@ -59,15 +59,35 @@ if(!isset($_SESSION['user'])){
 					<div class="form show" id="registrar_instructor">
 						<form id="agregar_instructor" method="POST">
 							<h1>Registrar Instructor</h1>
+							<input type="hidden" id="id">
 							<input type="text" id="nombres" placeholder="Nombres">
 							<input type="text" id="apellidos" placeholder="Apellidos">
 							<input type="text" id="documento" placeholder="Documento">
 							<input type="text" id="correo" placeholder="Correo electronico">
 							<input type="text" id="horas" placeholder="Cantidad de horas">
-							<div><label>Elige un color: </label><input type="color" id="color"></div>
+							<div><label>Elige un color: </label><input type="color" id="color" value="#000000"></div>
 
 							<button type="submit">Crear</button>
 						</form>
+						<div class="lista">
+							<h2>Lista</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>id</th>
+										<th>Nombres</th>
+										<th>Apellidos</th>
+										<th>Documento</th>
+										<th>Correo</th>
+										<th>Horas</th>
+										<th>Color</th>
+									</tr>
+								</thead>
+								<tbody id="lista_instructor">
+
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div class="form" id="registrar_ambiente">
 						<form method="POST">
@@ -76,15 +96,44 @@ if(!isset($_SESSION['user'])){
 							<input type="text" id="descripcion_ambiente" placeholder="descripción">
 							<button id="agregar_ambiente">Crear</button>
 						</form>
+						<div class="lista">
+							<h2>Lista</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>Nombre</th>
+										<th>Descripcion</th>
+									</tr>
+								</thead>
+								<tbody id="lista_ambiente">
+									
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div class="form" id="registrar_ficha">
 						<form method="POST">
 							<h1>Registrar Ficha</h1>
 							<input type="text" id="nombre_gestor" placeholder="Nombre del gestor">
 							<input type="text" id="num_ficha" placeholder="Numero de la ficha">
-							<input type="text" id="documento" placeholder="id del programa">
+							<input type="text" id="id_programa" placeholder="id del programa">
 							<button id="agregar_ficha">Crear</button>
 						</form>
+						<div class="lista">
+							<h2>Lista</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>Nombre</th>
+										<th>Numero de ficha</th>
+										<th>id de programa</th>
+									</tr>
+								</thead>
+								<tbody id="lista_ficha">
+									
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div class="form" id="registrar_programa">
 						<form method="POST">
@@ -94,25 +143,22 @@ if(!isset($_SESSION['user'])){
 							
 							<button id="agregar_programa">Crear</button>
 						</form>
+						<div class="lista">
+							<h2>Lista</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>Nombre</th>
+										<th>Descripcion</th>
+									</tr>
+								</thead>
+								<tbody id="lista_programa">
+									
+								</tbody>
+							</table>
+						</div>
 					</div>
-					<div class="lista">
-						<h2>Lista</h2>
-						<table>
-							<thead>
-								<tr>
-									<th>Nombres</th>
-									<th>Apellidos</th>
-									<th>Documento</th>
-									<th>Correo</th>
-									<th>Horas</th>
-									<th>Color</th>
-								</tr>
-							</thead>
-							<tbody id="lista">
-								
-							</tbody>
-						</table>
-					</div>
+					
 				</div>
 			</div>
 		</div>

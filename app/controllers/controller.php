@@ -46,22 +46,22 @@ class controller{
 
 			case 'eliminar':
 			$array = [];
-			array_push($array, $_POST['elementId']);
+			array_push($array, $_POST['id']);
 			$borrar = new controller();
 			$result = $borrar->instructor(2,$array);
 			break;
 
 			case 'obtenerdatos':
 			$array = [];
-			array_push($array, $_POST['elemento']);
+			array_push($array, $_POST['id']);
 			$result = $this->instructor(3, $array);
-			$resultado = api_response::mostrar($result, ["id", "nombres", "apellidos", "correo", "horas", "color"]);
+			$resultado = api_response::mostrar($result, ["id", "nombres", "apellidos","documento", "correo", "horas", "color"]);
 			echo $resultado;
 			break;
 
 			case 'editar':
 			$array = [];
-			array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['correo'], $_POST['cantidadHoras'], $_POST['color'], $_POST['id']);
+			array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['correo'], $_POST['horas'], $_POST['color'], $_POST['id']);
 			$editar = new controller();
 			$result = $editar->instructor(4,$array);
 			break;

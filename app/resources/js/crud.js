@@ -12,26 +12,6 @@ function drop(ev){
 	ev.target.innerHTML = ev.dataTransfer.getData("text");
 	console.log(ev);
 }
-var bin;
-var trimestre = document.getElementById('trimestre');
-var spanT = document.querySelector("#trimestre > span");
-var aula = document.getElementById('aula');
-var spanA = document.querySelector("#aula > span");
-
-aula.addEventListener('dblclick', function(){
-	bin = 1;
-	texto();
-
-});
-trimestre.addEventListener('dblclick', function(){
-	bin = 0;
-	texto();
-});
-function crearInput(element){
-	var x = document.createElement('input');
-	x.setAttribute('placeholder', 'Inserta el horario');
-
-}
 var bool = true;
 $(document).on('click', '.opciones', function(e){
 	if(bool){
