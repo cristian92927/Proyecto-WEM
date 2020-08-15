@@ -55,7 +55,7 @@ if(!isset($_SESSION['user'])){
 					<a data-class="registrar_programa">Registrar programa de formación</a>
 				</div>
 				<div class="cont-forms">
-					<!------------ formulario agregar ------------->
+					<!------------ formulario agregar instrctor------------->
 					<div class="form show" id="registrar_instructor">
 						<form id="agregar_instructor" method="POST">
 							<h1>Registrar Instructor</h1>
@@ -89,18 +89,21 @@ if(!isset($_SESSION['user'])){
 							</table>
 						</div>
 					</div>
+					<!------------ formulario agregar ambiente------------->
 					<div class="form" id="registrar_ambiente">
-						<form method="POST">
+						<form method="POST" id='agregar_ambiente'>
 							<h1>Registrar Ambiente</h1>
+							<input type="hidden" id="id_amb">
 							<input type="text" id="nombre_ambiente" placeholder="Nombre del ambiente">
 							<input type="text" id="descripcion_ambiente" placeholder="descripción">
-							<button id="agregar_ambiente">Crear</button>
+							<button type="submit">Crear</button>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
 							<table>
 								<thead>
 									<tr>
+										<th>id</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
 									</tr>
@@ -111,8 +114,9 @@ if(!isset($_SESSION['user'])){
 							</table>
 						</div>
 					</div>
+					<!------------ formulario agregar ficha------------->
 					<div class="form" id="registrar_ficha">
-						<form method="POST">
+						<form method="POST" id="agregar_ficha">
 							<h1>Registrar Ficha</h1>
 							<input type="text" id="nombre_gestor" placeholder="Nombre del gestor">
 							<input type="text" id="num_ficha" placeholder="Numero de la ficha">
@@ -135,8 +139,9 @@ if(!isset($_SESSION['user'])){
 							</table>
 						</div>
 					</div>
+					<!------------ formulario agregar programa formacion------------->
 					<div class="form" id="registrar_programa">
-						<form method="POST">
+						<form method="POST" id="agregar_programaformacion">
 							<h1>Registrar Programa de Formacion</h1>
 							<input type="text" id="nombre_programa" placeholder="Nombre del programa">
 							<input type="text" id="descripcion_programa" placeholder="Descripción">
