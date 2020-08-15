@@ -43,7 +43,7 @@ class programaformacion_controller{
         $filas = $result->num_rows;
         if($filas === 0){
             $stmt=$conexion->prepare("INSERT INTO programa_formacion (Nombre_Pro, Descripcion_Pro)VALUES(?,?)");
-            $stmt->bind_param("ssii",$array[0],$array[1]);
+            $stmt->bind_param("ss",$array[0],$array[1]);
             $stmt->execute();
         }
     }

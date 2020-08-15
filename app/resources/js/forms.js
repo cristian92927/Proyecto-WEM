@@ -21,9 +21,13 @@ function appendHtml(el, str) {
 $(document).ready(function(){
 	buscar();
 	buscar_ambiente();
+	buscar_ficha();
+	buscar_programaformacion();
 	var etiqueta = document.querySelectorAll('.menu > a');
 	let edit_instructor = false;
 	let edit_ambiente = false;
+	let edit_ficha = false;
+	let edit_programaformacion = false;
 
 	for(var i = 0; i < etiqueta.length; i++){
 		etiqueta[i].addEventListener('click', cambiar);
@@ -201,6 +205,170 @@ $(document).ready(function(){
         		$('#nombre_ambiente').val(ambiente[0].nombre_ambiente);
         		$('#descripcion_ambiente').val(ambiente[0].descripcion_ambiente);
       			edit_ambiente = true;
+        	}
+        });
+	});
+
+
+
+
+	function buscar_ficha(){
+		$.ajax({
+			url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=mostrar",
+			type: "GET",
+			success: function(response){
+				const fichas = JSON.parse(response);
+				let template = '';
+				fichas.forEach(ficha =>{
+					template += `
+					<tr data-id="${ficha['id_fic']}">
+					<td>${ficha['id_fic']}</td>
+					<td>${ficha['nombre_gestor']}</td>
+					<td>${ficha['num_ficha']}</td>
+					<td>${ficha['id_programa']}</td>
+					<td class="cont_boton">
+					<div class="editar"><i class="icon-pencil"></i></div>
+					<div class="borrar"><i class="icon-bin"></i></div>
+					</td>
+					</tr>`
+				});
+				$('#lista_ficha').html(template);
+			}
+		})
+	}
+
+	$('#agregar_ficha').submit(function(ev){
+		ev.preventDefault();
+		const datos = {
+			nombre_gestor: $('#nombre_gestor').val(),
+			num_ficha: $('#num_ficha').val(),
+			id_fic:$('#id_fic').val()
+		};
+		let lugar = edit_ficha === false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=editar';
+		console.log(lugar);
+		$.ajax({
+			url: lugar,
+			type: "POST",
+			data: datos,
+			success: function(response){
+				buscar_ficha();
+				$('#agregar_ficha').trigger('reset');
+			}
+		});
+	});
+	$("#registrar_ficha").on('click', '.borrar', function(ev){
+		if(confirm("Are you sure you want to delete it?")){
+			let element = $(this)[0].parentElement.parentElement;
+			let id_fic = $(element).attr('data-id');
+			$.ajax({
+				url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=eliminar",
+				type: "POST",
+				data: {id_fic},
+				success: function(response){
+					buscar_ficha();
+				}
+			});
+		}
+	});
+	$("#registrar_ficha").on("click", ".editar", function(){
+		let element = $(this)[0].parentElement.parentElement;
+		let id_fic = $(element).attr('data-id');
+        //En este ajax se insertan los valores de la base de datos en los diferentes input
+        //Que tiene el formulario4, con una peticion de consulta que se hace en el servlet obtenerId
+        $.ajax({
+        	url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=obtenerdatos",
+        	type: "POST",
+        	data: {id_fic},
+        	success: function (response) {
+				console.log(response);
+        		const ficha = JSON.parse(response);
+        		$('#id_fic').val(ficha[0].id_fic);
+        		$('#nombre_gestor').val(ficha[0].nombre_gestor);
+				$('#num_ficha').val(ficha[0].num_ficha);
+				$('#id_programa').val(ficha[0].id_programa);
+      			edit_ficha = true;
+        	}
+        });
+	});
+
+
+
+
+
+
+	function buscar_programaformacion(){
+		$.ajax({
+			url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxProgramaFormacion&p=mostrar",
+			type: "GET",
+			success: function(response){
+				const programasformaciones = JSON.parse(response);
+				let template = '';
+				programasformaciones.forEach(programaformacion =>{
+					template += `
+					<tr data-id="${programaformacion['id_pf']}">
+					<td>${programaformacion['id_pf']}</td>
+					<td>${programaformacion['nombre_programa']}</td>
+					<td>${programaformacion['descripcion_programa']}</td>
+					<td class="cont_boton">
+					<div class="editar"><i class="icon-pencil"></i></div>
+					<div class="borrar"><i class="icon-bin"></i></div>
+					</td>
+					</tr>`
+				});
+				$('#lista_programa').html(template);
+			}
+		})
+	}
+
+	$('#agregar_programaformacion').submit(function(ev){
+		ev.preventDefault();
+		const datos = {
+			nombre_programa: $('#nombre_programa').val(),
+			descripcion_programa: $('#descripcion_programa').val(),
+			id_pf:$('#id_pf').val()
+		};
+		let lugar = edit_programaformacion === false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxProgramaFormacion&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxProgramaFormacion&p=editar';
+		console.log(lugar);
+		$.ajax({
+			url: lugar,
+			type: "POST",
+			data: datos,
+			success: function(response){
+				buscar_programaformacion();
+				$('#agregar_programaformacion').trigger('reset');
+			}
+		});
+	});
+	$("#registrar_programa").on('click', '.borrar', function(ev){
+		if(confirm("Are you sure you want to delete it?")){
+			let element = $(this)[0].parentElement.parentElement;
+			let id_pf = $(element).attr('data-id');
+			$.ajax({
+				url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxProgramaFormacion&p=eliminar",
+				type: "POST",
+				data: {id_pf},
+				success: function(response){
+					buscar_programaformacion();
+				}
+			});
+		}
+	});
+	$("#registrar_programa").on("click", ".editar", function(){
+		let element = $(this)[0].parentElement.parentElement;
+		let id_pf = $(element).attr('data-id');
+        //En este ajax se insertan los valores de la base de datos en los diferentes input
+        //Que tiene el formulario4, con una peticion de consulta que se hace en el servlet obtenerId
+        $.ajax({
+        	url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxProgramaFormacion&p=obtenerdatos",
+        	type: "POST",
+        	data: {id_pf},
+        	success: function (response) {
+				console.log(response);
+        		const programaformacion = JSON.parse(response);
+        		$('#id_pf').val(programaformacion[0].id_pf);
+        		$('#nombre_programa').val(programaformacion[0].nombre_programa);
+        		$('#descripcion_programa').val(programaformacion[0].descripcion_programa);
+      			edit_programaformacion = true;
         	}
         });
 	});

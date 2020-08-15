@@ -127,5 +127,93 @@ class controller{
 		}
 		
 	}
+
+	function peticionesAjaxFicha($p){
+		switch($p){
+			case 'mostrar':
+			$result = $this->ficha(0);
+			$resultado = api_response::mostrar($result, ["id_fic","nombre_gestor", "num_ficha","id_programa"]);
+			echo $resultado;
+			break;
+	
+			case 'agregar':
+			$array = [];
+			array_push($array, $_POST['nombre_gestor'], $_POST['num_ficha'], $_POST['id_programa']);
+			$consulta = new controller();
+			$result = $consulta->ficha(1, $array);
+			break;
+	
+			case 'eliminar':
+			$array = [];
+			array_push($array, $_POST['id_fic']);
+			$borrar = new controller();
+			$result = $borrar->ficha(2,$array);
+			break;
+	
+			case 'obtenerdatos':
+			$array = [];
+			array_push($array, $_POST['id_fic']);
+			$result = $this->ficha(3, $array);
+			$resultado = api_response::mostrar($result, ["id_fic","nombre_gestor", "num_ficha","id_programa"]);
+			echo $resultado;
+			break;
+	
+			case 'editar':
+			$array = [];
+			array_push($array, $_POST['nombre_gestor'], $_POST['num_ficha'],$_POST['id_programa'],$_POST['id_fic']);
+			$editar = new controller();
+			$result = $editar->ficha(4,$array);
+			break;
+	
+			case 'guardarHorario':
+			
+			break;
+		}
+		
+	}
+
+	function peticionesAjaxProgramaFormacion($p){
+		switch($p){
+			case 'mostrar':
+			$result = $this->programaformacion(0);
+			$resultado = api_response::mostrar($result, ["id_pf","nombre_programa", "descripcion_programa"]);
+			echo $resultado;
+			break;
+	
+			case 'agregar':
+			$array = [];
+			array_push($array, $_POST['nombre_programa'], $_POST['descripcion_programa']);
+			$consulta = new controller();
+			$result = $consulta->programaformacion(1, $array);
+			break;
+	
+			case 'eliminar':
+			$array = [];
+			array_push($array, $_POST['id_pf']);
+			$borrar = new controller();
+			$result = $borrar->programaformacion(2,$array);
+			break;
+	
+			case 'obtenerdatos':
+			$array = [];
+			array_push($array, $_POST['id_pf']);
+			$result = $this->programaformacion(3, $array);
+			$resultado = api_response::mostrar($result, ["id_pf","nombre_programa", "descripcion_programa"]);
+			echo $resultado;
+			break;
+	
+			case 'editar':
+			$array = [];
+			array_push($array, $_POST['nombre_programa'], $_POST['descripcion_programa'],$_POST['id_pf']);
+			$editar = new controller();
+			$result = $editar->programaformacion(4,$array);
+			break;
+	
+			case 'guardarHorario':
+			
+			break;
+		}
+		
+	}
 }
 ?>

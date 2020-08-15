@@ -118,10 +118,11 @@ if(!isset($_SESSION['user'])){
 					<div class="form" id="registrar_ficha">
 						<form method="POST" id="agregar_ficha">
 							<h1>Registrar Ficha</h1>
+							<input type="hidden" id="id_fic">
 							<input type="text" id="nombre_gestor" placeholder="Nombre del gestor">
 							<input type="text" id="num_ficha" placeholder="Numero de la ficha">
 							<input type="text" id="id_programa" placeholder="id del programa">
-							<button id="agregar_ficha">Crear</button>
+							<button type="submit">Crear</button>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
@@ -143,10 +144,10 @@ if(!isset($_SESSION['user'])){
 					<div class="form" id="registrar_programa">
 						<form method="POST" id="agregar_programaformacion">
 							<h1>Registrar Programa de Formacion</h1>
+							<input type="hidden" id="id_pf">
 							<input type="text" id="nombre_programa" placeholder="Nombre del programa">
 							<input type="text" id="descripcion_programa" placeholder="Descripción">
-							
-							<button id="agregar_programa">Crear</button>
+							<button type="submit">Crear</button>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>

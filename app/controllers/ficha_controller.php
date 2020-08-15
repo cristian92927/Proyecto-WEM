@@ -7,7 +7,7 @@ class ficha_controller{
     public function __construct(){}
 
     public static function Main($option,$array=[]){
-        $login = new instructor_controller();
+        $login = new ficha_controller();
         switch($option){    
             case 0:
             $result=$login->consult();
@@ -42,16 +42,16 @@ class ficha_controller{
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){
-            $stmt=$conexion->prepare("INSERT INTO ficha (Numero_Ficha, Nombre_Gestor,id_Programa,id_Horario)VALUES(?,?,?,?)");
-            $stmt->bind_param("ssii",$array[0],$array[1],$array[2],$array[3]);
+            $stmt=$conexion->prepare("INSERT INTO ficha (Numero_Ficha, Nombre_Gestor,id_Programa)VALUES(?,?,?)");
+            $stmt->bind_param("ssi",$array[0],$array[1],$array[2]);
             $stmt->execute();
         }
     }
     public function update($array){
         $conexion=Conexion::connection();
-        $sql = "UPDATE ficha SET Numero_Ficha = ?, Nombre_Gestor = ? , id_Programa = ? , id_Horario = ? WHERE id_Ficha  = ? ";
+        $sql = "UPDATE ficha SET Numero_Ficha = ?, Nombre_Gestor = ? , id_Programa = ?  WHERE id_Ficha  = ? ";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssiii",$array[0],$array[1],$array[2],$array[3]);
+        $stmt->bind_param("ssii",$array[0],$array[1],$array[2],$array[3]);
         $stmt->execute();
     }
 
