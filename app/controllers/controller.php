@@ -5,6 +5,7 @@ require_once "instructor_controller.php";
 require_once "api_response.php";
 require_once "ambiente_controller.php";
 require_once "ficha_controller.php";
+require_once "programaformacion_controller.php";
 class controller{
 
 	public function Login($option,$array=[]){

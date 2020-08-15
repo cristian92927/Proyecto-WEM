@@ -129,6 +129,7 @@ if(!isset($_SESSION['user'])){
 							<table>
 								<thead>
 									<tr>
+										<th>id</th>
 										<th>Nombre</th>
 										<th>Numero de ficha</th>
 										<th>id de programa</th>
@@ -154,6 +155,7 @@ if(!isset($_SESSION['user'])){
 							<table>
 								<thead>
 									<tr>
+										<th>id</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
 									</tr>

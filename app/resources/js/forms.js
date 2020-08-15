@@ -94,7 +94,6 @@ $(document).ready(function(){
 		if(confirm("Are you sure you want to delete it?")){
 			let element = $(this)[0].parentElement.parentElement;
 			let id = $(element).attr('data-id');
-			console.log(id);
 			$.ajax({
 				url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjax&p=eliminar",
 				type: "POST",
@@ -164,7 +163,6 @@ $(document).ready(function(){
 			id_amb:$('#id_amb').val()
 		};
 		let lugar = edit_ambiente === false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxAmbiente&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxAmbiente&p=editar';
-		console.log(lugar);
 		$.ajax({
 			url: lugar,
 			type: "POST",
@@ -199,7 +197,6 @@ $(document).ready(function(){
         	type: "POST",
         	data: {id_amb},
         	success: function (response) {
-				console.log(response);
         		const ambiente = JSON.parse(response);
         		$('#id_amb').val(ambiente[0].id_amb);
         		$('#nombre_ambiente').val(ambiente[0].nombre_ambiente);
@@ -245,7 +242,6 @@ $(document).ready(function(){
 			id_fic:$('#id_fic').val()
 		};
 		let lugar = edit_ficha === false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=editar';
-		console.log(lugar);
 		$.ajax({
 			url: lugar,
 			type: "POST",
@@ -280,7 +276,6 @@ $(document).ready(function(){
         	type: "POST",
         	data: {id_fic},
         	success: function (response) {
-				console.log(response);
         		const ficha = JSON.parse(response);
         		$('#id_fic').val(ficha[0].id_fic);
         		$('#nombre_gestor').val(ficha[0].nombre_gestor);
@@ -328,7 +323,6 @@ $(document).ready(function(){
 			id_pf:$('#id_pf').val()
 		};
 		let lugar = edit_programaformacion === false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxProgramaFormacion&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxProgramaFormacion&p=editar';
-		console.log(lugar);
 		$.ajax({
 			url: lugar,
 			type: "POST",
@@ -363,7 +357,6 @@ $(document).ready(function(){
         	type: "POST",
         	data: {id_pf},
         	success: function (response) {
-				console.log(response);
         		const programaformacion = JSON.parse(response);
         		$('#id_pf').val(programaformacion[0].id_pf);
         		$('#nombre_programa').val(programaformacion[0].nombre_programa);
