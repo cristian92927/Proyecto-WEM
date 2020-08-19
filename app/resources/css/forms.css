@@ -185,6 +185,7 @@ a.active{
 }
 .cont-forms{
   width: 100%;
+  min-height: 100vh;
   padding: 20px 0;
 }
 .form{
@@ -201,16 +202,26 @@ form > h1{
   text-align: center;
   margin-bottom: 20px;
 }
-form > input[type="text"]{
+form > input[type="text"],
+form > select{
   width: 50%;
   height: 30px;
   border-radius: 5px;
+  outline: none;
   border:none;
   border-bottom:3px solid var(--color3);
   margin:5px 10px;
   background: transparent;
   color: white;
   text-align:  center;
+  font-size: 16px;
+}
+form > select{
+  cursor: pointer;
+  text-align: center;
+}
+form > select > option{
+  color: black;
 }
 *::-webkit-input-placeholder {
   text-align: center;
@@ -267,17 +278,11 @@ form > button:hover{
   margin: 0 auto;
   border-collapse: collapse;
 }
-.lista table tr{
-}
 .lista table td{
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.lista table th,
-.lista table td{
-}
-
 .lista table th,
 .lista table td{
   border: 1px solid white;

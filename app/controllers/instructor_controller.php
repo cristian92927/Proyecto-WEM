@@ -33,7 +33,7 @@ class instructor_controller{
     }
     public function consult(){
         $conexion=Conexion::connection();
-        $sql = "SELECT * from instructor";
+        $sql = "SELECT instructor.id_Instructor, instructor.Nombres, instructor.Apellidos, instructor.Documento,instructor.Correo, instructor.Color, tipocontrato.Descripcion_tipoContrato FROM instructor INNER JOIN tipocontrato ON tipocontrato.id_TipoContrato = instructor.id_TipoContrato ORDER BY id_Instructor";
         return $conexion->query($sql);
     }
     public function insert($array){
@@ -42,14 +42,15 @@ class instructor_controller{
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){
-            $stmt=$conexion->prepare("CALL InsertInstructor( ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssis",$array[0],$array[1],$array[2],$array[3],$array[4],$array[5]);
+            $stmt=$conexion->prepare("INSERT INTO instructor(Nombres, Apellidos, Documento, Correo, Color, id_TipoContrato) 
+                VALUES( ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssi",$array[0],$array[1],$array[2],$array[3],$array[4],$array[5]);
             $stmt->execute();
         }
     }
     public function update($array){
         $conexion=Conexion::connection();
-        $sql = "CALL ActualizarInstructor(?, ?, ?, ?,? ,?)";
+        $sql = "UPDATE instructor SET Nombres=?,Apellidos=?,Correo=?,Color=?, id_TipoContrato = ? WHERE id_Instructor=?";
         $stmt = $conexion->prepare($sql);
         $stmt->bind_param("sssssi",$array[0],$array[1],$array[2],$array[3],$array[4],$array[5]);
         $stmt->execute();

@@ -2,12 +2,12 @@
 
 require_once "app/models/conexion.php";
 
-class ambiente_controller{
+class contrato_controller{
 
     public function __construct(){}
 
     public static function Main($option,$array=[]){
-        $login = new ambiente_controller();
+        $login = new contrato_controller();
         switch($option){    
             case 0:
             $result=$login->consult();
@@ -33,39 +33,39 @@ class ambiente_controller{
     }
     public function consult(){
         $conexion=Conexion::connection();
-        $sql = "SELECT * from ambiente";
+        $sql = "SELECT * FROM tipocontrato";
         return $conexion->query($sql);
     }
     public function insert($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * from ambiente WHERE Nombre_Ambiente = '$array[0]' ";
+        $sql = "SELECT * FROM tipocontrato WHERE Horas_TipoContrato = '$array[1]' ";
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){
-            $stmt=$conexion->prepare("INSERT INTO ambiente (Nombre_Ambiente, Descripcion_Ambiente)VALUES(?,?)");
-            $stmt->bind_param("ss",$array[0],$array[1]);
+            $stmt=$conexion->prepare("INSERT INTO tipocontrato (Descripcion_TipoContrato, Horas_TipoContrato)VALUES(?,?)");
+            $stmt->bind_param("si",$array[0],$array[1]);
             $stmt->execute();
         }
     }
     public function update($array){
         $conexion=Conexion::connection();
-        $sql = "UPDATE ambiente SET Nombre_Ambiente = ?, Descripcion_Ambiente = ? WHERE id_Ambiente = ? ";
+        $sql = "UPDATE tipocontrato SET Descripcion_TipoContrato = ?, Horas_TipoContrato = ?  WHERE id_TipoContrato  = ? ";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssi",$array[0],$array[1],$array[2]);
+        $stmt->bind_param("sii",$array[0],$array[1],$array[2]);
         $stmt->execute();
     }
 
 
     public function delete($array){
         $conexion=Conexion::connection();
-        $sql = "DELETE FROM ambiente WHERE id_Ambiente = ? ";
+        $sql = "DELETE FROM tipocontrato WHERE id_TipoContrato = ? ";
         $stmt=$conexion->prepare($sql);
         $stmt->bind_param("i",$array[0]);
         $stmt->execute();
     }
     public function consultUpdate($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * FROM ambiente WHERE id_Ambiente = $array[0]";
+        $sql = "SELECT * FROM tipocontrato WHERE id_TipoContrato = $array[0]";
         $result = $conexion->query($sql);
         return $result;
     }

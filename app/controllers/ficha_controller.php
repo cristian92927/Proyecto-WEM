@@ -33,16 +33,16 @@ class ficha_controller{
     }
     public function consult(){
         $conexion=Conexion::connection();
-        $sql = "SELECT * FROM ficha";
+        $sql = "SELECT ficha.id_Ficha, ficha.Numero_Ficha, ficha.Nombre_Gestor, programa_formacion.Nombre_Programa FROM ficha INNER JOIN programa_formacion ON programa_formacion.id_Programa = ficha.id_Programa ORDER BY id_Ficha";
         return $conexion->query($sql);
     }
     public function insert($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * FROM ficha WHERE Numero_Ficha = '$array[2]' ";
+        $sql = "SELECT * FROM ficha WHERE Numero_Ficha = '$array[1]' ";
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){
-            $stmt=$conexion->prepare("INSERT INTO ficha (Numero_Ficha, Nombre_Gestor,id_Programa)VALUES(?,?,?)");
+            $stmt=$conexion->prepare("INSERT INTO ficha (Numero_Ficha, Nombre_Gestor, id_Programa)VALUES(?,?,?)");
             $stmt->bind_param("ssi",$array[0],$array[1],$array[2]);
             $stmt->execute();
         }

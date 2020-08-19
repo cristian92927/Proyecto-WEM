@@ -6,6 +6,7 @@ require_once "api_response.php";
 require_once "ambiente_controller.php";
 require_once "ficha_controller.php";
 require_once "programaformacion_controller.php";
+require_once "contrato_controller.php";
 class controller{
 
 	public function Login($option,$array=[]){
@@ -22,6 +23,9 @@ class controller{
 	}
 	public function programaformacion($option,$array=[]){
 		return programaformacion_controller::Main($option,$array);
+	}
+	public function contrato($option,$array=[]){
+		return contrato_controller::Main($option,$array);
 	}
 	function index(){
 		include_once('app/vistas/index.php');
@@ -45,13 +49,13 @@ class controller{
 		switch($p){
 			case 'mostrar':
 			$result = $this->instructor(0);
-			$resultado = api_response::mostrar($result, ["id", "nombres", "apellidos", "documento", "correo", "horas", "color"]);
+			$resultado = api_response::mostrar($result, ["id", "nombres", "apellidos", "documento", "correo", "color", "tipoContrato"]);
 			echo $resultado;
 			break;
 
 			case 'agregar':
 			$array = [];
-			array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['documento'], $_POST['correo'], $_POST['horas'], $_POST['color']);
+			array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['documento'], $_POST['correo'], $_POST['color'], $_POST['tipoContrato']);
 			$consulta = new controller();
 			$result = $consulta->instructor(1, $array);
 			break;
@@ -67,19 +71,15 @@ class controller{
 			$array = [];
 			array_push($array, $_POST['id']);
 			$result = $this->instructor(3, $array);
-			$resultado = api_response::mostrar($result, ["id", "nombres", "apellidos","documento", "correo", "horas", "color"]);
+			$resultado = api_response::mostrar($result, ["id", "nombres", "apellidos","documento", "correo", "color", "tipoContrato"]);
 			echo $resultado;
 			break;
 
 			case 'editar':
 			$array = [];
-			array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['correo'], $_POST['horas'], $_POST['color'], $_POST['id']);
+			array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['correo'], $_POST['color'], $_POST['tipoContrato'], $_POST['id']);
 			$editar = new controller();
 			$result = $editar->instructor(4,$array);
-			break;
-
-			case 'guardarHorario':
-			
 			break;
 		}
 		
@@ -121,10 +121,6 @@ class controller{
 			$editar = new controller();
 			$result = $editar->ambiente(4,$array);
 			break;
-	
-			case 'guardarHorario':
-			
-			break;
 		}
 		
 	}
@@ -164,10 +160,6 @@ class controller{
 			array_push($array, $_POST['nombre_gestor'], $_POST['num_ficha'],$_POST['id_programa'],$_POST['id_fic']);
 			$editar = new controller();
 			$result = $editar->ficha(4,$array);
-			break;
-	
-			case 'guardarHorario':
-			
 			break;
 		}
 		
@@ -209,9 +201,44 @@ class controller{
 			$editar = new controller();
 			$result = $editar->programaformacion(4,$array);
 			break;
+		}
+		
+	}
+	function peticionesAjaxContrato($p){
+		switch($p){
+			case 'mostrar':
+			$result = $this->contrato(0);
+			$resultado = api_response::mostrar($result, ["id_cont","descripcion_tipocontrato", "horas_tipocontrato"]);
+			echo $resultado;
+			break;
 	
-			case 'guardarHorario':
-			
+			case 'agregar':
+			$array = [];
+			array_push($array, $_POST['descripcion_tipocontrato'], $_POST['horas_tipocontrato']);
+			$consulta = new controller();
+			$result = $consulta->contrato(1, $array);
+			break;
+	
+			case 'eliminar':
+			$array = [];
+			array_push($array, $_POST['id_cont']);
+			$borrar = new controller();
+			$result = $borrar->contrato(2,$array);
+			break;
+	
+			case 'obtenerdatos':
+			$array = [];
+			array_push($array, $_POST['id_cont']);
+			$result = $this->contrato(3, $array);
+			$resultado = api_response::mostrar($result, ["id_cont","descripcion_tipocontrato", "horas_tipocontrato"]);
+			echo $resultado;
+			break;
+	
+			case 'editar':
+			$array = [];
+			array_push($array, $_POST['descripcion_tipocontrato'], $_POST['horas_tipocontrato'],$_POST['id_cont']);
+			$editar = new controller();
+			$result = $editar->contrato(4,$array);
 			break;
 		}
 		

@@ -351,7 +351,7 @@ th{
   border-radius: 5px;
 }
 .opciones{
-  float: right;
+  position: relative;
 }
 .editar:hover{
   color: black;
@@ -372,7 +372,6 @@ th{
   box-shadow: 0 0 4px 0 black;
 }
 .menu{
-  width: 100px;
   background: #3E3D57;
   color:white;
   position: absolute;
@@ -381,12 +380,14 @@ th{
   border-radius: 5px;
   box-shadow: 0 0 6px 0 black;
   flex-direction: column;
-  justify-content: center;
+  top:75%;
+  left: 75%;
 }
 .menu a{
   text-decoration: none;
   padding: 5px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .menu a:hover{
   background: #000;

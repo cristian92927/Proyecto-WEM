@@ -31,8 +31,6 @@ if(!isset($_SESSION['user'])){
 					<img src="app/resources/img/logo.png" alt="">
 				</div>
 				<div id="enlaces" class="enlaces">
-					<a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>
-					<a id="enlace-crear" class="btn-header">Crear Instructor</a>
 					<a href="index.php?v=crud" id="enlace-programar" class="btn-header">Programar horario</a></li>
 					<a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
 					<a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
@@ -49,14 +47,15 @@ if(!isset($_SESSION['user'])){
 		<div class="container">
 			<div class="cont-general">
 				<div class="menu">
-					<a data-class="registrar_instructor" class="active">Registrar instructor</a>
-					<a data-class="registrar_ambiente">Registrar ambiente</a>
-					<a data-class="registrar_ficha">Registrar ficha</a>
-					<a data-class="registrar_programa">Registrar programa de formación</a>
+					<a data-class="instructor" class="active">Instructor</a>
+					<a data-class="ambiente">Ambiente</a>
+					<a data-class="programa">Programa de Formación</a>
+					<a data-class="ficha">Ficha</a>
+					<a data-class="contrato">Tipo de Contrato</a>
 				</div>
 				<div class="cont-forms">
 					<!------------ formulario agregar instrctor------------->
-					<div class="form show" id="registrar_instructor">
+					<div class="form show" id="instructor">
 						<form id="agregar_instructor" method="POST">
 							<h1>Registrar Instructor</h1>
 							<input type="hidden" id="id">
@@ -64,10 +63,10 @@ if(!isset($_SESSION['user'])){
 							<input type="text" id="apellidos" placeholder="Apellidos">
 							<input type="text" id="documento" placeholder="Documento">
 							<input type="text" id="correo" placeholder="Correo electronico">
-							<input type="text" id="horas" placeholder="Cantidad de horas">
+							<select id="tipoContrato"></select>
 							<div><label>Elige un color: </label><input type="color" id="color" value="#000000"></div>
 
-							<button type="submit">Crear</button>
+							<button type="submit">Guardar</button>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
@@ -79,7 +78,7 @@ if(!isset($_SESSION['user'])){
 										<th>Apellidos</th>
 										<th>Documento</th>
 										<th>Correo</th>
-										<th>Horas</th>
+										<th>Tipo de Contrato</th>
 										<th>Color</th>
 									</tr>
 								</thead>
@@ -90,13 +89,13 @@ if(!isset($_SESSION['user'])){
 						</div>
 					</div>
 					<!------------ formulario agregar ambiente------------->
-					<div class="form" id="registrar_ambiente">
+					<div class="form" id="ambiente">
 						<form method="POST" id='agregar_ambiente'>
 							<h1>Registrar Ambiente</h1>
 							<input type="hidden" id="id_amb">
 							<input type="text" id="nombre_ambiente" placeholder="Nombre del ambiente">
 							<input type="text" id="descripcion_ambiente" placeholder="descripción">
-							<button type="submit">Crear</button>
+							<button type="submit">Guardar</button>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
@@ -114,41 +113,15 @@ if(!isset($_SESSION['user'])){
 							</table>
 						</div>
 					</div>
-					<!------------ formulario agregar ficha------------->
-					<div class="form" id="registrar_ficha">
-						<form method="POST" id="agregar_ficha">
-							<h1>Registrar Ficha</h1>
-							<input type="hidden" id="id_fic">
-							<input type="text" id="nombre_gestor" placeholder="Nombre del gestor">
-							<input type="text" id="num_ficha" placeholder="Numero de la ficha">
-							<input type="text" id="id_programa" placeholder="id del programa">
-							<button type="submit">Crear</button>
-						</form>
-						<div class="lista">
-							<h2>Lista</h2>
-							<table>
-								<thead>
-									<tr>
-										<th>id</th>
-										<th>Nombre</th>
-										<th>Numero de ficha</th>
-										<th>id de programa</th>
-									</tr>
-								</thead>
-								<tbody id="lista_ficha">
-									
-								</tbody>
-							</table>
-						</div>
-					</div>
+
 					<!------------ formulario agregar programa formacion------------->
-					<div class="form" id="registrar_programa">
+					<div class="form" id="programa">
 						<form method="POST" id="agregar_programaformacion">
 							<h1>Registrar Programa de Formacion</h1>
 							<input type="hidden" id="id_pf">
 							<input type="text" id="nombre_programa" placeholder="Nombre del programa">
 							<input type="text" id="descripcion_programa" placeholder="Descripción">
-							<button type="submit">Crear</button>
+							<button type="submit">Guardar</button>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
@@ -166,7 +139,60 @@ if(!isset($_SESSION['user'])){
 							</table>
 						</div>
 					</div>
-					
+
+					<!------------ formulario agregar ficha------------->
+					<div class="form" id="ficha">
+						<form method="POST" id="agregar_ficha">
+							<h1>Registrar Ficha</h1>
+							<input type="hidden" id="id_fic">
+							<input type="text" id="nombre_gestor" placeholder="Nombre del gestor">
+							<input type="text" id="num_ficha" placeholder="Numero de la ficha">
+							<select class="select" id="nombre_prog"></select>
+							<button type="submit">Guardar</button>
+						</form>
+						<div class="lista">
+							<h2>Lista</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>id</th>
+										<th>Numero de ficha</th>
+										<th>Nombre Gestor</th>
+										<th>Nombre del programa de formacion</th>
+									</tr>
+								</thead>
+								<tbody id="lista_ficha">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<!------------ formulario agregar ficha------------->
+					<div class="form" id="contrato">
+						<form method="POST" id="agregar_contrato">
+							<h1>Registrar Contrato</h1>
+							<input type="hidden" id="id_contrato">
+							<input type="text" id="descripcion_contrato" placeholder="Descripción de contrato">
+							<input type="text" id="horas_contrato" placeholder="Horas">
+							<button type="submit">Guardar</button>
+						</form>
+						<div class="lista">
+							<h2>Lista</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>id</th>
+										<th>Descripcion</th>
+										<th>Horas</th>
+									</tr>
+								</thead>
+								<tbody id="lista_contrato">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

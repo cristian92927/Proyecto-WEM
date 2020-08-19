@@ -41,7 +41,6 @@ if(!isset($_SESSION['user'])){
                 </div>
                 <div id="enlaces" class="enlaces">
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>
-                    <a id="enlace-crear" class="btn-header">Crear Instructor</a>
                     <a id="enlace-guardar" class="btn-header">Guardar Horario</a></li>
                     <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
                     <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
@@ -67,10 +66,18 @@ if(!isset($_SESSION['user'])){
 
             <table>
                 <tr>
-                    <th colspan="6">Trimestre: <span></span></th>
+                    <th colspan="6">Ficha: 
+                        <select name="" id="ficha">
+                            <option value="">Seleccione alguno</option>
+                        </select>
+                    </th>
                 </tr>
                 <tr>
-                    <th colspan="6">Lugar: <span></span></th>
+                    <th colspan="6">Trimestre: 
+                        <select name="" id="trimestre">
+                            <option value="">Seleccione alguno</option>
+                        </select>
+                    </th>
                 </tr>
                 <tr>
                     <th colspan="1">Hora</th>

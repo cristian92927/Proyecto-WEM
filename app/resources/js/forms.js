@@ -1,33 +1,16 @@
-
-
-/*document.getElementById('mostrarLista').addEventListener('click', function(){
-	var html ="<td>Hola 2</td><td>Hola 2</td><td>Hola 2</td><td>Hola 2</td><td>Hola 2</td><td>Hola 2</td>";
-	appendHtml(document.querySelector('#lista'), html); 
-});
-var template="";
-
-function appendHtml(el, str) {
-	template += `
-	<tr>
-		<td>Hola</td>
-		<td>Hola</td>
-		<td>Hola</td>
-		<td>Hola</td>
-		<td>Hola</td>
-		<td>Hola</td>
-	</tr>`;
-	$('#lista').html(template);
-}*/
-$(document).ready(function(){
-	buscar();
-	buscar_ambiente();
-	buscar_ficha();
-	buscar_programaformacion();
-	var etiqueta = document.querySelectorAll('.menu > a');
+$(window).ready(function(){
 	let edit_instructor = false;
+	buscar();
 	let edit_ambiente = false;
+	buscar_ambiente();
 	let edit_ficha = false;
+	buscar_ficha();
 	let edit_programaformacion = false;
+	buscar_programaformacion();
+	let edit_contrato = false;
+	buscar_contrato();
+
+	var etiqueta = document.querySelectorAll('.menu > a');
 
 	for(var i = 0; i < etiqueta.length; i++){
 		etiqueta[i].addEventListener('click', cambiar);
@@ -55,7 +38,7 @@ $(document).ready(function(){
 					<td>${instructor['apellidos']}</td>
 					<td>${instructor['documento']}</td>
 					<td>${instructor['correo']}</td>
-					<td>${instructor['horas']}</td>
+					<td>${instructor['tipoContrato']}</td>
 					<td style="background-color:${instructor['color']}; color: black;">${instructor['color']}</td>
 					<td class="cont_boton">
 					<div class="editar"><i class="icon-pencil"></i></div>
@@ -67,7 +50,7 @@ $(document).ready(function(){
 			}
 		})
 	}
-	
+
 	$('#agregar_instructor').submit(function(ev){
 		ev.preventDefault();
 		const datos = {
@@ -75,11 +58,12 @@ $(document).ready(function(){
 			apellidos: $('#apellidos').val(),
 			documento: $('#documento').val(),
 			correo: $('#correo').val(),
-			horas: $('#horas').val(),
+			tipoContrato: $('#tipoContrato').val(),
 			color: $('#color').val(),
 			id: $('#id').val()
 		};
-    	let lugar = edit_instructor=== false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjax&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjax&p=editar';
+		(datos);
+		let lugar = edit_instructor === false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjax&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjax&p=editar';
 		$.ajax({
 			url: lugar,
 			type: "POST",
@@ -87,10 +71,11 @@ $(document).ready(function(){
 			success: function(response){
 				buscar();
 				$('#agregar_instructor').trigger('reset');
+				edit_instructor = false;
 			}
 		});
 	});
-	$("#registrar_instructor").on('click', '.borrar', function(ev){
+	$("#instructor").on('click', '.borrar', function(ev){
 		if(confirm("Are you sure you want to delete it?")){
 			let element = $(this)[0].parentElement.parentElement;
 			let id = $(element).attr('data-id');
@@ -104,7 +89,7 @@ $(document).ready(function(){
 			});
 		}
 	});
-	$("#registrar_instructor").on("click", ".editar", function(){
+	$("#instructor").on("click", ".editar", function(){
 		let element = $(this)[0].parentElement.parentElement;
 		let id = $(element).attr('data-id');
         //En este ajax se insertan los valores de la base de datos en los diferentes input
@@ -120,13 +105,13 @@ $(document).ready(function(){
         		$('#apellidos').val(instructores[0].apellidos);
         		$('#documento').val(instructores[0].documento);
         		$('#correo').val(instructores[0].correo);
-        		$('#horas').val(instructores[0].horas);
+        		$('#tipoContrato').val(instructores[0].horas);
         		$('#color').val(instructores[0].color);
-      			edit_instructor = true;
+        		edit_instructor = true;
         	}
         });
-	});
-	
+    });
+
 
 
 
@@ -170,10 +155,11 @@ $(document).ready(function(){
 			success: function(response){
 				buscar_ambiente();
 				$('#agregar_ambiente').trigger('reset');
+				edit_ambiente = false;
 			}
 		});
 	});
-	$("#registrar_ambiente").on('click', '.borrar', function(ev){
+	$("#ambiente").on('click', '.borrar', function(ev){
 		if(confirm("Are you sure you want to delete it?")){
 			let element = $(this)[0].parentElement.parentElement;
 			let id_amb = $(element).attr('data-id');
@@ -187,7 +173,7 @@ $(document).ready(function(){
 			});
 		}
 	});
-	$("#registrar_ambiente").on("click", ".editar", function(){
+	$("#ambiente").on("click", ".editar", function(){
 		let element = $(this)[0].parentElement.parentElement;
 		let id_amb = $(element).attr('data-id');
         //En este ajax se insertan los valores de la base de datos en los diferentes input
@@ -201,12 +187,10 @@ $(document).ready(function(){
         		$('#id_amb').val(ambiente[0].id_amb);
         		$('#nombre_ambiente').val(ambiente[0].nombre_ambiente);
         		$('#descripcion_ambiente').val(ambiente[0].descripcion_ambiente);
-      			edit_ambiente = true;
+        		edit_ambiente = true;
         	}
         });
-	});
-
-
+    });
 
 
 	function buscar_ficha(){
@@ -220,25 +204,28 @@ $(document).ready(function(){
 					template += `
 					<tr data-id="${ficha['id_fic']}">
 					<td>${ficha['id_fic']}</td>
-					<td>${ficha['nombre_gestor']}</td>
 					<td>${ficha['num_ficha']}</td>
+					<td>${ficha['nombre_gestor']}</td>
 					<td>${ficha['id_programa']}</td>
 					<td class="cont_boton">
 					<div class="editar"><i class="icon-pencil"></i></div>
 					<div class="borrar"><i class="icon-bin"></i></div>
 					</td>
-					</tr>`
+					</tr>`;
+
+					
 				});
 				$('#lista_ficha').html(template);
 			}
-		})
+		});
 	}
-
+	var id_prog;
 	$('#agregar_ficha').submit(function(ev){
 		ev.preventDefault();
 		const datos = {
 			nombre_gestor: $('#nombre_gestor').val(),
 			num_ficha: $('#num_ficha').val(),
+			id_programa: parseInt($('#nombre_prog').val()),
 			id_fic:$('#id_fic').val()
 		};
 		let lugar = edit_ficha === false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=editar';
@@ -249,10 +236,11 @@ $(document).ready(function(){
 			success: function(response){
 				buscar_ficha();
 				$('#agregar_ficha').trigger('reset');
+				edit_ficha = false;
 			}
 		});
 	});
-	$("#registrar_ficha").on('click', '.borrar', function(ev){
+	$("#ficha").on('click', '.borrar', function(ev){
 		if(confirm("Are you sure you want to delete it?")){
 			let element = $(this)[0].parentElement.parentElement;
 			let id_fic = $(element).attr('data-id');
@@ -266,7 +254,7 @@ $(document).ready(function(){
 			});
 		}
 	});
-	$("#registrar_ficha").on("click", ".editar", function(){
+	$("#ficha").on("click", ".editar", function(){
 		let element = $(this)[0].parentElement.parentElement;
 		let id_fic = $(element).attr('data-id');
         //En este ajax se insertan los valores de la base de datos en los diferentes input
@@ -279,18 +267,26 @@ $(document).ready(function(){
         		const ficha = JSON.parse(response);
         		$('#id_fic').val(ficha[0].id_fic);
         		$('#nombre_gestor').val(ficha[0].nombre_gestor);
-				$('#num_ficha').val(ficha[0].num_ficha);
-				$('#id_programa').val(ficha[0].id_programa);
-      			edit_ficha = true;
+        		$('#num_ficha').val(ficha[0].num_ficha);
+        		$('#nombre_prog').val(ficha[0].id_programa);
+        		edit_ficha = true;
         	}
         });
-	});
+    });
 
-
-
-
-
-
+	let select_programa=document.querySelector('#nombre_prog');
+	function nombre_programa(array=[]){
+		$("#nombre_prog option").remove();
+		let optionDefault = document.createElement("option");
+		optionDefault.text = "Seleccione alguno";
+		select_programa.add(optionDefault);
+		for(var i = 0; i < array.length ; i++){
+			let option = document.createElement("option");
+			option.text = array[i]['nombre_programa'];
+			option.value = array[i]['id_pf'];
+			select_programa.add(option);
+		}
+	}
 	function buscar_programaformacion(){
 		$.ajax({
 			url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxProgramaFormacion&p=mostrar",
@@ -298,6 +294,7 @@ $(document).ready(function(){
 			success: function(response){
 				const programasformaciones = JSON.parse(response);
 				let template = '';
+				nombre_programa(programasformaciones);
 				programasformaciones.forEach(programaformacion =>{
 					template += `
 					<tr data-id="${programaformacion['id_pf']}">
@@ -308,7 +305,8 @@ $(document).ready(function(){
 					<div class="editar"><i class="icon-pencil"></i></div>
 					<div class="borrar"><i class="icon-bin"></i></div>
 					</td>
-					</tr>`
+					</tr>`;
+					
 				});
 				$('#lista_programa').html(template);
 			}
@@ -330,10 +328,11 @@ $(document).ready(function(){
 			success: function(response){
 				buscar_programaformacion();
 				$('#agregar_programaformacion').trigger('reset');
+				edit_programaformacion = false;
 			}
 		});
 	});
-	$("#registrar_programa").on('click', '.borrar', function(ev){
+	$("#programa").on('click', '.borrar', function(ev){
 		if(confirm("Are you sure you want to delete it?")){
 			let element = $(this)[0].parentElement.parentElement;
 			let id_pf = $(element).attr('data-id');
@@ -347,7 +346,7 @@ $(document).ready(function(){
 			});
 		}
 	});
-	$("#registrar_programa").on("click", ".editar", function(){
+	$("#programa").on("click", ".editar", function(){
 		let element = $(this)[0].parentElement.parentElement;
 		let id_pf = $(element).attr('data-id');
         //En este ajax se insertan los valores de la base de datos en los diferentes input
@@ -361,9 +360,100 @@ $(document).ready(function(){
         		$('#id_pf').val(programaformacion[0].id_pf);
         		$('#nombre_programa').val(programaformacion[0].nombre_programa);
         		$('#descripcion_programa').val(programaformacion[0].descripcion_programa);
-      			edit_programaformacion = true;
+        		edit_programaformacion = true;
         	}
         });
+    });
+	let select_contrato = document.querySelector('#tipoContrato');
+	function tipoContrato(array=[]){
+		$("#tipoContrato option").remove();
+		let optionDefault = document.createElement("option");
+		optionDefault.text = "Seleccione alguno";
+		select_contrato.add(optionDefault);
+		for(var i = 0; i < array.length ; i++){
+			let option = document.createElement("option");
+			option.text = array[i]['descripcion_tipocontrato'];
+			option.value = array[i]['id_cont'];
+			select_contrato.add(option);
+		}
+	}
+    function buscar_contrato(){
+		$.ajax({
+			url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxContrato&p=mostrar",
+			type: "GET",
+			success: function(response){
+				const contratos = JSON.parse(response);
+				let template = '';
+				tipoContrato(contratos);
+				contratos.forEach(contrato =>{
+					template += `
+					<tr data-id="${contrato['id_cont']}">
+					<td>${contrato['id_cont']}</td>
+					<td>${contrato['descripcion_tipocontrato']}</td>
+					<td>${contrato['horas_tipocontrato']}</td>
+					<td class="cont_boton">
+					<div class="editar"><i class="icon-pencil"></i></div>
+					<div class="borrar"><i class="icon-bin"></i></div>
+					</td>
+					</tr>`;
+					
+				});
+				$('#lista_contrato').html(template);
+			}
+		})
+	}
+
+	$('#agregar_contrato').submit(function(ev){
+		ev.preventDefault();
+		const datos = {
+			descripcion_tipocontrato: $('#descripcion_contrato').val(),
+			horas_tipocontrato: $('#horas_contrato').val(),
+			id_cont:$('#id_contrato').val()
+		};
+		console.log(datos);
+		let lugar = edit_contrato === false ? 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxContrato&p=agregar' : 'http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxContrato&p=editar';
+		$.ajax({
+			url: lugar,
+			type: "POST",
+			data: datos,
+			success: function(response){
+				buscar_contrato();
+				$('#agregar_contrato').trigger('reset');
+				edit_contrato = false;
+			}
+		});
 	});
+	$("#contrato").on('click', '.borrar', function(ev){
+		if(confirm("Are you sure you want to delete it?")){
+			let element = $(this)[0].parentElement.parentElement;
+			let id_cont = $(element).attr('data-id');
+			$.ajax({
+				url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxContrato&p=eliminar",
+				type: "POST",
+				data: {id_cont},
+				success: function(response){
+					buscar_contrato();
+				}
+			});
+		}
+	});
+	$("#contrato").on("click", ".editar", function(){
+		let element = $(this)[0].parentElement.parentElement;
+		let id_cont = $(element).attr('data-id');
+        //En este ajax se insertan los valores de la base de datos en los diferentes input
+        //Que tiene el formulario4, con una peticion de consulta que se hace en el servlet obtenerId
+        $.ajax({
+        	url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxContrato&p=obtenerdatos",
+        	type: "POST",
+        	data: {id_cont},
+        	success: function (response) {
+        		const contrato = JSON.parse(response);
+        		$('#id_contrato').val(contrato[0].id_cont);
+        		$('#descripcion_contrato').val(contrato[0].descripcion_tipocontrato);
+        		$('#horas_contrato').val(contrato[0].horas_tipocontrato);
+        		edit_contrato = true;
+        	}
+        });
+    });
 });
 
