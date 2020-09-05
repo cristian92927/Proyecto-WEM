@@ -33,7 +33,7 @@ class instructor_controller{
     }
     public function consult(){
         $conexion=Conexion::connection();
-        $sql = "SELECT instructor.id_Instructor, instructor.Nombres, instructor.Apellidos, instructor.Documento,instructor.Correo, instructor.Color, tipocontrato.Descripcion_tipoContrato FROM instructor INNER JOIN tipocontrato ON tipocontrato.id_TipoContrato = instructor.id_TipoContrato ORDER BY id_Instructor";
+        $sql = "SELECT i.id_Instructor, i.Nombres, i.Apellidos, i.Documento,i.Correo, i.Color, t.Descripcion_tipoContrato FROM instructor i INNER JOIN tipocontrato t ON t.id_TipoContrato = i.id_TipoContrato ORDER BY id_Instructor";
         return $conexion->query($sql);
     }
     public function insert($array){

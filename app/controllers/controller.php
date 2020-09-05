@@ -45,6 +45,9 @@ class controller{
 	function recuperarPw(){
 		include_once('app/vistas/recuperarPw.php');
 	}
+	function ambientes(){
+		include_once('app/vistas/ambientes.php');
+	}
 	function peticionesAjax($p){
 		switch($p){
 			case 'mostrar':

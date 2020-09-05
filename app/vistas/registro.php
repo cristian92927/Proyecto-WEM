@@ -41,18 +41,27 @@
       <a href="index.php"><img src="app/resources/img/Logo.png" class="avatar" alt="Avatar Image"></a>
       <h1>Registro</h1>
       <p><?php echo $regE; ?></p>
+      <p id="alerta" class="alerta"></p>
       <form id="form" method="POST">
-        <input type="text" name="nombres" id="name" placeholder="Nombres" required>
-        <input type="text" name="apellidos" placeholder="Apellidos" required>
-        <input type="email" name="correo" id="mail" placeholder="ejemplo@misena.edu.co" required>
-        <input type="password" name="contrasena" id="pw" placeholder="Contraseña" required minlength="4" maxlength="8">
-        <input type="password" name="contrasena2" id="pw2" placeholder="Confirmar contraseña" required>
-        <button type="submit" name="registrar">Registrar</button>
+        <!--- Input nombres ----->
+        <input type="text" name="nombres" id="name" placeholder="Nombres">
+        <!--- Input apellidos ----->
+        <input type="text" name="apellidos" id="lastname" placeholder="Apellidos">
+        <!--- Input email ----->
+        <input type="text" name="correo" id="email" placeholder="ejemplo@misena.edu.co">
+        <!--- Input password ----->
+        <input type="password" name="contrasena" id="pw" placeholder="Contraseña">
+        <!--- Input password2 ----->
+        <input type="password" name="contrasena2" id="pw2" placeholder="Confirmar contraseña">
+        <!--- Nombre enviar ----->
+        <button type="submit" name="registrar" id="boton">Registrar</button>
+        <!--- Etiqueta para regresar al modulo de inicio de sesión --->
         <p>¿Ya tienes una cuenta? <a href="index.php?v=sesion">Iniciar sesión</a></p>
       </form>
     </div>
   </div>
   
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="app/resources/js/loader.js"></script>
   <script src="app/resources/js/registro.js"></script>
 </body>

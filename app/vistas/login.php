@@ -9,7 +9,7 @@ if(!empty($_POST['correo']) && !empty($_POST['pw'])){
   $_SESSION['user'] = $login->Login(0, $array);
   $resultado = $_SESSION['user'];
   if($resultado != null){
-    header("Location: index.php?v=crud");
+    header("Location: index.php?v=ambientes");
   }else{
     $loginE = "Usuario o contraseña incorrectos";
   }
@@ -59,7 +59,7 @@ if(isset($_POST['enviar'])){
         <h1>Inicio de sesión</h1>
         <p><?php echo $loginE; ?></p>
         <form method="POST">
-          <input type="text" name="correo" placeholder="example@example.edu.co" required>
+          <input type="text" name="correo" id="email" placeholder="example@example.edu.co" required>
           <input type="password" name="pw" placeholder="Ingrese su contraseña" required>
           <button type="submit" name="ingresar">Iniciar sesión</button>
           <p>¿Has olvidado tu contraseña? <a id="recuperar">Click aqui</a></p>

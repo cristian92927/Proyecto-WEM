@@ -33,7 +33,7 @@ class ficha_controller{
     }
     public function consult(){
         $conexion=Conexion::connection();
-        $sql = "SELECT ficha.id_Ficha, ficha.Numero_Ficha, ficha.Nombre_Gestor, programa_formacion.Nombre_Programa FROM ficha INNER JOIN programa_formacion ON programa_formacion.id_Programa = ficha.id_Programa ORDER BY id_Ficha";
+        $sql = "SELECT f.id_Ficha, f.Numero_Ficha, f.Nombre_Gestor, p.Nombre_Programa FROM ficha f INNER JOIN programa_formacion p ON p.id_Programa = f.id_Programa ORDER BY id_Ficha";
         return $conexion->query($sql);
     }
     public function insert($array){

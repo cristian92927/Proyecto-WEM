@@ -48,7 +48,7 @@ $(window).ready(function(){
 				});
 				$('#lista_instructor').html(template);
 			}
-		})
+		});
 	}
 
 	$('#agregar_instructor').submit(function(ev){

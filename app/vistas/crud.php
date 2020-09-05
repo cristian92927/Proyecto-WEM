@@ -4,6 +4,8 @@ require_once "app/controllers/controller.php";
 if(!isset($_SESSION['user'])){
     header ("Location: index.php");
 }
+
+if(isset($_GET["n"])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +42,7 @@ if(!isset($_SESSION['user'])){
                     <img src="app/resources/img/logo.png" alt="">
                 </div>
                 <div id="enlaces" class="enlaces">
+                    <a href="index.php?v=ambientes" id="enlace-ambientes" class="btn-header">Mis Ambientes</a>
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>
                     <a id="enlace-guardar" class="btn-header">Guardar Horario</a></li>
                     <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
@@ -53,24 +56,34 @@ if(!isset($_SESSION['user'])){
     </header>
     <!---------- MAIN -------------->
     <main>
-        <div class="table">
-
-            <div class="cajas">
-                <div id="titulo">
-                    Instructores
-                </div>
+        <div class="table" id="<?php echo $_GET['n']?>">
+            <div class="cajas" draggable="true" ondragstart="drag(event)">
+                <label for="">Ficha</label>
+                <select name="" id="ficha">
+                    <option value="">Seleccione alguno</option>
+                </select>
+                <label for="">Instructor</label>
+                <select name="" id="instructor">
+                    <option value="">Seleccione alguno</option>
+                </select>
+                <label for="">Resultado</label>
                 <div class="cont_caja" id="lugar">
 
                 </div>
             </div>
 
+            <!-- <div class="cajas">
+                <div id="titulo">
+                    
+                </div>
+                <div class="cont_caja" id="lugar">
+
+                </div>
+            </div> -->
+
             <table>
                 <tr>
-                    <th colspan="6">Ficha: 
-                        <select name="" id="ficha">
-                            <option value="">Seleccione alguno</option>
-                        </select>
-                    </th>
+                    <th colspan="6" id="nombre_ambiente"></th>
                 </tr>
                 <tr>
                     <th colspan="6">Trimestre: 
@@ -88,7 +101,7 @@ if(!isset($_SESSION['user'])){
                     <th colspan="1">V</th>
                 </tr>
                 <tr>
-                    <th class="horas">6:00-9:00AM</th>
+                    <th class="horas" data-inicio="6:00" data-fin="9:00">6:00-9:00AM</th>
                     <td class="drops" id="drop1" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop2" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop3" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -96,7 +109,7 @@ if(!isset($_SESSION['user'])){
                     <td class="drops" id="drop5" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
-                    <th class="horas">9:00-12:00PM</th>
+                    <th class="horas" data-inicio="9:00" data-fin="12:00">9:00-12:00PM</th>
                     <td class="drops" id="drop6" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop7" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop8" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -104,7 +117,7 @@ if(!isset($_SESSION['user'])){
                     <td class="drops" id="drop10" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
-                    <th class="horas">12:00-3:00PM</th>
+                    <th class="horas" data-inicio="12:00" data-fin="3:00">12:00-3:00PM</th>
                     <td class="drops" id="drop11" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop12" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop13" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -112,7 +125,7 @@ if(!isset($_SESSION['user'])){
                     <td class="drops" id="drop15" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
-                    <th class="horas">3:00-6:00PM</th>
+                    <th class="horas" data-inicio="3:00" data-fin="6:00">3:00-6:00PM</th>
                     <td class="drops" id="drop16" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop17" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop18" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -120,7 +133,7 @@ if(!isset($_SESSION['user'])){
                     <td class="drops" id="drop20" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
                 <tr>
-                    <th class="horas">6:00-9:00PM</th>
+                    <th class="horas" data-inicio="6:00" data-fin="9:00">6:00-9:00PM</th>
                     <td class="drops" id="drop21" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop22" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                     <td class="drops" id="drop23" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -145,3 +158,8 @@ crossorigin="anonymous"></script>
 
 </body>
 </html>
+<?php 
+}else{
+    header ("Location: index.php?v=ambientes");
+}
+?>

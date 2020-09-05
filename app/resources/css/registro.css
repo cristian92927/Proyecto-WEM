@@ -9,6 +9,9 @@
 body{
   font-family: 'Raleway', sans-serif;
 }
+.alerta{
+  display: none;
+}
 /* -- Loader -- */
 .hidden{
   overflow: hidden;
