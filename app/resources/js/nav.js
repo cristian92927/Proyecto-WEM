@@ -1,8 +1,10 @@
+// definición de variables
 let nav = document.getElementById('nav');
 let menu = document.getElementById('enlaces');
 let abrir = document.getElementById('open');
 let cerrado = true;
 
+// Función para abrir o cerrar el menú del nav cuando está responsive
 function apertura(){
 	if(cerrado){
 		menu.style.height = '100vh';
@@ -13,9 +15,11 @@ function apertura(){
 		cerrado = true;
 	}
 }
+// Función para el cambio de estilo del nav al momento de hacer scroll
 function menus(){
+	// Se toma el desplazamiento del scrol y se almacena en una variable
 	let desplazamiento_actual = window.pageYOffset;
-	if(desplazamiento_actual<=10){
+	if(desplazamiento_actual <= 10){
 		nav.classList.remove('nav2');
 		nav.className = ('nav1');
 		nav.style.transition = 'all 1s ease';
@@ -33,25 +37,33 @@ function menus(){
 		abrir.style.color='black';
 	}
 }
+// función que se ejecuta cuando se carga la ventana del navegador
 window.addEventListener('load', function(){
 	menus();
-})
+});
+// Función que se ejecuta cada que se hace scroll en el navegador
 window.addEventListener('scroll',function(){
 	menus();
-})
+});
+// Función que se ejecuta cuando se cambia el tamaño de la ventana
 window.addEventListener('resize',function(){
 	if(screen.width>=700){
 		cerrado=true;
 		menu.style.removeProperty('overflow');
 		menu.style.removeProperty('height');
 	}
-})
+});
+
 abrir.addEventListener('click', function(){
 	apertura();
-})
+});
+
 window.addEventListener('click', function(e){
 	if(cerrado==false){
 		let span = document.querySelector('span');
+		// condición para validar en el lugar que se dio click
+		// Para cerrar el menú desplegable en caso de estar abierto y no 
+		// Se haya dado en el botón de menú
 		if(e.target !== span && e.target !== abrir){
 			menu.style.height = '0px';
 			menu.style.overflow = 'hidden';

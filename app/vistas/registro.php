@@ -1,6 +1,6 @@
 <?php
   require_once "app/controllers/controller.php";
-  $regE ="";
+  $regE = "";
   if(!empty($_POST['nombres']) && !empty($_POST['apellidos'])){
     $array = [];
     array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['correo'], $_POST['contrasena']);
@@ -44,13 +44,13 @@
       <p id="alerta" class="alerta"></p>
       <form id="form" method="POST">
         <!--- Input nombres ----->
-        <input type="text" name="nombres" id="name" placeholder="Nombres">
+        <input type="text" name="nombres" id="name" placeholder="Nombres*">
         <!--- Input apellidos ----->
-        <input type="text" name="apellidos" id="lastname" placeholder="Apellidos">
+        <input type="text" name="apellidos" id="lastname" placeholder="Apellidos*">
         <!--- Input email ----->
-        <input type="text" name="correo" id="email" placeholder="ejemplo@misena.edu.co">
+        <input type="text" name="correo" id="email" placeholder="ejemplo@misena.edu.co*">
         <!--- Input password ----->
-        <input type="password" name="contrasena" id="pw" placeholder="Contraseña">
+        <input type="password" name="contrasena" id="pw" placeholder="Contraseña*">
         <!--- Input password2 ----->
         <input type="password" name="contrasena2" id="pw2" placeholder="Confirmar contraseña">
         <!--- Nombre enviar ----->

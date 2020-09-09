@@ -8,13 +8,13 @@ $(document).ready(function(){
 		$("#trimestre option").remove();
 		let trimestre = document.getElementById('trimestre');
 		var ficha = $("#ficha").val();
-    //Ciclo for para recorrer la variable global data, obtener las ciudades y añadirlas a una opcion de un select
-    for (var i in data[ficha]) {
-    	var option = document.createElement("option");
-    	option.text = data[ficha][i];
-    	option.value = data[ficha][i];
-    	trimestre.add(option);
-    }
+	    //Ciclo for para recorrer la variable global data, obtener las ciudades y añadirlas a una opcion de un select
+	    for (var i in data[ficha]) {
+	    	var option = document.createElement("option");
+	    	option.text = data[ficha][i];
+	    	option.value = data[ficha][i];
+	    	trimestre.add(option);
+	    }
 });
 
 });
@@ -94,7 +94,7 @@ guardar.addEventListener('click', function(e){
 		array[i] = objeto;
 		
 	}
-console.log(array);
+	console.log(array);
 	/*$.ajax({
 		type: "POST",
 		data: array,

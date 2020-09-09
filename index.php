@@ -10,7 +10,6 @@
                 return;
             }
             $controller->$metodo();
-
         }else{
             $controller->index();
         }

@@ -83,6 +83,17 @@ body > img{
   justify-content: space-around;
   background:linear-gradient(to right, hsla(176, 73%, 25%, .6), hsla(176, 73%, 25%, .6), rgba(252, 115, 35, .6));
 }
+.alerta{
+  width: 85%;
+  padding:10px 20px;
+  background: rgba(255, 0, 0, .5);
+  margin: 0 auto;
+  border-radius: 5px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
 .login-box{
   width: 500px;
   height: auto;

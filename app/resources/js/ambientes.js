@@ -1,27 +1,18 @@
 window.addEventListener('load', function(){
 	mostrarAmbientes();	
-
-	$(document).on('click', '.abrir', function(ev){
-		let element = $(this)[0].parentElement.parentElement;
-		console.log(element);
-		$.ajax({
-			url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxAmbiente&p=eliminar",
-			type: "POST",
-			data: {id_amb},
-			success: function(response){
-				buscar_ambiente();
-			}
-		});
-	});
 });
 function mostrarAmbientes(){
+	// Este ajax hará la consulta de lo ambientes
 	$.ajax({
 		url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxAmbiente&p=mostrar",
 		type: "GET",
 		success: function(response){
+			// Se toma la respuesta en una const y se convierte en JSON
 			const ambientes = JSON.parse(response);
 			let template = '';
+			// En este ciclo se recorre la constante que contiene un JSON
 			ambientes.forEach(ambiente =>{
+				// En esta variable se almacena el maquetado html que se quiere mostrar
 				template += `
 				<div class="ambientes">
 				<div class="nombre_Ambiente">
@@ -34,7 +25,7 @@ function mostrarAmbientes(){
 				</div>
 				</div>`
 			});
-
+			// Se agrega el html que se ejecuto en el forEach a el contenedor
 			$('#cont_ambientes').html(template);
 		}
 	});

@@ -36,14 +36,17 @@ if(!isset($_SESSION['user'])){
     <header>
         <nav id="nav" class="nav1">
             <div class="contenedor-nav">
+                <!-- Contenedor del LOGO -->
                 <div class="logo">
                     <img src="app/resources/img/logo.png" alt="">
                 </div>
+                <!-- Contenedor de los enlaces del nav -->
                 <div id="enlaces" class="enlaces">
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>   
                     <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
                     <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
                 </div>
+                <!-- Icono para la pantalla responsive -->
                 <div class="icono" id="open">
                     <span>&#9776;</span>
                 </div>
@@ -56,6 +59,7 @@ if(!isset($_SESSION['user'])){
             <div id="titulo">
                 <h1>Mis Ambientes</h1>
             </div>
+            <!-- Contenedor donde se insertarán los ambientes encontrado en la BD -->
             <div id="cont_ambientes">
                 
             </div>    

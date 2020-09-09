@@ -157,9 +157,8 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
 }
 /* Main */
 
-/* table */
+/* Ambientes */
 .container{
-  margin: 0 auto;
   width: 100%;
   min-height: 90vh;
   overflow: hidden;
@@ -174,14 +173,16 @@ nav .enlaces a:hover, nav .enlaces2 a:hover{
 }
 #cont_ambientes{
   width: 100%;
-  padding: 20px;
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .ambientes{
-  width: 200px;
+  width: 23%;
   background: #fff;
-  border-radius: 10px; 
+  border-radius: 10px;
   margin: 8px;
+  flex: auto;
 }
 .nombre_Ambiente{
   width: 100%;
