@@ -4,6 +4,7 @@ require_once "app/controllers/controller.php";
 if(!isset($_SESSION['user'])){
     header ("Location: index.php");
 }
+if(isset($_GET['n'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,7 @@ if(!isset($_SESSION['user'])){
     <!--- Title --->
     <title>WEM</title>
     <!--- Stylesheets --->
-    <link rel="stylesheet" href="app/resources/css/ambientes.css">
+    <link rel="stylesheet" href="app/resources/css/trimestres.css">
     <link rel="stylesheet" href="app/resources/iconos/icomoon/style.css">
 </head>
 
@@ -42,7 +43,7 @@ if(!isset($_SESSION['user'])){
                 </div>
                 <!-- Contenedor de los enlaces del nav -->
                 <div id="enlaces" class="enlaces">
-                    <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>   
+                    <a href="index.php?v=fichas" id="enlace-registros" class="btn-header">Atrás</a>   
                     <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
                     <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
                 </div>
@@ -55,15 +56,33 @@ if(!isset($_SESSION['user'])){
     </header>
     <!---------- MAIN -------------->
     <main>
-        <div class="container">
+        <div class="container" id="<?php echo $_GET['n'] ?>">
             <div id="titulo">
-                <h1>Mis Ambientes</h1>
+                <h1>Trimestres de la ficha <span id="num_ficha"></span></h1>
             </div>
             <!-- Contenedor donde se insertarán los ambientes encontrado en la BD -->
-            <div id="cont_ambientes">
-                
+            <div id="cont_trimestres">
+
+            </div>
+            <!-- Contenedor con el evento click para agregar trimestres -->
+            <div id="agregar">
+                <i class="icon-plus"></i>
+            </div> 
+        </div>
+        <div id="cont_form">
+            <div id="formTrimestre">
+                <i class="icon-cross" id="cerrar"></i>
+                <form method="POST" id="agregar_trimestre">
+                    <h1>Registrar Trimestre</h1>
+                    <input type="hidden" id="id_Trimestre">
+                    <input type="text" id="nombre_trimestre" placeholder="Nombre trimestre">
+                    <input type="date" id="fecha_inicio" placeholder="Fecha de inicio">
+                    <input type="date" id="fecha_fin" placeholder="Fecha de fin">
+                    <button type="submit">Guardar</button>
+                </form>
             </div>    
         </div>
+        
     </main>
     <!--- Javascriprt ---->
 
@@ -73,7 +92,12 @@ if(!isset($_SESSION['user'])){
     crossorigin="anonymous"></script>
     <script src="app/resources/js/nav.js"></script>
     <script src="app/resources/js/loader.js"></script>
-    <script src="app/resources/js/ambientes.js"></script>
+    <script src="app/resources/js/trimestres.js"></script>
 
 </body>
 </html>
+<?php 
+}else{
+    header("location: index.php?v=fichas");
+}
+?>

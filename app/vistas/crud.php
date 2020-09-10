@@ -42,7 +42,7 @@ if(isset($_GET["n"])){
                     <img src="app/resources/img/logo.png" alt="">
                 </div>
                 <div id="enlaces" class="enlaces">
-                    <a href="index.php?v=ambientes" id="enlace-ambientes" class="btn-header">Mis Ambientes</a>
+                    <a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>
                     <a id="enlace-guardar" class="btn-header">Guardar Horario</a></li>
                     <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
@@ -57,16 +57,10 @@ if(isset($_GET["n"])){
     <!---------- MAIN -------------->
     <main>
         <div class="table" id="<?php echo $_GET['n']?>">
-            <div class="cajas" draggable="true" ondragstart="drag(event)">
-                <label for="">Ficha</label>
-                <select name="" id="ficha">
-                    <option value="">Seleccione alguno</option>
-                </select>
-                <label for="">Instructor</label>
-                <select name="" id="instructor">
-                    <option value="">Seleccione alguno</option>
-                </select>
-                <label for="">Resultado</label>
+            <div class="cajas">
+                <div id="titulo">
+                    Instructores
+                </div>
                 <div class="cont_caja" id="lugar">
 
                 </div>
@@ -83,14 +77,8 @@ if(isset($_GET["n"])){
 
             <table>
                 <tr>
-                    <th colspan="6" id="nombre_ambiente"></th>
-                </tr>
-                <tr>
-                    <th colspan="6">Trimestre: 
-                        <select name="" id="trimestre">
-                            <option value="">Seleccione alguno</option>
-                        </select>
-                    </th>
+                    <th colspan="3" id="num_ficha"></th>
+                    <th colspan="3" id="trimestre"></th>
                 </tr>
                 <tr>
                     <th colspan="1">Hora</th>
@@ -160,6 +148,6 @@ crossorigin="anonymous"></script>
 </html>
 <?php 
 }else{
-    header ("Location: index.php?v=ambientes");
+    header ("Location: index.php?v=fichas");
 }
 ?>

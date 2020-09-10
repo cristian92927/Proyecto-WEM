@@ -7,6 +7,7 @@ require_once "ambiente_controller.php";
 require_once "ficha_controller.php";
 require_once "programaformacion_controller.php";
 require_once "contrato_controller.php";
+require_once "horario_controller.php";
 
 class controller{
 
@@ -28,26 +29,35 @@ class controller{
 	public function contrato($option,$array=[]){
 		return contrato_controller::Main($option,$array);
 	}
+	public function horario($option,$array=[]){
+		return horario_controller::Main($option,$array);
+	}
+	function redireccion($ruta){
+		include_once('app/vistas/'.$ruta.'.php');
+	}
 	function index(){
-		include_once('app/vistas/index.php');
+		$this->redireccion('index');
 	}
 	function sesion(){
-		include_once('app/vistas/login.php');
+		$this->redireccion('login');
 	}
 	function registrar(){
-		include_once('app/vistas/registro.php');
+		$this->redireccion('registro');
 	}
 	function crud(){
-		include_once('app/vistas/crud.php');
+		$this->redireccion('crud');
 	}
 	function forms(){
-		include_once('app/vistas/forms.php');
+		$this->redireccion('forms');
 	}
 	function recuperarPw(){
-		include_once('app/vistas/recuperarPw.php');
+		$this->redireccion('recuperarPw');
 	}
-	function ambientes(){
-		include_once('app/vistas/ambientes.php');
+	function fichas(){
+		$this->redireccion('fichas');
+	}
+	function trimestre(){
+		$this->redireccion('trimestres');
 	}
 	function peticionesAjax($p){
 		switch($p){
@@ -243,6 +253,47 @@ class controller{
 			array_push($array, $_POST['descripcion_tipocontrato'], $_POST['horas_tipocontrato'],$_POST['id_cont']);
 			$editar = new controller();
 			$result = $editar->contrato(4,$array);
+			break;
+		}
+		
+	}
+	function peticionesAjaxTrimestre($p){
+		switch($p){
+			case 'mostrar':
+			$array = [];
+			array_push($array, $_POST['id_ficha']);
+			$result = $this->horario(0, $array);
+			$resultado = api_response::mostrar($result, ["id_horario", "trimestre", "fecha_inicio", "fecha_fin", "id_ficha"]);
+			echo $resultado;
+			break;
+	
+			case 'agregar':
+			$array = [];
+			array_push($array, $_POST['trimestre'], $_POST['fecha_inicio'], $_POST['fecha_fin'], $_POST['id_ficha']);
+			$consulta = new controller();
+			$result = $consulta->horario(1, $array);
+			break;
+	
+			case 'eliminar':
+			$array = [];
+			array_push($array, $_POST['id_horario']);
+			$borrar = new controller();
+			$result = $borrar->horario(2,$array);
+			break;
+	
+			case 'obtenerdatos':
+			$array = [];
+			array_push($array, $_POST['id_horario']);
+			$result = $this->horario(3, $array);
+			$resultado = api_response::mostrar($result, ["id_cont","descripcion_tipocontrato", "horas_tipocontrato"]);
+			echo $resultado;
+			break;
+	
+			case 'editar':
+			$array = [];
+			array_push($array, $_POST['trimestre'], $_POST['fecha_inicio'], $_POST['fecha_fin'], $_POST['id_ficha'], $_POST['id_horario']);
+			$editar = new controller();
+			$result = $editar->horario(4,$array);
 			break;
 		}
 		

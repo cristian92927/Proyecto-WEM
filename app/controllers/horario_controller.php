@@ -2,15 +2,15 @@
 
 require_once "app/models/conexion.php";
 
-class programaformacion_controller{
+class horario_controller{
 
     public function __construct(){}
 
     public static function Main($option,$array=[]){
-        $login = new programaformacion_controller();
+        $login = new horario_controller();
         switch($option){    
             case 0:
-            $result=$login->consult();
+            $result=$login->consult($array);
             break;
 
             case 1:
@@ -31,40 +31,41 @@ class programaformacion_controller{
         }
         return $result;
     }
-    public function consult(){
+    public function consult($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * FROM programa_formacion";
+        $sql = "SELECT * FROM horario WHERE id_Ficha = '$array[0]'";
         return $conexion->query($sql);
     }
     public function insert($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * FROM programa_formacion WHERE Nombre_Programa = '$array[0]' ";
+        $sql = "SELECT * FROM horario WHERE Trimestre = '$array[0]' AND id_Ficha = '$array[3]' ";
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){
-            $stmt=$conexion->prepare("INSERT INTO programa_formacion (Nombre_Programa, Descripcion_Programa)VALUES(?,?)");
-            $stmt->bind_param("ss",$array[0],$array[1]);
+            $stmt=$conexion->prepare("INSERT INTO horario (Trimestre, Fecha_Inicio, Fecha_Fin, id_Ficha)VALUES(?,?,?,?)");
+            $stmt->bind_param("sssi",$array[0],$array[1],$array[2],$array[3]);
             $stmt->execute();
         }
     }
     public function update($array){
         $conexion=Conexion::connection();
-        $sql = "UPDATE programa_formacion SET Nombre_Programa = ?,  Descripcion_Programa = ? WHERE id_Programa  = ? ";
+        $sql = "UPDATE horario SET Trimestre = ?, Fecha_Inicio = ? , Fecha_Fin = ?, id_Ficha  WHERE id_Horario  = ? ";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssi",$array[0],$array[1],$array[2]);
+        $stmt->bind_param("sssii",$array[0],$array[1],$array[2],$array[3],$array[4]);
         $stmt->execute();
     }
 
+
     public function delete($array){
         $conexion=Conexion::connection();
-        $sql = "DELETE FROM programa_formacion WHERE id_Programa = ? ";
+        $sql = "DELETE FROM horario WHERE id_Horario = ? ";
         $stmt=$conexion->prepare($sql);
         $stmt->bind_param("i",$array[0]);
         $stmt->execute();
     }
     public function consultUpdate($array){
         $conexion=Conexion::connection();
-        $sql = "SELECT * FROM programa_formacion WHERE id_Programa = $array[0]";
+        $sql = "SELECT * FROM Horario WHERE id_Horario = $array[0]";
         $result = $conexion->query($sql);
         return $result;
     }

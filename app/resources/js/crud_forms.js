@@ -2,20 +2,6 @@ var data;
 $(document).ready(function(){
 
 	buscar();
-	GetFicha();
-	let ficha = document.getElementById("ficha");
-	ficha.addEventListener('change', function(){
-		$("#trimestre option").remove();
-		let trimestre = document.getElementById('trimestre');
-		var ficha = $("#ficha").val();
-	    //Ciclo for para recorrer la variable global data, obtener las ciudades y añadirlas a una opcion de un select
-	    for (var i in data[ficha]) {
-	    	var option = document.createElement("option");
-	    	option.text = data[ficha][i];
-	    	option.value = data[ficha][i];
-	    	trimestre.add(option);
-	    }
-});
 
 });
 
@@ -37,24 +23,6 @@ function buscar(){
 	});
 }
 
-function GetFicha() {
-	let ficha = document.getElementById("ficha");
-	//Se hace un peticion ajax a la url para obtener los datos y almacenarlos en la variable data
-	$.ajax({
-		url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=mostrar",
-		type: "GET",
-		success: function (response) {
-			data = JSON.parse(response);
-		//ciclo para recorrer los datos de la url, obtener los departamentos y asignarlos a una opción de un select
-		for (var i = 0; i < data.length; i++) {
-			var option = document.createElement("option");
-			option.text = data[i].num_ficha;
-			option.value = data[i].num_ficha;
-			ficha.add(option);
-		}
-	}
-});
-}
 
 var guardar = document.getElementById('enlace-guardar');
 

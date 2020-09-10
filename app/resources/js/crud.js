@@ -4,7 +4,6 @@ function allowDrop(ev){
 var i = 0;
 var copia;
 function drag(ev){
-    console.log(ev);
     // var obj = {
     //     document.querySelector('#instructor').value,
     //     document.querySelector('#ficha').value,
@@ -19,7 +18,7 @@ function drag(ev){
     //     }
     // });
     i++;
-    copia = "<div class='caja' id="+ev.target.id+" style='background-color:red;'><p>" + ev.target.childNodes[1].innerHTML + "</p><div class='opciones'><i id=op"+i+" class='icon-cog'></i><div class='menu'><a class='detalles'>Detalles</a><a class='eliminar'>Eliminar</a></div></div></div></div>";
+    copia = "<div class='caja' id="+ev.target.id+" style='background-color:"+ev.target.style.backgroundColor+";'><p>" + ev.target.childNodes[1].innerHTML + "</p><div class='opciones'><i id=op"+i+" class='icon-cog'></i><div class='menu'><a class='detalles'>Detalles</a><a class='eliminar'>Eliminar</a></div></div></div></div>";
     ev.dataTransfer.setData('text', copia);
 }
 
@@ -44,18 +43,18 @@ $(document).on('click', '.eliminar', function(e){
 });
 
 window.addEventListener('load', function(){
-    datosAmbiente();
+    datosFicha();
 });
 
-function datosAmbiente(){
-    let id_amb = $('.table').attr("id");
+function datosFicha(){
+    let id_fic = $('.table').attr("id");
     $.ajax({
-        url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxAmbiente&p=obtenerdatos",
+        url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxFicha&p=obtenerdatos",
         type: "POST",
-        data: {id_amb},
+        data: {id_fic},
         success: function (response) {
             const nombre = JSON.parse(response);
-            $('#nombre_ambiente').html("<h3>"+nombre[0].nombre_ambiente+"</h3>");
+            $('#num_ficha').html("<h3>Ficha: "+nombre[0].num_ficha+"</h3>");
         }
     });
 }
