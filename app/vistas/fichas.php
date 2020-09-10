@@ -61,7 +61,24 @@ if(!isset($_SESSION['user'])){
             </div>
             <!-- Contenedor donde se insertarán los ambientes encontrado en la BD -->
             <div id="cont_fichas">
-                
+
+            </div>
+            <!-- Contenedor con el evento click para agregar trimestres -->
+            <div id="agregar">
+                <i class="icon-plus"></i>
+            </div>
+        </div>
+        <div id="cont_form">
+            <div id="formFicha">
+                <i class="icon-cross" id="cerrar"></i>
+                <form method="POST" id="agregar_ficha">
+                    <h1>Registrar Ficha</h1>
+                    <input type="hidden" id="id_fic">
+                    <input type="text" id="nombre_gestor" placeholder="Nombre del gestor">
+                    <input type="text" id="num_ficha" placeholder="Numero de la ficha">
+                    <select class="select" id="nombre_prog"></select>
+                    <button type="submit">Guardar</button>
+                </form>
             </div>
         </div>
     </main>
