@@ -2,12 +2,12 @@
 
 require_once "app/models/conexion.php";
 
-class ambiente_controller{
+class competencia_controller{
 
     public function __construct(){}
 
     public static function Main($option,$array=[]){
-        $login = new ambiente_controller();
+        $login = new competencia_controller();
         // Según la opción que llegue, hará la función en el switch
         switch($option){    
             case 0:
@@ -34,23 +34,23 @@ class ambiente_controller{
     }
     public function consult(){ // función que trae los datos del ambiente
         $conexion=Conexion::connection();
-        $sql = "SELECT * from ambiente"; // consulta sql para traer todos los datos
+        $sql = "SELECT * from competencia"; // consulta sql para traer todos los datos
         return $conexion->query($sql); // ejecución de la consulta y retorno del resultado
     }
     public function insert($array){ // función para insertar datos en la tabla ambiente
         $conexion=Conexion::connection();
-        $sql = "SELECT * from ambiente WHERE Nombre_Ambiente = '$array[0]'"; // Se busca si existe
+        $sql = "SELECT * from competencia WHERE Nombre_Comp = '$array[0]'"; // Se busca si existe
         $result = $conexion->query($sql);
         $filas = $result->num_rows;
         if($filas === 0){ // En caso de que no exista se hace la consulta a continuación para insertar
-            $stmt=$conexion->prepare("INSERT INTO ambiente (Nombre_Ambiente, Descripcion_Ambiente)VALUES(?,?)");
+            $stmt=$conexion->prepare("INSERT INTO competencia (Nombre_Comp, Descripcion_Comp)VALUES(?,?)");
             $stmt->bind_param("ss",$array[0],$array[1]);
             $stmt->execute();
         }
     }
     public function update($array){ // Función para actualizar los datos
         $conexion=Conexion::connection();
-        $sql = "UPDATE ambiente SET Nombre_Ambiente = ?, Descripcion_Ambiente = ? WHERE id_Ambiente = ? ";
+        $sql = "UPDATE competencia SET Nombre_Comp = ?, Descripcion_Comp = ? WHERE id_Competencia = ? ";
         $stmt = $conexion->prepare($sql);
         $stmt->bind_param("ssi",$array[0],$array[1],$array[2]);
         $stmt->execute();
@@ -59,14 +59,14 @@ class ambiente_controller{
 
     public function delete($array){ // función para eliminar el dato según el id que entra en el parametro
         $conexion=Conexion::connection();
-        $sql = "DELETE FROM ambiente WHERE id_Ambiente = ? ";
+        $sql = "DELETE FROM competencia WHERE id_Competencia = ? ";
         $stmt=$conexion->prepare($sql);
         $stmt->bind_param("i",$array[0]);
         $stmt->execute();
     }
     public function consultUpdate($array){ // función que trae los datos según el id de la tabla ambiente
         $conexion=Conexion::connection();
-        $sql = "SELECT * FROM ambiente WHERE id_Ambiente = $array[0]";
+        $sql = "SELECT * FROM competencia WHERE id_Competencia = $array[0]";
         $result = $conexion->query($sql);
         return $result; // Se retornan los datos encontrados
     }

@@ -49,6 +49,7 @@ if(!isset($_SESSION['user'])){
 				<div class="menu">
 					<a data-class="instructor" class="active">Instructor</a>
 					<a data-class="ambiente">Ambiente</a>
+					<a data-class="competencia">Competencia</a>
 					<a data-class="programa">Programa de Formación</a>
 					<a data-class="ficha">Ficha</a>
 					<a data-class="contrato">Tipo de Contrato</a>
@@ -76,10 +77,11 @@ if(!isset($_SESSION['user'])){
 										<th>id</th>
 										<th>Nombres</th>
 										<th>Apellidos</th>
-										<th>Documento</th>
+										<th>CC</th>
 										<th>Correo</th>
 										<th>Tipo de Contrato</th>
 										<th>Color</th>
+										<th>Funciones</th>
 									</tr>
 								</thead>
 								<tbody id="lista_instructor">
@@ -105,9 +107,37 @@ if(!isset($_SESSION['user'])){
 										<th>id</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
+										<th>Funciones</th>
 									</tr>
 								</thead>
 								<tbody id="lista_ambiente">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<!------------ formulario agregar competencia------------->
+					<div class="form" id="competencia">
+						<form method="POST" id='agregar_competencia'>
+							<h1>Registrar Competencia</h1>
+							<input type="hidden" id="id_comp">
+							<input type="text" id="nombre_comp" placeholder="Nombre de la competencia">
+							<input type="text" id="descripcion_comp" placeholder="descripción">
+							<button type="submit">Guardar</button>
+						</form>
+						<div class="lista">
+							<h2>Lista</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>id</th>
+										<th>Nombre</th>
+										<th>Descripcion</th>
+										<th>Funciones</th>
+									</tr>
+								</thead>
+								<tbody id="lista_competencia">
 									
 								</tbody>
 							</table>
@@ -131,6 +161,7 @@ if(!isset($_SESSION['user'])){
 										<th>id</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
+										<th>Funciones</th>
 									</tr>
 								</thead>
 								<tbody id="lista_programa">
@@ -159,6 +190,7 @@ if(!isset($_SESSION['user'])){
 										<th>Numero de ficha</th>
 										<th>Nombre Gestor</th>
 										<th>Nombre del programa de formacion</th>
+										<th>Funciones</th>
 									</tr>
 								</thead>
 								<tbody id="lista_ficha">
@@ -185,6 +217,7 @@ if(!isset($_SESSION['user'])){
 										<th>id</th>
 										<th>Descripcion</th>
 										<th>Horas</th>
+										<th>Funciones</th>
 									</tr>
 								</thead>
 								<tbody id="lista_contrato">

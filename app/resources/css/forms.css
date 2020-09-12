@@ -278,6 +278,11 @@ form > button:hover{
   margin: 0 auto;
   border-collapse: collapse;
 }
+.lista table th{
+  background: white;
+  color: black;
+  padding: 8px;
+}
 .lista table td{
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -4,8 +4,7 @@ let menu = document.getElementById('enlaces');
 let abrir = document.getElementById('open');
 let cerrado = true;
 
-// Función para abrir o cerrar el menú del nav cuando está responsive
-function apertura(){
+function apertura(){ // Función para abrir o cerrar el menú del nav cuando está responsive
 	if(cerrado){
 		menu.style.height = '100vh';
 		cerrado = false;
@@ -15,8 +14,7 @@ function apertura(){
 		cerrado = true;
 	}
 }
-// Función para el cambio de estilo del nav al momento de hacer scroll
-function menus(){
+function menus(){ // Función para el cambio de estilo del nav al momento de hacer scroll
 	// Se toma el desplazamiento del scrol y se almacena en una variable
 	let desplazamiento_actual = window.pageYOffset;
 	if(desplazamiento_actual <= 10){
@@ -61,9 +59,7 @@ abrir.addEventListener('click', function(){
 window.addEventListener('click', function(e){
 	if(cerrado==false){
 		let span = document.querySelector('span');
-		// condición para validar en el lugar que se dio click
-		// Para cerrar el menú desplegable en caso de estar abierto y no 
-		// Se haya dado en el botón de menú
+		// condición para cerrar el menú si se da por fuera o en el icono
 		if(e.target !== span && e.target !== abrir){
 			menu.style.height = '0px';
 			menu.style.overflow = 'hidden';

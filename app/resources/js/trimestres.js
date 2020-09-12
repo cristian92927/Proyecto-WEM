@@ -77,12 +77,9 @@ function buscarTrimestre(){
 function mostrarForm(){
 	cont.style.display = 'flex';
 	abierto = true;
-	cerrar.addEventListener('click', function(){
-		cont.style.display='none';
-	});
 }
 cont.addEventListener('click', function(e){
-	if(abierto == true && e.target == cont){
+	if(abierto == true && ((e.target == cont) || (e.target == cerrar))){
 		abierto = false;
 		cont.style.display = 'none';
 	}

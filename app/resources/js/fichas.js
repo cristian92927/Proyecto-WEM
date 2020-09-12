@@ -1,27 +1,36 @@
 var cont = document.querySelector('#cont_form');
 let abierto = false;
 window.addEventListener('load', function(){
+	// Se llama la función que mostrará la información de las fichas
 	mostrarFichas();
+	// Se define el evento click para el elemento con el + para agregar fichas
 	document.querySelector('#agregar').addEventListener('click', function(){
+		// Se muestra el formulario para registrar la ficha
 		mostrarForm();
+		// Se llama la función que buscará los programas de formación para la ficha que se registrará
 		buscar_programaformacion();
 	});
+	// Se define la función submit para el formulario de agregar ficha
 	$('#agregar_ficha').submit(function(ev){
 		ev.preventDefault();
+		// Se toman los datos de los inputs en un objeto
 		const datos = {
 			nombre_gestor: $('#nombre_gestor').val(),
 			num_ficha: $('#num_ficha').val(),
 			id_programa: parseInt($('#nombre_prog').val()),
 			id_fic:$('#id_fic').val()
 		};
-		
+		// Se llama la función que hará la petición ajax con los datos anteriores y la respectiva url
 		peticion("peticionesAjaxFicha&p=agregar", "POST", datos);
 		mostrarFichas();
+		// Se reinicia el formulario
 		$(this).trigger('reset');
+		// Se esconde el formulario
+		cont.style.display = 'none';
 	});
 });
 function mostrarFichas(){
-	// Este ajax hará la consulta de lo ambientes
+	// Esta función hace una petición ajax que trae la información de lo ambientes
 	var fichas = peticion("peticionesAjaxFicha&p=mostrar", "GET", null);
 	let template = '';
 	// En este ciclo se recorre la constante que contiene un JSON
@@ -44,7 +53,9 @@ function mostrarFichas(){
 	$('#cont_fichas').html(template);
 	
 }
+// Se define la función donde se realizará la petición ajax, la cual recibe la url, el tipo y los datos
 function peticion(lugar, tipo, datos){
+	// se define la variable que será retornada
 	let respuesta;
 	$.ajax({
 		url: "http://localhost/Proyecto-WEM/index.php?v=" + lugar,
@@ -52,59 +63,46 @@ function peticion(lugar, tipo, datos){
 		data: datos,
 		async: false,
 		success: function(response){
+			// En caso de no haber respuesta, retornará false para poder usar el código general sin error
 			if(!response){
 				respuesta = false;
 				return;
 			}
+			// Se almacena la respuesta convertida en JSON en la ariable definida anteriormente
 			respuesta = JSON.parse(response);
-			// funcion();
-			// $('#'+idform).trigger('reset');
 		}
 	});
 	return respuesta;
 }
+// Se toma el select donde se mostrarán los programas mediante opciones
 let select_programa=document.querySelector('#nombre_prog');
+// se define función que recibe el array de la funcion buscar_programaformacion
 function nombre_programa(array=[]){
-	$("#nombre_prog option").remove();
-	let optionDefault = document.createElement("option");
-	optionDefault.text = "Seleccione alguno";
-	select_programa.add(optionDefault);
-	for(var i = 0; i < array.length ; i++){
-		let option = document.createElement("option");
-		option.text = array[i]['nombre_programa'];
-		option.value = array[i]['id_pf'];
-		select_programa.add(option);
+	$("#nombre_prog option").remove(); // Se eliminan las opciones del select
+	let optionDefault = document.createElement("option"); // se crea el elemento option
+	optionDefault.text = "Seleccione alguno"; // se le envía el primer valor
+	select_programa.add(optionDefault); // se agrega en el select
+	for(var i = 0; i < array.length ; i++){ // ciclo que recorre el array que llega por parametro
+		let option = document.createElement("option"); // Se crea la opcion
+		option.text = array[i]['nombre_programa']; // Se le agrega el nombre de programa como texto
+		option.value = array[i]['id_pf']; // y el id se agrega como value
+		select_programa.add(option); // se agrega el valor en el select
 	}
 }
-function buscar_programaformacion(){
+function buscar_programaformacion(){ // se define la funcion que busca los programas registrados
+	// Se hace la petición ajax que trae los datos y se almacenan en una variable
 	var programasformaciones = peticion("peticionesAjaxProgramaFormacion&p=mostrar", "GET", null);
-	let template = '';
-	nombre_programa(programasformaciones);
-	programasformaciones.forEach(programaformacion =>{
-		template += `
-		<tr data-id="${programaformacion['id_pf']}">
-		<td>${programaformacion['id_pf']}</td>
-		<td>${programaformacion['nombre_programa']}</td>
-		<td>${programaformacion['descripcion_programa']}</td>
-		<td class="cont_boton">
-		<div class="editar"><i class="icon-pencil"></i></div>
-		<div class="borrar"><i class="icon-bin"></i></div>
-		</td>
-		</tr>`;
-
-	});
-	$('#lista_programa').html(template);
+	let template = ''; // Variable para la plantilla que será agregada en el documento
+	nombre_programa(programasformaciones); // Se llama la función que agrega las funciones y se le pasa el array
 }
-function mostrarForm(){
-	cont.style.display = 'flex';
-	abierto = true;
-	cerrar.addEventListener('click', function(){
-		cont.style.display='none';
-	});
+function mostrarForm(){ // Se define la función que se encarga de mostrar el formulario
+	cont.style.display = 'flex'; // Se muestra el formulario
+	abierto = true; // Se le da el valor true a la variable bandera
 }
-cont.addEventListener('click', function(e){
-	if(abierto == true && e.target == cont){
-		abierto = false;
-		cont.style.display = 'none';
+cont.addEventListener('click', function(e){ // Evento para esconder el formulario según donde se de clic
+	// condición para cerrar el form si se da por fuera de este o en la X
+	if(abierto == true && ((e.target == cont) || (e.target == cerrar))){
+		abierto = false; // Se declara la variable como false para cerrar el form
+		cont.style.display = 'none'; // Se esconde el form
 	}
 });

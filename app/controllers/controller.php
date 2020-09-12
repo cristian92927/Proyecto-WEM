@@ -8,6 +8,8 @@ require_once "ficha_controller.php";
 require_once "programaformacion_controller.php";
 require_once "contrato_controller.php";
 require_once "horario_controller.php";
+require_once "competencia_controller.php";
+require_once "detalleshorario_controller.php";
 
 class controller{
 
@@ -20,6 +22,9 @@ class controller{
 	public function ambiente($option,$array=[]){
 		return ambiente_controller::Main($option,$array);
 	}
+	public function competencia($option,$array=[]){
+		return competencia_controller::Main($option,$array);
+	}
 	public function ficha($option,$array=[]){
 		return ficha_controller::Main($option,$array);
 	}
@@ -31,6 +36,9 @@ class controller{
 	}
 	public function horario($option,$array=[]){
 		return horario_controller::Main($option,$array);
+	}
+	public function detalleshorario($option,$array=[]){
+		return detalleshorario_controller::Main($option,$array);
 	}
 	function redireccion($ruta){
 		include_once('app/vistas/'.$ruta.'.php');
@@ -138,7 +146,45 @@ class controller{
 		}
 		
 	}
-
+	function peticionesAjaxCompetencia($p){
+		switch($p){
+			case 'mostrar':
+			$result = $this->competencia(0);
+			$resultado = api_response::mostrar($result, ["id_comp","nombre_comp", "descripcion_comp"]);
+			echo $resultado;
+			break;
+	
+			case 'agregar':
+			$array = [];
+			array_push($array, $_POST['nombre_comp'], $_POST['descripcion_comp']);
+			$consulta = new controller();
+			$result = $consulta->competencia(1, $array);
+			break;
+	
+			case 'eliminar':
+			$array = [];
+			array_push($array, $_POST['id_comp']);
+			$borrar = new controller();
+			$result = $borrar->competencia(2,$array);
+			break;
+	
+			case 'obtenerdatos':
+			$array = [];
+			array_push($array, $_POST['id_comp']);
+			$result = $this->competencia(3, $array);
+			$resultado = api_response::mostrar($result, ["id_comp","nombre_comp", "descripcion_comp"]);
+			echo $resultado;
+			break;
+	
+			case 'editar':
+			$array = [];
+			array_push($array, $_POST['nombre_comp'], $_POST['descripcion_comp'],$_POST['id_comp']);
+			$editar = new controller();
+			$result = $editar->competencia(4,$array);
+			break;
+		}
+		
+	}
 	function peticionesAjaxFicha($p){
 		switch($p){
 			case 'mostrar':
@@ -294,6 +340,23 @@ class controller{
 			array_push($array, $_POST['trimestre'], $_POST['fecha_inicio'], $_POST['fecha_fin'], $_POST['id_ficha'], $_POST['id_horario']);
 			$editar = new controller();
 			$result = $editar->horario(4,$array);
+			break;
+		}
+		
+	}
+	function peticionesAjaxDetallesHorario($p){
+		switch($p){
+			case 'mostrar':
+			$result = $this->detalleshorario(0);
+			$resultado = api_response::mostrar($result, ["id","dia", "hora_inicio", "hora_fin","instructor", "color", "ambiente", "competencia"]);
+			echo $resultado;
+			break;
+	
+			case 'agregar':
+			$array = [];
+			array_push($array, $_POST['dia'], $_POST['hora_inicio'], $_POST['hora_fin'], $_POST['id_Ambiente'], $_POST['id_Competencia'], $_POST['id_Instructor'], $_POST['id_Horario'], $_POST['id_Usuario']);
+			$consulta = new controller();
+			$result = $consulta->detalleshorario(1, $array);
 			break;
 		}
 		
