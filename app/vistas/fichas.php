@@ -1,8 +1,9 @@
-<?php 
+<?php
+
 @session_start();
 require_once "app/controllers/controller.php";
-if(!isset($_SESSION['user'])){
-    header ("Location: index.php");
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -42,8 +43,8 @@ if(!isset($_SESSION['user'])){
                 </div>
                 <!-- Contenedor de los enlaces del nav -->
                 <div id="enlaces" class="enlaces">
-                    <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>   
-                    <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
+                    <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
+                    <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1]; ?></a>
                     <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
                 </div>
                 <!-- Icono para la pantalla responsive -->
@@ -71,8 +72,8 @@ if(!isset($_SESSION['user'])){
         <div id="cont_form">
             <div id="formFicha">
                 <i class="icon-cross" id="cerrar"></i>
-                <form method="POST" id="agregar_ficha">
-                    <h1>Registrar Ficha</h1>
+                <form method="POST" id="form_ficha">
+                    <h1>Ficha</h1>
                     <input type="hidden" id="id_fic">
                     <input type="text" id="nombre_gestor" placeholder="Nombre del gestor">
                     <input type="text" id="num_ficha" placeholder="Numero de la ficha">

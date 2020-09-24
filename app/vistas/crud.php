@@ -1,12 +1,12 @@
-<?php 
+<?php
 @session_start();
 require_once "app/controllers/controller.php";
-if(!isset($_SESSION['user'])){
-    header ("Location: index.php");
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php");
 }
 
-if(isset($_GET["n"]) && isset($_GET['t'])){
-?>
+if (isset($_GET["n"]) && isset($_GET['t'])) {
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +43,9 @@ if(isset($_GET["n"]) && isset($_GET['t'])){
                 </div>
                 <div id="enlaces" class="enlaces">
                     <a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
-                    <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registro</a>
-                    <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
+                    <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
+                    <a id="enlace-atras" class="btn-header">Atrás</a>
+                    <a href="index.php?v=usuario" id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
                     <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
                 </div>
                 <div class="icono" id="open">
@@ -54,11 +55,11 @@ if(isset($_GET["n"]) && isset($_GET['t'])){
         </nav>
     </header>
     <!---------- MAIN -------------->
-    <main data-user="<?php echo $_SESSION['user'][0] ?>">
+    <main data-user="<?php echo $_SESSION['user'][0]; ?>">
         <div id="cont_form">
             <div id="form">
                 <i class="icon-cross" id="cerrar"></i>
-                <form method="POST" id="form_competencia">
+                <form method="POST" id="formulario">
                     <h1>Seleccionar</h1>
                     <div class="select">
                         <label for="">Instructor:</label>
@@ -85,7 +86,7 @@ if(isset($_GET["n"]) && isset($_GET['t'])){
                 </form>
             </div>
         </div>
-        <div class="table" id="<?php echo $_GET['n']?>">
+        <div class="table" id="<?php echo $_GET['n']; ?>">
             <div class="cajas">
                 <div id="titulo">
                     Instructores
@@ -95,18 +96,24 @@ if(isset($_GET["n"]) && isset($_GET['t'])){
                 </div>
             </div>
 
-            <table id="<?php echo $_GET['t']?>">
+            <table id="<?php echo $_GET['t']; ?>">
                 <tr>
-                    <th colspan="3" id="num_ficha"></th>
-                    <th colspan="3" id="trimestre"></th>
+                    <th colspan="6" id="num_ficha"></th>
+                </tr>
+                <tr>
+                    <th colspan="6" id="trimestre"></th>
+                </tr>
+                <tr>
+                    <th colspan="3" id="fechainicio"></th>
+                    <th colspan="3" id="fechafin"></th>
                 </tr>
                 <tr>
                     <th colspan="1">Hora</th>
-                    <th colspan="1">L</th>
-                    <th colspan="1">M</th>
-                    <th colspan="1">X</th>
-                    <th colspan="1">J</th>
-                    <th colspan="1">V</th>
+                    <th colspan="1">Lunes</th>
+                    <th colspan="1">Martes</th>
+                    <th colspan="1">Miercoles</th>
+                    <th colspan="1">Jueves</th>
+                    <th colspan="1">Viernes</th>
                 </tr>
                 <tr data-inicio="06:00:00" data-fin="09:00:00">
                     <th class="horas">6:00-9:00AM</th>
@@ -149,7 +156,7 @@ if(isset($_GET["n"]) && isset($_GET['t'])){
                     <td class="drops" id="drop25" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 </tr>
             </table>
-            
+
         </div>
     </div>
 </main>
@@ -166,8 +173,8 @@ crossorigin="anonymous"></script>
 
 </body>
 </html>
-<?php 
-}else{
-    header ("Location: index.php?v=fichas");
+<?php
+} else {
+    header("Location: index.php?v=fichas");
 }
 ?>

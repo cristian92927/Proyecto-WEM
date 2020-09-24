@@ -1,11 +1,12 @@
-<?php 
+<?php
+
 @session_start();
 require_once "app/controllers/controller.php";
-if(!isset($_SESSION['user'])){
-    header ("Location: index.php");
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php");
 }
-if(isset($_GET['n'])){
-?>
+if (isset($_GET['n'])) {
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +44,9 @@ if(isset($_GET['n'])){
                 </div>
                 <!-- Contenedor de los enlaces del nav -->
                 <div id="enlaces" class="enlaces">
-                    <a href="index.php?v=fichas" id="enlace-registros" class="btn-header">Atrás</a>   
-                    <a id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1] ?></a>
+                    <a href="index.php?v=forms" id="enlace" class="btn-header">Registros</a>
+                    <a id="enlace-atras" class="btn-header">Atrás</a>
+                    <a id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
                     <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
                 </div>
                 <!-- Icono para la pantalla responsive -->
@@ -56,7 +58,7 @@ if(isset($_GET['n'])){
     </header>
     <!---------- MAIN -------------->
     <main>
-        <div class="container" id="<?php echo $_GET['n'] ?>">
+        <div class="container" id="<?php echo $_GET['n']; ?>">
             <div id="titulo">
                 <h1>Trimestres de la ficha <span id="num_ficha"></span></h1>
             </div>
@@ -67,22 +69,28 @@ if(isset($_GET['n'])){
             <!-- Contenedor con el evento click para agregar trimestres -->
             <div id="agregar">
                 <i class="icon-plus"></i>
-            </div> 
+            </div>
         </div>
         <div id="cont_form">
             <div id="formTrimestre">
                 <i class="icon-cross" id="cerrar"></i>
-                <form method="POST" id="agregar_trimestre">
-                    <h1>Registrar Trimestre</h1>
-                    <input type="hidden" id="id_Trimestre">
-                    <input type="text" id="nombre_trimestre" placeholder="Nombre trimestre">
-                    <input type="date" id="fecha_inicio" placeholder="Fecha de inicio">
-                    <input type="date" id="fecha_fin" placeholder="Fecha de fin">
+                <form method="POST" id="form_trimestre">
+                    <h1>Trimestre</h1>
+                    <input type="hidden" id="id_trimestre">
+                    <input type="text" id="nombre_trimestre" placeholder="Nombre del trimestre">
+                    <div>
+                        <label>Fecha de inicio: </label>
+                        <input type="date" id="fecha_inicio">
+                    </div>
+                    <div>
+                        <label>Fecha de fin: </label>
+                        <input type="date" id="fecha_fin">
+                    </div>
                     <button type="submit">Guardar</button>
                 </form>
-            </div>    
+            </div>
         </div>
-        
+
     </main>
     <!--- Javascriprt ---->
 
@@ -96,8 +104,9 @@ if(isset($_GET['n'])){
 
 </body>
 </html>
-<?php 
-}else{
+<?php
+
+} else {
     header("location: index.php?v=fichas");
 }
 ?>

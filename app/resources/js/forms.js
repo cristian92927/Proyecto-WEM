@@ -6,7 +6,7 @@ $(window).ready(function(){ // Función que se ejecuta al cargar la ventana del 
 	let edit_ficha = false;
 	let edit_programaformacion = false;
 	let edit_contrato = false;
-
+	
 	// Llamado a las funciones de busqueda
 	buscar_instructor();
 	buscar_ambiente();
@@ -15,6 +15,9 @@ $(window).ready(function(){ // Función que se ejecuta al cargar la ventana del 
 	buscar_programaformacion();
 	buscar_contrato();
 
+	document.querySelector('#enlace-atras').addEventListener('click', function(){
+    	window.history.back();
+	});
 	// Variable que contiene los diferentes enlaces de los fomularios
 	var etiqueta = document.querySelectorAll('.menu > a');
 	// Ciclo para dar la función de click a los enlaces de cada formulario para mostrarlos
