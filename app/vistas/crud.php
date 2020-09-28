@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])) {
 if (isset($_GET["n"]) && isset($_GET['t'])) {
     ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <!--- Required meta tags --->
@@ -45,7 +45,7 @@ if (isset($_GET["n"]) && isset($_GET['t'])) {
                     <a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
                     <a id="enlace-atras" class="btn-header">Atrás</a>
-                    <a href="index.php?v=usuario" id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
+                    <a href="index.php?v=perfil" id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
                     <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
                 </div>
                 <div class="icono" id="open">
@@ -87,14 +87,6 @@ if (isset($_GET["n"]) && isset($_GET['t'])) {
             </div>
         </div>
         <div class="table" id="<?php echo $_GET['n']; ?>">
-            <div class="cajas">
-                <div id="titulo">
-                    Instructores
-                </div>
-                <div class="cont_caja" id="lugar">
-
-                </div>
-            </div>
 
             <table id="<?php echo $_GET['t']; ?>">
                 <tr>

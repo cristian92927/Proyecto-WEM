@@ -44,7 +44,15 @@ class login_controller {
         case 4:
             $result = $login->consultarToken($array);
             break;
+
+        case 5:
+            $result = $login->consultarId($array);
+            break;
+        case 6:
+            $result = $login->actualizarDatos($array);
+            break;
         }
+
         return $result;
     }
 
@@ -226,6 +234,19 @@ class login_controller {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_row();
+    }
+    public function consultarId($array) {
+        $conexion = Conexion::connection();
+        $sql      = "SELECT * FROM usuario WHERE id_Usuario = $array[0]";
+        $result   = $conexion->query($sql);
+        return $result;
+    }
+    public function actualizarDatos($array) {
+        $conexion = Conexion::connection();
+        $sql      = "UPDATE usuario SET Nombres=?,Apellidos=? WHERE id_Usuario=?";
+        $stmt     = $conexion->prepare($sql);
+        $stmt->bind_param("ssi", $array[0], $array[1], $array[2]);
+        $stmt->execute();
     }
 }
 ?>

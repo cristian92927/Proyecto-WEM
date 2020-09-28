@@ -117,6 +117,7 @@ nav .enlaces a, nav .enlaces2 a {
     font-weight: 300;
     text-decoration: none;
     border-bottom: 3px solid transparent;
+    cursor: pointer;
 }
 nav .enlaces #usuario, nav .enlaces2 #usuario {
     margin-left: 120px;
@@ -236,21 +237,20 @@ form>button:hover {
 
 .table {
     width: 100%;
-    min-height: 100vh;
-    padding: 80px 0 0 0;
+    height: 100vh;
     overflow: hidden;
     background: linear-gradient(to right, hsla(176, 73%, 25%, .6), hsla(176, 73%, 25%, .6), rgba(252, 115, 35, .6)), url(../img/header.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 table {
-    width: 70%;
+    width: 90%;
+    margin-top: 70px;
     border-spacing: 0;
-    border: 1px solid black;
 }
 th.horas {
     width: 50px;
@@ -258,11 +258,11 @@ th.horas {
     padding: 20px 0;
 }
 td {
+    width: 100px;
     background: rgba(100, 100, 100, 0.4);
-    border: 1px solid black;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center;
     z-index: 20;
-    width: 100px;
 }
 td:hover {
     background: rgba(200, 200, 200, 0.8);
@@ -283,35 +283,6 @@ th {
 }
 /* cajas */
 
-.cajas {
-    padding: 0 0 10px;
-    width: 20%;
-    height: auto;
-    background: rgba(255, 255, 255, .3);
-    display: flex;
-    justify-content: center;
-    position: relative;
-    flex-direction: column;
-    z-index: 1;
-    margin: 0 auto;
-}
-#titulo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background: var(--fondo);
-    color: var(--color1);
-    font-size: 20px;
-    font-weight: 900;
-    opacity: .8;
-    margin-bottom: 10px;
-}
-.cont_caja {
-    width: 100%;
-    height: auto;
-}
 .caja {
     width: 100%;
     height: 100%;
@@ -364,13 +335,6 @@ th {
     cursor: pointer;
     box-shadow: 0 0 4px 0 black;
 }
-/*.opciones:hover{
-  color: black;
-  background: gray;
-  cursor: pointer;
-  box-shadow: 0 0 4px 0 black;
-}*/
-
 .menu {
     background: #3E3D57;
     color: white;

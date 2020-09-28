@@ -117,6 +117,7 @@ nav .enlaces a, nav .enlaces2 a {
     font-weight: 300;
     text-decoration: none;
     border-bottom: 3px solid transparent;
+    cursor: pointer;
 }
 nav .enlaces #usuario, nav .enlaces2 #usuario {
     margin-left: 120px;

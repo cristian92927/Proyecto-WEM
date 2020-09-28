@@ -70,6 +70,27 @@ class controller {
     public function detallesinstructor() {
         $this->redireccion('instructor');
     }
+    public function perfil() {
+        $this->redireccion('perfil');
+    }
+    public function peticionUsuario($p) {
+        switch ($p) {
+        case 'mostrar':
+            $array = [];
+            array_push($array, $_POST['user']);
+            $result    = $this->Login(5, $array);
+            $resultado = api_response::mostrar($result, ["id", "nombres", "apellidos", "correo"]);
+            echo $resultado;
+            break;
+
+        case 'editar':
+            $array = [];
+            array_push($array, $_POST['nombres'], $_POST['apellidos'], $_POST['id']);
+            $editar = new controller();
+            $result = $editar->Login(6, $array);
+            break;
+        }
+    }
     public function peticionesAjax($p) {
         switch ($p) {
         case 'mostrar':

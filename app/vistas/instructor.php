@@ -45,7 +45,7 @@ if (isset($_GET["id"])) {
                     <a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
                     <a id="enlace-atras" class="btn-header">Atrás</a>
-                    <a href="index.php?v=usuario" id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
+                    <a href="index.php?v=perfil" id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
                     <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
                 </div>
                 <div class="icono" id="open">

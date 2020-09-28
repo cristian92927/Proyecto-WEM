@@ -23,18 +23,19 @@
         </div>
     </div>
     <!------------ NAV--------------->
-    <header>
+    <header id="enlace-inicio">
         <nav id="nav" class="nav1">
             <div class="contenedor-nav">
                 <div class="logo">
                     <img src="app/resources/img/logo.png" alt="">
                 </div>
                 <div class="enlaces" id="enlaces">
-                    <a href="#" id="enlace-inicio" class="btn-header">Inicio</a>
-                    <a id="enlace-equipo" class="btn-header">Equipo</a>
-                    <a id="enlace-caracteristica" class="btn-header">Caracteristicas</a>
-                    <a href="#" id="enlace-servicios" class="btn-header">Servicios</a>
-                    <a href="#" id="enlace-contacto" class="btn-header">Contacto</a>
+                    <a href="#enlace-inicio" class="btn-header">Inicio</a>
+                    <a href="#enlace-equipo" class="btn-header">Equipo</a>
+                    <a href="#enlace-caracteristica" class="btn-header">Caracteristicas</a>
+                    <a href="#enlace-nosotros" class="btn-header">Nosotros</a>
+                    <a href="#enlace-servicios" class="btn-header">Servicios</a>
+                    <a href="#enlace-contacto" class="btn-header">Contacto</a>
                     <a href="index.php?v=sesion" id="iniciar-sesion" class="btn-header">Iniciar Sesión</a>
                     <a href="index.php?v=registrar" id="registrarse" class="btn-header">Registrarse</a>
                 </div>
@@ -51,7 +52,7 @@
     </header>
     <!---------- MAIN -------------->
     <main>
-        <section class="team contenedor" id="equipo">
+        <section class="team contenedor" id="enlace-equipo">
             <h3>Nuestro equipo</h3>
             <p class="after">Conoce a la gente asombrosa y creativa</p>
             <div class="card">
@@ -84,7 +85,7 @@
                 </div>
             </div>
         </section>
-        <section class="features" id="caracteristica">
+        <section class="features" id="enlace-caracteristica">
             <div class="contenedor">
                 <h3>Caracteristicas</h3>
                 <p class="after">Nos caracterizamos por ser comprometidos con las dudad que se le puedan presentar a nuestros
@@ -108,7 +109,7 @@
                 </div>
             </div>
         </section>
-        <section class="about" id="caracteristica">
+        <section class="about" id="enlace-nosotros">
             <div class="contenedor">
                 <h3>Nosotros</h3>
                 <div class="about-img">
@@ -125,7 +126,7 @@
                 </div>
             </div>
         </section>
-        <section class="service" id="servicio">
+        <section class="service" id="enlace-servicios">
             <div class="contenedor">
                 <h3>Nuestros Servicios</h3>
                 <p class="after">Siempre mejorando para ti</p>
@@ -150,7 +151,7 @@
         </section>
     </main>
     <!----------------- FOOTER ----------------->
-    <footer id="contacto">
+    <footer id="enlace-contacto">
         <div class="footer">
             <div class="marca-logo">
                 <img src="app/resources/img/Logo.png" alt="">
@@ -168,8 +169,12 @@
                 </ul>
             </div>
         </div>
-    </footer> 
-    <!--- Javascriprt ----> 
+    </footer>
+    <!--- Javascriprt ---->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
     <script src="app/resources/js/index.js"></script>
     <script src="app/resources/js/loader.js"></script>
     <script src="app/resources/js/nav.js"></script>
