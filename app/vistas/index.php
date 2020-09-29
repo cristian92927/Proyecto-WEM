@@ -30,14 +30,14 @@
                     <img src="app/resources/img/logo.png" alt="">
                 </div>
                 <div class="enlaces" id="enlaces">
-                    <a href="#enlace-inicio" class="btn-header">Inicio</a>
-                    <a href="#enlace-equipo" class="btn-header">Equipo</a>
-                    <a href="#enlace-caracteristica" class="btn-header">Caracteristicas</a>
-                    <a href="#enlace-nosotros" class="btn-header">Nosotros</a>
-                    <a href="#enlace-servicios" class="btn-header">Servicios</a>
-                    <a href="#enlace-contacto" class="btn-header">Contacto</a>
-                    <a href="index.php?v=sesion" id="iniciar-sesion" class="btn-header">Iniciar Sesión</a>
-                    <a href="index.php?v=registrar" id="registrarse" class="btn-header">Registrarse</a>
+                    <a data-enlace="#enlace-inicio" class="btn-header">Inicio</a>
+                    <a data-enlace="#enlace-equipo" class="btn-header">Equipo</a>
+                    <a data-enlace="#enlace-caracteristica" class="btn-header">Caracteristicas</a>
+                    <a data-enlace="#enlace-nosotros" class="btn-header">Nosotros</a>
+                    <a data-enlace="#enlace-servicios" class="btn-header">Servicios</a>
+                    <a data-enlace="#enlace-contacto" class="btn-header">Contacto</a>
+                    <a href="index.php?v=sesion" id="iniciar-sesion">Iniciar Sesión</a>
+                    <a href="index.php?v=registrar" id="registrarse">Registrarse</a>
                 </div>
                 <div class="icono" id="open">
                     <span>&#9776;</span>

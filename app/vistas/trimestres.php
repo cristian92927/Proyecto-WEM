@@ -46,8 +46,8 @@ if (isset($_GET['n'])) {
                 <div id="enlaces" class="enlaces">
                     <a href="index.php?v=forms" id="enlace" class="btn-header">Registros</a>
                     <a id="enlace-atras" class="btn-header">Atrás</a>
-                    <a href="index.php?v=perfil" id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
-                    <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
+                    <a href="index.php?v=perfil" id="usuario"><?php echo $_SESSION['user'][1]; ?></a>
+                    <a href="app/models/salir.php" id="salir">Salir</a>
                 </div>
                 <!-- Icono para la pantalla responsive -->
                 <div class="icono" id="open">

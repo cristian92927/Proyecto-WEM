@@ -45,8 +45,8 @@ if (isset($_GET["n"]) && isset($_GET['t'])) {
                     <a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
                     <a id="enlace-atras" class="btn-header">Atrás</a>
-                    <a href="index.php?v=perfil" id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
-                    <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
+                    <a href="index.php?v=perfil" id="usuario"><?php echo $_SESSION['user'][1]; ?></a>
+                    <a href="app/models/salir.php" id="salir">Salir</a>
                 </div>
                 <div class="icono" id="open">
                     <span>&#9776;</span>
@@ -109,43 +109,43 @@ if (isset($_GET["n"]) && isset($_GET['t'])) {
                 </tr>
                 <tr data-inicio="06:00:00" data-fin="09:00:00">
                     <th class="horas">6:00-9:00AM</th>
-                    <td class="drops" id="drop1" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop2" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop3" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop4" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop5" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop1" data-dia="Lunes"></td>
+                    <td class="drops" id="drop2" data-dia="Martes"></td>
+                    <td class="drops" id="drop3" data-dia="Miercoles"></td>
+                    <td class="drops" id="drop4" data-dia="Jueves"></td>
+                    <td class="drops" id="drop5" data-dia="Viernes"></td>
                 </tr>
                 <tr data-inicio="09:00:00" data-fin="12:00:00">
                     <th class="horas">9:00-12:00PM</th>
-                    <td class="drops" id="drop6" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop7" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop8" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop9" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop10" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop6" data-dia="Lunes"></td>
+                    <td class="drops" id="drop7" data-dia="Martes"></td>
+                    <td class="drops" id="drop8" data-dia="Miercoles"></td>
+                    <td class="drops" id="drop9" data-dia="Jueves"></td>
+                    <td class="drops" id="drop10" data-dia="Viernes"></td>
                 </tr>
                 <tr data-inicio="12:00:00" data-fin="15:00:00">
                     <th class="horas">12:00-3:00PM</th>
-                    <td class="drops" id="drop11" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop12" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop13" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop14" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop15" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop11" data-dia="Lunes"></td>
+                    <td class="drops" id="drop12" data-dia="Martes"></td>
+                    <td class="drops" id="drop13" data-dia="Miercoles"></td>
+                    <td class="drops" id="drop14" data-dia="Jueves"></td>
+                    <td class="drops" id="drop15" data-dia="Viernes"></td>
                 </tr>
                 <tr data-inicio="15:00:00" data-fin="18:00:00">
                     <th class="horas">3:00-6:00PM</th>
-                    <td class="drops" id="drop16" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop17" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop18" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop19" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop20" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop16" data-dia="Lunes"></td>
+                    <td class="drops" id="drop17" data-dia="Martes"></td>
+                    <td class="drops" id="drop18" data-dia="Miercoles"></td>
+                    <td class="drops" id="drop19" data-dia="Jueves"></td>
+                    <td class="drops" id="drop20" data-dia="Viernes"></td>
                 </tr>
                 <tr data-inicio="18:00:00" data-fin="21:00:00">
                     <th class="horas">6:00-9:00PM</th>
-                    <td class="drops" id="drop21" data-dia="Lunes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop22" data-dia="Martes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop23" data-dia="Miercoles" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop24" data-dia="Jueves" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    <td class="drops" id="drop25" data-dia="Viernes" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td class="drops" id="drop21" data-dia="Lunes"></td>
+                    <td class="drops" id="drop22" data-dia="Martes"></td>
+                    <td class="drops" id="drop23" data-dia="Miercoles"></td>
+                    <td class="drops" id="drop24" data-dia="Jueves"></td>
+                    <td class="drops" id="drop25" data-dia="Viernes"></td>
                 </tr>
             </table>
 

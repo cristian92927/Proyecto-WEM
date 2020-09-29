@@ -199,9 +199,11 @@ function mostrarDatos() {
 }
 
 function mostrarForm(ev) { // Se define la función que se encarga de mostrar el formulario
-    cont.style.display = 'flex'; // Se muestra el formulario
-    abierto = true; // Se le da el valor true a la variable bandera
-    celdaId = ev.target.id;
+    if (ev.target.className == 'drops') {
+        cont.style.display = 'flex'; // Se muestra el formulario
+        abierto = true; // Se le da el valor true a la variable bandera
+        celdaId = ev.target.id;
+    }
 }
 document.querySelector('#enlace-atras').addEventListener('click', function() {
     window.history.back();
@@ -213,7 +215,6 @@ $(document).on('click', '.icon-cog', function(e) {
 });
 // Evento click sobre la opción detalles que mostrar la información del elemento arrastrado
 $(document).on('click', '.detalles', function(e) {
-    console.log(e.target.id);
     window.location = 'index.php?v=detallesinstructor&id=' + e.target.id + '&t=' + $('table')[0].id;
 });
 // Evento click que eliminará el elemento arrastrado de la tabla

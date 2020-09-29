@@ -44,8 +44,8 @@ if (!isset($_SESSION['user'])) {
                 <!-- Contenedor de los enlaces del nav -->
                 <div id="enlaces" class="enlaces">
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
-                    <a href="index.php?v=perfil" id="usuario" class="btn-header">Bienvenido, <?php echo $_SESSION['user'][1]; ?></a>
-                    <a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
+                    <a href="index.php?v=perfil" id="usuario">Bienvenido, <?php echo $_SESSION['user'][1]; ?></a>
+                    <a href="app/models/salir.php" id="salir">Salir</a>
                 </div>
                 <!-- Icono para la pantalla responsive -->
                 <div class="icono" id="open">

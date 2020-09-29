@@ -34,8 +34,8 @@ if (!isset($_SESSION['user'])) {
 				<div id="enlaces" class="enlaces">
 					<a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
 					<a id="enlace-atras" class="btn-header">Atrás</a>
-					<a href="index.php?v=perfil" id="usuario" class="btn-header"><?php echo $_SESSION['user'][1]; ?></a>
-					<a href="app/models/salir.php" id="salir" class="btn-header">Salir</a>
+					<a href="index.php?v=perfil" id="usuario"><?php echo $_SESSION['user'][1]; ?></a>
+					<a href="app/models/salir.php" id="salir">Salir</a>
 				</div>
 				<div class="icono" id="open">
 					<span>&#9776;</span>

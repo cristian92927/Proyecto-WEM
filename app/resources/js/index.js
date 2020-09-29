@@ -13,10 +13,9 @@ window.addEventListener('load', function() {
     btn.style.transition = '1.6s';
     btn.classList.remove('btn');
 });
-$('#enlaces a').click(function(e) {
-    console.log(e.target.id);
-    e.preventDefault(); //evitar el eventos del enlace normal
-    var strAncla = $(this).attr('href'); //id del ancla
+$('#enlaces .btn-header').click(function(e) {
+    console.log(e.target);
+    var strAncla = $(this).attr('data-enlace'); //id del ancla
     $('body,html').stop(true, true).animate({
         scrollTop: $(strAncla).offset().top - 100
     }, 1000);
