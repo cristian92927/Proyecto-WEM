@@ -1,5 +1,6 @@
 var celdaId;
 var td = document.querySelectorAll('td');
+var th = document.querySelectorAll('th');
 var cont = document.querySelector('#cont_form');
 let abierto = false;
 window.addEventListener('load', function() {
@@ -7,8 +8,23 @@ window.addEventListener('load', function() {
     mostrarDatos();
     buscarHorario();
     document.querySelector('#enlace-pdf').addEventListener('click', function() {
+        quitarColor();
         generarpdf();
     });
+
+    function quitarColor() {
+        var fondos = document.querySelectorAll('.caja');
+        for (var i = 0; i < fondos.length; i++) {
+            fondos[i].style.background = 'transparent';
+        }
+        for (var i = 0; i < td.length; i++) {
+            td[i].style.background = 'transparent';
+        }
+        for (var i = 0; i < th.length; i++) {
+            th[i].style.background = 'transparent';
+            th[i].style.color = 'black';
+        }
+    }
 
     function generarimg() {
         html2canvas($("table")[0], {
@@ -27,7 +43,7 @@ window.addEventListener('load', function() {
     }
 
     function generarpdf() {
-        var pdf = new jsPDF('p', 'pt', [580, 630]);
+        var pdf = new jsPDF('l', 'mm', [203, 254]);
         html2canvas($("table")[0], {
             onrendered: function(canvas) {
                 var ctx = canvas.getContext('2d');
@@ -37,9 +53,10 @@ window.addEventListener('load', function() {
                 pdf.setFont('helvetica');
                 pdf.setFontType('bold');
                 pdf.setFontSize(30);
-                pdf.text(230, 50, 'Horario');
-                pdf.addImage(imgData, 'PNG', 10, 80, (width - 640), (height));
+                pdf.text(110, 20, 'Horario');
+                pdf.addImage(imgData, 'PNG', 10, 30, (width - 965), (height + 100));
                 pdf.save('Test.pdf');
+                location.reload();
             }
         });
     }

@@ -251,6 +251,7 @@ table {
     width: 1200px;
     margin-top: 70px;
     border-spacing: 0;
+    border: 1px solid black;
 }
 th.horas {
     width: 50px;
