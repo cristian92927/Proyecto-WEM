@@ -219,13 +219,13 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
     flex-wrap: wrap;
 }
 .content-card {
-    width: 31%;
+    width: 30%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
     overflow: hidden;
-    height: 400px;
+    height: 410px;
 }
 .people {
     height: 80%;
@@ -233,7 +233,6 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
 .content-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
 .texto-team {
     height: 20%;
@@ -255,31 +254,22 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
 }
 .service p, .features p {
     color: white;
+    margin-top: 6px;
 }
-.caja-caracteristicas {
+.caja-caracteristicas, .caja-servicios {
     width: 30%;
     padding: 10px;
 }
 .caja-caracteristicas>img, .caja-servicios>img {
     width: 110px;
     height: 100px;
+    margin-bottom: 10px;
 }
 .servicios, .caracteristicas {
     display: flex;
     color: var(--color1);
     margin: 10px auto;
     justify-content: space-around;
-}
-.servicios {
-    column-span: 3;
-}
-.caja>h4 {
-    margin: var(--espacios) 0;
-}
-.caja>p {
-    text-align: center;
-    padding: 0 5px;
-    color: white;
 }
 .about {
     display: flex;

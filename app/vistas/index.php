@@ -32,7 +32,7 @@
                 <div class="enlaces" id="enlaces">
                     <a data-enlace="#enlace-inicio" class="btn-header">Inicio</a>
                     <a data-enlace="#enlace-equipo" class="btn-header">Equipo</a>
-                    <a data-enlace="#enlace-caracteristica" class="btn-header">Caracteristicas</a>
+                    <a data-enlace="#enlace-caracteristica" class="btn-header">Características</a>
                     <a data-enlace="#enlace-nosotros" class="btn-header">Nosotros</a>
                     <a data-enlace="#enlace-servicios" class="btn-header">Servicios</a>
                     <a data-enlace="#enlace-contacto" class="btn-header">Contacto</a>
@@ -58,28 +58,28 @@
             <div class="card">
                 <div class="content-card">
                     <div class="people">
-                        <img src="app/resources/img/people1.jpg" alt="">
+                        <img src="app/resources/img/foto.png" alt="">
                     </div>
                     <div class="texto-team">
-                        <h4>Juan Pablo Guevara</h4>
+                        <h4>Juan Pablo Guevara González</h4>
                         <p>UX/UI designer</p>
                     </div>
                 </div>
                 <div class="content-card">
                     <div class="people">
-                        <img src="app/resources/img/people2.jpg" alt="">
+                        <img src="app/resources/img/cristian.png" alt="">
                     </div>
                     <div class="texto-team">
-                        <h4>Cristian Trujillo</h4>
+                        <h4>Cristian Antonio Trujillo Grisales</h4>
                         <p>UX/UI designer</p>
                     </div>
                 </div>
                 <div class="content-card">
                     <div class="people">
-                        <img src="app/resources/img/people3.jpg" alt="">
+                        <img src="app/resources/img/andres.png" alt="">
                     </div>
                     <div class="texto-team">
-                        <h4>Pablo Andres Henao</h4>
+                        <h4>Pablo Andres Henao Franco</h4>
                         <p>UX/UI designer</p>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
         </section>
         <section class="features" id="enlace-caracteristica">
             <div class="contenedor">
-                <h3>Caracteristicas</h3>
+                <h3>Características</h3>
                 <p class="after">Nos caracterizamos por ser comprometidos con las dudad que se le puedan presentar a nuestros
                 clientes, y estamos prestos a colaborar en su ambiente de trabajo.</p>
                 <div class="caracteristicas">
@@ -117,8 +117,8 @@
                 </div>
                 <div class="about-text">
                     <p>
-                        WEM (Work Environment Managment) es la solucion creada por un grupo de
-                        deasarrolladores, para dar solucion a la creación de horarios de los ambientes de
+                        WEM (Work Environment Managment) es una página web realizada por un grupo de
+                        deasarrolladores, para dar solución a la creación de horarios de los ambientes de
                         trabajo, inicialmente pensado para el servicio nacional de aprendizaje (SENA) para así
                         agilizar y disminuir el tiempo de creación del mismo y recortar al maximo el tiempo
                         empleado en dicha actividad.
@@ -133,18 +133,18 @@
                 <div class="servicios">
                     <div class="caja-servicios">
                         <img src="app/resources/img/idea.png" alt="">
-                        <h4>Creativos y asombrosos</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <h4>Optimización</h4>
+                        <p>Emplee menos tiempo en la elaboración del horario.</p>
                     </div>
                     <div class="caja-servicios">
                         <img src="app/resources/img/calendario.png" alt="">
-                        <h4>Creativos y asombrosos</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <h4>Agendamiento</h4>
+                        <p>Organice rápido y sin errores.</p>
                     </div>
                     <div class="caja-servicios">
                         <img src="app/resources/img/velocidad.png" alt="">
-                        <h4>Creativos y asombrosos</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <h4>Agilidad</h4>
+                        <p>Programe su horario de manera ágil.</p>
                     </div>
                 </div>
             </div>
