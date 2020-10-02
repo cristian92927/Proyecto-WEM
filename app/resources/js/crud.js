@@ -1,31 +1,3 @@
-// function allowDrop(ev){ // Función que permite la caída del elemento al ser arrastrado
-//  ev.preventDefault();
-// }
-// var i = 0;
-// var copia;
-// Función que define la información que se pasará al otro lugar(El mismo elemento o un elemento creado desde js)
-// function drag(ev){
-//     // var obj = {
-//     //     document.querySelector('#instructor').value,
-//     //     document.querySelector('#ficha').value,
-//     //     document.querySelector('#ambiente').value
-//     // }
-//     // $.ajax({
-//     //     url: ,
-//     //     data: obj,
-//     //     async: false,
-//     //     success: function(response){
-//     //     }
-//     // });
-//     i++; // contador para darle un id diferente a la opción de herramientas de cada elemento arrastrado
-//     copia = "<div class='caja' id="+ev.target.id+" style='background-color:"+ev.target.style.backgroundColor+";'><p>" + ev.target.childNodes[1].innerHTML + "</p><div class='opciones'><i id=op"+i+" class='icon-cog'></i><div class='menu'><a class='detalles'>Detalles</a><a class='eliminar'>Eliminar</a></div></div></div></div>";
-//     ev.dataTransfer.setData('text', copia); // Se envían los datos a la variable text
-// }
-// function drop(ev){ // Función que toma los datos de la función drag
-//  ev.preventDefault();
-//     // Se insertan los datos en el lugar sobre el que se suelta elemento
-//  ev.target.innerHTML = ev.dataTransfer.getData("text");
-// }
 var celdaId;
 var td = document.querySelectorAll('td');
 var cont = document.querySelector('#cont_form');
@@ -34,6 +6,43 @@ window.addEventListener('load', function() {
     datosFichayTrimestre();
     mostrarDatos();
     buscarHorario();
+    document.querySelector('#enlace-pdf').addEventListener('click', function() {
+        generarpdf();
+    });
+
+    function generarimg() {
+        html2canvas($("table")[0], {
+            onrendered: function(canvas) {
+                // canvas.toBlob(function(blob) {
+                //     saveAs(blob, "horario.png");
+                // }, "image/png", 1);
+                var imgData = canvas.toDataURL('image/png');
+                var doc = new jsPDF();
+                doc.setFontSize(40);
+                doc.text(40, 20, "Horario");
+                doc.addImage(imgData, 'png', 10, 40, 180, 180);
+                doc.save('Test.pdf');
+            }
+        });
+    }
+
+    function generarpdf() {
+        var pdf = new jsPDF('p', 'pt', [580, 630]);
+        html2canvas($("table")[0], {
+            onrendered: function(canvas) {
+                var ctx = canvas.getContext('2d');
+                var imgData = canvas.toDataURL("image/png", 1.0);
+                var width = canvas.width;
+                var height = canvas.clientHeight;
+                pdf.setFont('helvetica');
+                pdf.setFontType('bold');
+                pdf.setFontSize(30);
+                pdf.text(230, 50, 'Horario');
+                pdf.addImage(imgData, 'PNG', 10, 80, (width - 640), (height));
+                pdf.save('Test.pdf');
+            }
+        });
+    }
     for (var i = 0; i < td.length; i++) {
         td[i].addEventListener('dblclick', mostrarForm);
     }
@@ -51,7 +60,7 @@ window.addEventListener('load', function() {
             id_Horario: $('table')[0].id,
             id_Usuario: $('main').attr('data-user'),
             fecha_inicio: $('#fechainicio p').attr('inicio'),
-            fecha_fin: $('#fechafin p').attr('fin')
+            fecha_fin: $('#fechainicio p').attr('fin')
         };
         $.ajax({
             url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxDetallesHorario&p=agregar",
@@ -69,17 +78,10 @@ window.addEventListener('load', function() {
                         buscarHorario();
                         break;
                     default:
-                        // statements_def
                         break;
                 }
             }
         });
-        // var array = document.querySelectorAll('.drops');
-        // array.forEach(ar =>{
-        //     if((ar.dataset.dia == 'Viernes') && (ar.parentElement.dataset.inicio == '06:00:00')){
-        //         $("#"+ar.id).html("<p>Hola</p>");
-        //     }
-        // })
     });
 });
 // Se defina la función que hace una petición de los datos de la ficha
@@ -110,8 +112,7 @@ function datosFichayTrimestre() {
             template = `<h3>${trimestre[0].nombre_trimestre}</h3>`;
             // Se inserta el numero de la ficha en el título de la tabla
             $('#trimestre').html(template);
-            $('#fechainicio').html(`<p inicio="${trimestre[0].fecha_inicio}">Fecha Inicio: ${trimestre[0].fecha_inicio}</p>`);
-            $('#fechafin').html(`<p fin="${trimestre[0].fecha_fin}">Fecha Inicio: ${trimestre[0].fecha_fin}</p>`);
+            $('#fechainicio').html(`<p inicio="${trimestre[0].fecha_inicio}" fin="${trimestre[0].fecha_fin}">Fecha Inicio: ${trimestre[0].fecha_inicio} / ${trimestre[0].fecha_fin}</p>`);
         }
     });
 }

@@ -1,6 +1,7 @@
 <?php
 @session_start();
 require_once "app/controllers/controller.php";
+
 if (!isset($_SESSION['user'])) {
     header("Location: index.php");
 }
@@ -91,64 +92,61 @@ if (isset($_GET["n"]) && isset($_GET['t'])) {
             <table id="<?php echo $_GET['t']; ?>">
                 <tr>
                     <th colspan="6" id="num_ficha"></th>
-                </tr>
-                <tr>
                     <th colspan="6" id="trimestre"></th>
                 </tr>
                 <tr>
-                    <th colspan="3" id="fechainicio"></th>
-                    <th colspan="3" id="fechafin"></th>
+                    <th colspan="12" id="fechainicio"></th>
                 </tr>
                 <tr>
-                    <th colspan="1">Hora</th>
-                    <th colspan="1">Lunes</th>
-                    <th colspan="1">Martes</th>
-                    <th colspan="1">Miercoles</th>
-                    <th colspan="1">Jueves</th>
-                    <th colspan="1">Viernes</th>
+                    <th colspan="2">Hora</th>
+                    <th colspan="2">Lunes</th>
+                    <th colspan="2">Martes</th>
+                    <th colspan="2">Miercoles</th>
+                    <th colspan="2">Jueves</th>
+                    <th colspan="2">Viernes</th>
                 </tr>
                 <tr data-inicio="06:00:00" data-fin="09:00:00">
-                    <th class="horas">6:00-9:00AM</th>
-                    <td class="drops" id="drop1" data-dia="Lunes"></td>
-                    <td class="drops" id="drop2" data-dia="Martes"></td>
-                    <td class="drops" id="drop3" data-dia="Miercoles"></td>
-                    <td class="drops" id="drop4" data-dia="Jueves"></td>
-                    <td class="drops" id="drop5" data-dia="Viernes"></td>
+                    <th colspan="2" class="horas">6:00 / 9:00AM</th>
+                    <td colspan="2" class="drops" id="drop1" data-dia="Lunes"></td>
+                    <td colspan="2" class="drops" id="drop2" data-dia="Martes"></td>
+                    <td colspan="2" class="drops" id="drop3" data-dia="Miercoles"></td>
+                    <td colspan="2" class="drops" id="drop4" data-dia="Jueves"></td>
+                    <td colspan="2" class="drops" id="drop5" data-dia="Viernes"></td>
                 </tr>
                 <tr data-inicio="09:00:00" data-fin="12:00:00">
-                    <th class="horas">9:00-12:00PM</th>
-                    <td class="drops" id="drop6" data-dia="Lunes"></td>
-                    <td class="drops" id="drop7" data-dia="Martes"></td>
-                    <td class="drops" id="drop8" data-dia="Miercoles"></td>
-                    <td class="drops" id="drop9" data-dia="Jueves"></td>
-                    <td class="drops" id="drop10" data-dia="Viernes"></td>
+                    <th colspan="2" class="horas">9:00 / 12:00PM</th>
+                    <td colspan="2" class="drops" id="drop6" data-dia="Lunes"></td>
+                    <td colspan="2" class="drops" id="drop7" data-dia="Martes"></td>
+                    <td colspan="2" class="drops" id="drop8" data-dia="Miercoles"></td>
+                    <td colspan="2" class="drops" id="drop9" data-dia="Jueves"></td>
+                    <td colspan="2" class="drops" id="drop10" data-dia="Viernes"></td>
                 </tr>
                 <tr data-inicio="12:00:00" data-fin="15:00:00">
-                    <th class="horas">12:00-3:00PM</th>
-                    <td class="drops" id="drop11" data-dia="Lunes"></td>
-                    <td class="drops" id="drop12" data-dia="Martes"></td>
-                    <td class="drops" id="drop13" data-dia="Miercoles"></td>
-                    <td class="drops" id="drop14" data-dia="Jueves"></td>
-                    <td class="drops" id="drop15" data-dia="Viernes"></td>
+                    <th colspan="2" class="horas">12:00 / 3:00PM</th>
+                    <td colspan="2" class="drops" id="drop11" data-dia="Lunes"></td>
+                    <td colspan="2" class="drops" id="drop12" data-dia="Martes"></td>
+                    <td colspan="2" class="drops" id="drop13" data-dia="Miercoles"></td>
+                    <td colspan="2" class="drops" id="drop14" data-dia="Jueves"></td>
+                    <td colspan="2" class="drops" id="drop15" data-dia="Viernes"></td>
                 </tr>
                 <tr data-inicio="15:00:00" data-fin="18:00:00">
-                    <th class="horas">3:00-6:00PM</th>
-                    <td class="drops" id="drop16" data-dia="Lunes"></td>
-                    <td class="drops" id="drop17" data-dia="Martes"></td>
-                    <td class="drops" id="drop18" data-dia="Miercoles"></td>
-                    <td class="drops" id="drop19" data-dia="Jueves"></td>
-                    <td class="drops" id="drop20" data-dia="Viernes"></td>
+                    <th colspan="2" class="horas">3:00 / 6:00PM</th>
+                    <td colspan="2" class="drops" id="drop16" data-dia="Lunes"></td>
+                    <td colspan="2" class="drops" id="drop17" data-dia="Martes"></td>
+                    <td colspan="2" class="drops" id="drop18" data-dia="Miercoles"></td>
+                    <td colspan="2" class="drops" id="drop19" data-dia="Jueves"></td>
+                    <td colspan="2" class="drops" id="drop20" data-dia="Viernes"></td>
                 </tr>
                 <tr data-inicio="18:00:00" data-fin="21:00:00">
-                    <th class="horas">6:00-9:00PM</th>
-                    <td class="drops" id="drop21" data-dia="Lunes"></td>
-                    <td class="drops" id="drop22" data-dia="Martes"></td>
-                    <td class="drops" id="drop23" data-dia="Miercoles"></td>
-                    <td class="drops" id="drop24" data-dia="Jueves"></td>
-                    <td class="drops" id="drop25" data-dia="Viernes"></td>
+                    <th colspan="2" class="horas">6:00 / 9:00PM</th>
+                    <td colspan="2" class="drops" id="drop21" data-dia="Lunes"></td>
+                    <td colspan="2" class="drops" id="drop22" data-dia="Martes"></td>
+                    <td colspan="2" class="drops" id="drop23" data-dia="Miercoles"></td>
+                    <td colspan="2" class="drops" id="drop24" data-dia="Jueves"></td>
+                    <td colspan="2" class="drops" id="drop25" data-dia="Viernes"></td>
                 </tr>
             </table>
-
+            <button id="enlace-pdf" class="btn-header">Descargar pdf <i class="icon-file-pdf"></i></button>
         </div>
     </div>
 </main>
@@ -158,6 +156,8 @@ if (isset($_GET["n"]) && isset($_GET['t'])) {
 src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 crossorigin="anonymous"></script>
+<script type="text/javascript" src="jsPDF/dist/jspdf.min.js"></script>
+<script type="text/javascript" src="app/resources/js/html2canvas.js"></script>
 <script src="app/resources/js/nav.js"></script>
 <script src="app/resources/js/loader.js"></script>
 <script src="app/resources/js/crud.js"></script>
