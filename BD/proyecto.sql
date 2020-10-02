@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2020 a las 05:05:39
+-- Tiempo de generación: 02-10-2020 a las 16:25:40
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -42,7 +42,8 @@ CREATE TABLE `ambiente` (
 INSERT INTO `ambiente` (`id_Ambiente`, `Nombre_Ambiente`, `Descripcion_Ambiente`) VALUES
 (1, 'Informática 3', 'Pertenece al área adsi'),
 (2, 'Informática 2', 'Pertenece al área adsi'),
-(10, 'Centro textil y de gestion industrial', 'aa');
+(10, 'Informatica 1', 'aa'),
+(12, 'Aula 5', 'No se');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,8 @@ CREATE TABLE `competencia` (
 
 INSERT INTO `competencia` (`id_Competencia`, `Nombre_Comp`, `Descripcion_Comp`) VALUES
 (1, 'Analizar', 'Analisis del proyecto'),
-(2, 'Especifico', 'Especificar requisitos de proyecto');
+(2, 'Especificar', 'Especificar requisitos de proyecto'),
+(6, 'Hola', 'Que tal');
 
 -- --------------------------------------------------------
 
@@ -73,8 +75,8 @@ INSERT INTO `competencia` (`id_Competencia`, `Nombre_Comp`, `Descripcion_Comp`) 
 CREATE TABLE `detalles_horario` (
   `id_Detalles_Horario` int(11) NOT NULL,
   `dia` varchar(50) NOT NULL,
-  `hora_inicio` varchar(100) NOT NULL,
-  `hora_fin` varchar(100) NOT NULL,
+  `hora_inicio` time NOT NULL,
+  `hora_fin` time NOT NULL,
   `id_Ambiente` int(11) NOT NULL,
   `id_Competencia` int(11) NOT NULL,
   `id_Instructor` int(11) NOT NULL,
@@ -87,7 +89,17 @@ CREATE TABLE `detalles_horario` (
 --
 
 INSERT INTO `detalles_horario` (`id_Detalles_Horario`, `dia`, `hora_inicio`, `hora_fin`, `id_Ambiente`, `id_Competencia`, `id_Instructor`, `id_Horario`, `id_Usuario`) VALUES
-(19, 'Martes', '09:00:00', '12:00:00', 2, 1, 49, 7, 2);
+(76, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
+(77, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
+(78, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
+(79, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
+(80, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
+(81, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
+(82, 'Miercoles', '09:00:00', '12:00:00', 2, 2, 49, 26, 2),
+(83, 'Lunes', '09:00:00', '12:00:00', 1, 2, 49, 26, 2),
+(84, 'Viernes', '09:00:00', '12:00:00', 10, 1, 49, 26, 2),
+(85, 'Jueves', '09:00:00', '12:00:00', 12, 6, 40, 26, 2),
+(86, 'Jueves', '09:00:00', '12:00:00', 2, 2, 49, 26, 2);
 
 -- --------------------------------------------------------
 
@@ -97,8 +109,8 @@ INSERT INTO `detalles_horario` (`id_Detalles_Horario`, `dia`, `hora_inicio`, `ho
 
 CREATE TABLE `ficha` (
   `id_Ficha` int(11) NOT NULL,
-  `Numero_Ficha` varchar(30) NOT NULL,
   `Nombre_Gestor` varchar(120) NOT NULL,
+  `Numero_Ficha` varchar(30) NOT NULL,
   `id_Programa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -106,22 +118,9 @@ CREATE TABLE `ficha` (
 -- Volcado de datos para la tabla `ficha`
 --
 
-INSERT INTO `ficha` (`id_Ficha`, `Numero_Ficha`, `Nombre_Gestor`, `id_Programa`) VALUES
-(4, 'Edwy Alexander Patiño', '1835082', 1),
-(5, 'Juan Pablo', '123456', 4),
-(7, 'Trimestre 1', '2020-09-10', 2020),
-(8, 'Trimestre 1', '1', 3),
-(9, 'Trimestre 1', '1', 3),
-(10, 'Trimestre 1', '1', 3),
-(11, 'Trimestre 1', '1', 3),
-(12, 'Trimestre 1', '1', 3),
-(13, 'Trimestre 1', '1', 3),
-(14, 'Trimestre 1', '2020-09-10', 2020),
-(15, 'Trimestre 1', '2020-09-10', 2020),
-(16, 'Trimestre 1', '2020-09-10', 2020),
-(17, 'Trimestre 1', '2020-09-10', 2020),
-(21, 'Juan Pablo', '123456', 1),
-(22, 'Alejandro', '123', 10);
+INSERT INTO `ficha` (`id_Ficha`, `Nombre_Gestor`, `Numero_Ficha`, `id_Programa`) VALUES
+(29, 'Edwy Alexander Patiño', '1835082', 1),
+(30, 'Juan Pablo', '1234567', 1);
 
 -- --------------------------------------------------------
 
@@ -142,7 +141,8 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`id_Horario`, `Trimestre`, `Fecha_Inicio`, `Fecha_Fin`, `id_Ficha`) VALUES
-(7, 'Trimestre 1', '2020-09-11', '2020-12-11', 4);
+(26, 'Trimestre 1', '2020-09-18', '2020-12-18', 29),
+(27, 'Trimestre 2', '2020-09-18', '2020-09-24', 29);
 
 -- --------------------------------------------------------
 
@@ -165,8 +165,8 @@ CREATE TABLE `instructor` (
 --
 
 INSERT INTO `instructor` (`id_Instructor`, `Nombres`, `Apellidos`, `Documento`, `Correo`, `Color`, `id_TipoContrato`) VALUES
-(40, 'Juan Pablo Guevara', 'Gonzalez', '123', 'juanpa2062@hotmail.com', '#eb5505', 1),
-(49, 'edwy', 'Patiño', '1', 'edwy@misena.edu.co', '#0a47ff', 1);
+(40, 'Lee', 'Escobar', '123', 'lee@misena.edu.co', '#eb5505', 1),
+(49, 'Edwy', 'Patiño', '1', 'edwy@misena.edu.co', '#0a47ff', 1);
 
 -- --------------------------------------------------------
 
@@ -240,10 +240,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_Usuario`, `Nombres`, `Apellidos`, `Correo`, `Contrasena`, `Token`, `id_Rol`) VALUES
-(2, 'Juan', 'Guevara', 'juanpa2062@hotmail.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
-(3, 'Proyecto Wem', 'Sena', 'proyectowemsena@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
-(13, 'Juan', 'Guevara', 'juanpa2062@gmail.com', 'e32f53597fa0afc5afa07fd629314774', NULL, NULL),
-(15, 'Alejandro', 'Cardona', 'alejo@gmail.com', 'e32f53597fa0afc5afa07fd629314774', NULL, NULL);
+(2, 'Juan Pablo', 'Guevara', 'juanpa2062@hotmail.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
+(3, 'Proyecto Wem', 'Sena', 'proyectowemsena@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -326,37 +324,37 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `ambiente`
 --
 ALTER TABLE `ambiente`
-  MODIFY `id_Ambiente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_Ambiente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `competencia`
 --
 ALTER TABLE `competencia`
-  MODIFY `id_Competencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_Competencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `detalles_horario`
 --
 ALTER TABLE `detalles_horario`
-  MODIFY `id_Detalles_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_Detalles_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de la tabla `ficha`
 --
 ALTER TABLE `ficha`
-  MODIFY `id_Ficha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_Ficha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `id_Instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_Instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `programa_formacion`
@@ -380,7 +378,7 @@ ALTER TABLE `tipocontrato`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
@@ -391,14 +389,6 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `detalles_horario`
   ADD CONSTRAINT `detalles_horario_ibfk_1` FOREIGN KEY (`id_Competencia`) REFERENCES `competencia` (`id_Competencia`);
-
-DELIMITER $$
---
--- Eventos
---
-CREATE DEFINER=`root`@`localhost` EVENT `borrar_token` ON SCHEDULE AT '2020-09-10 21:30:06' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE usuario SET token = null WHERE token = '5f5ae0efb0658'$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
