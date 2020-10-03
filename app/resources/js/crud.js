@@ -128,7 +128,7 @@ function datosFichayTrimestre() {
             template = `<h3>${trimestre[0].nombre_trimestre}</h3>`;
             // Se inserta el numero de la ficha en el título de la tabla
             $('#trimestre').html(template);
-            $('#fechainicio').html(`<p inicio="${trimestre[0].fecha_inicio}" fin="${trimestre[0].fecha_fin}">Fecha Inicio: ${trimestre[0].fecha_inicio} / ${trimestre[0].fecha_fin}</p>`);
+            $('#fecha').html(`<p inicio="${trimestre[0].fecha_inicio}" fin="${trimestre[0].fecha_fin}">Fecha: ${trimestre[0].fecha_inicio} / ${trimestre[0].fecha_fin}</p>`);
         }
     });
 }
