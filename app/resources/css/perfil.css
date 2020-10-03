@@ -134,23 +134,6 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
     font-size: 24px;
     padding: 21.5px 20px;
 }
-.contenedor {
-    margin: auto;
-    padding: var(--margenes) 0;
-    width: 90%;
-    max-width: 1000px;
-    text-align: center;
-    overflow: hidden;
-}
-.contenedor h3 {
-    font-size: var(--titulos);
-    color: var(--color1);
-    margin-bottom: var(--espacios);
-}
-.contenedor>p {
-    font-size: var(--subtitulos);
-    font-weight: 300;
-}
 /* MAIN */
 
 .container {
@@ -171,6 +154,7 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
     width: 100%;
     padding: 40px;
     display: flex;
+    justify-content: center;
 }
 .user {
     width: 20%;
@@ -178,8 +162,6 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.user i {
     color: var(--color1);
     font-size: 250px;
 }
@@ -192,7 +174,6 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
     padding: 20px 80px;
 }
 #form label {
-    width: 100px;
     color: white;
 }
 #form input[type="text"] {
@@ -287,13 +268,21 @@ form>button:hover {
     nav .enlaces #salir, nav .enlaces2 #salir {
         margin-left: 0px;
     }
-    .table {
+    .perfil {
         flex-direction: column;
     }
-    table {
-        width: 100%;
+    .user {
+        width: 70%;
+        padding: 10px 0;
+        margin: 0 auto;
     }
-    .cajas {
-        width: 50%;
+    #form {
+        width: 100%;
+        margin-top: 40px;
+    }
+    #form form {
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
     }
 }

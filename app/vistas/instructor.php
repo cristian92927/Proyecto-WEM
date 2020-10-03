@@ -46,7 +46,7 @@ if (isset($_GET["id"])) {
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
                     <a id="enlace-atras" class="btn-header">Atrás</a>
                     <a href="index.php?v=perfil" id="usuario"><?php echo $_SESSION['user'][1]; ?></a>
-                    <a href="app/models/salir.php" id="salir">Salir</a>
+                    <a href="app/models/salir.php" id="salir">Cerrar Sesión</a>
                 </div>
                 <div class="icono" id="open">
                     <span>&#9776;</span>
@@ -63,8 +63,7 @@ if (isset($_GET["id"])) {
                     <th colspan="12" id="instructor"></th>
                 </tr>
                 <tr>
-                    <th colspan="6" id="fechainicio"></th>
-                    <th colspan="6" id="fechafin"></th>
+                    <th colspan="12" id="fechainicio"></th>
                 </tr>
                 <tr>
                     <th colspan="2">Hora</th>
@@ -115,7 +114,7 @@ if (isset($_GET["id"])) {
                     <td colspan="2" class="drops" id="drop25" data-dia="Viernes"></td>
                 </tr>
             </table>
-
+            <button id="enlace-pdf" class="btn-header">Descargar pdf <i class="icon-file-pdf"></i></button>
         </div>
     </div>
 </main>
@@ -125,6 +124,7 @@ if (isset($_GET["id"])) {
 src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 crossorigin="anonymous"></script>
+<script type="text/javascript" src="app/resources/libjs/jspdf.min.js"></script>
 <script src="app/resources/js/nav.js"></script>
 <script src="app/resources/js/loader.js"></script>
 <script src="app/resources/js/instructor.js"></script>

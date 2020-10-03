@@ -138,30 +138,13 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
     font-size: 24px;
     padding: 21.5px 20px;
 }
-.contenedor {
-    margin: auto;
-    padding: var(--margenes) 0;
-    width: 90%;
-    max-width: 1000px;
-    text-align: center;
-    overflow: hidden;
-}
-.contenedor h3 {
-    font-size: var(--titulos);
-    color: var(--color1);
-    margin-bottom: var(--espacios);
-}
-.contenedor>p {
-    font-size: var(--subtitulos);
-    font-weight: 300;
-}
 /* Main */
 
 /* table */
 
 .table {
     width: 100%;
-    height: 100vh;
+    height: 48.1vw;
     overflow: hidden;
     background: linear-gradient(to right, hsla(176, 73%, 25%, .6), hsla(176, 73%, 25%, .6), rgba(252, 115, 35, .6)), url(../img/header.jpg);
     background-attachment: fixed;
@@ -172,69 +155,63 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
     align-items: center;
 }
 table {
-    width: 90%;
+    width: 1200px;
+    margin-top: 70px;
     border-spacing: 0;
+    border: 1px solid rgba(0, 0, 0, .7);
+    background: hsla(176, 73%, 25%, 1);
 }
 th.horas {
     width: 50px;
-    height: 32px;
+    height: 65px;
     padding: 20px 0;
 }
 td {
     width: 100px;
     background: rgba(100, 100, 100, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, .7);
     text-align: center;
     z-index: 20;
-}
-td:hover {
-    background: rgba(200, 200, 200, 0.8);
     cursor: pointer;
 }
+td:hover {
+    background: hsla(176, 73%, 10%, 1);
+}
 tr:hover {
-    background: rgba(200, 200, 200, 0.5)
+    background: rgba(0, 0, 0, 0.5);
 }
 th {
-    background: white;
-    color: var(--color1);
-    border: 1px solid white;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, .7);
     z-index: 20;
     text-align: center;
     height: 30px;
     width: 100px;
     padding: 8px;
 }
+#enlace-pdf {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 15px;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: rgb(252, 115, 35);
+    margin: 10px 0 0 0;
+    color: white;
+    transition: transform 300ms;
+}
+#enlace-pdf:hover {
+    background: rgb(255, 94, 0);
+    color: #000;
+    cursor: pointer;
+    transform: translateY(-3px);
+}
 /* cajas */
 
-.cajas {
-    padding: 0 0 10px;
-    width: 20%;
-    height: auto;
-    background: rgba(255, 255, 255, .3);
-    display: flex;
-    justify-content: center;
-    position: relative;
-    flex-direction: column;
-    z-index: 1;
-    margin: 0 auto;
-}
-#titulo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background: var(--fondo);
-    color: var(--color1);
-    font-size: 20px;
-    font-weight: 900;
-    opacity: .8;
-    margin-bottom: 10px;
-}
-.cont_caja {
-    width: 100%;
-    height: auto;
-}
 .caja {
     width: 100%;
     height: 100%;
@@ -246,11 +223,15 @@ th {
     align-items: center;
     flex-direction: column;
 }
+.caja>h3 {
+    font-weight: 900;
+}
 .caja>p {
     width: 60%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    font-weight: 600;
 }
 .button {
     width: 40%;
@@ -271,30 +252,14 @@ th {
     right: 0px;
     top: 0px;
     color: black;
-    background: gray;
     cursor: pointer;
-    box-shadow: 0 0 4px 0 black;
 }
-.editar:hover {
-    color: black;
-    background: darkorange;
-    cursor: pointer;
-    box-shadow: 0 0 4px 0 black;
+.opciones i:hover {
+    color: white;
 }
-.borrar:hover {
-    color: black;
-    background: #D50505;
-    cursor: pointer;
-    box-shadow: 0 0 4px 0 black;
-}
-/*.opciones:hover{
-  color: black;
-  background: gray;
-  cursor: pointer;
-  box-shadow: 0 0 4px 0 black;
-}*/
-
 .menu {
+    width: 100px;
+    padding: 5px;
     background: #3E3D57;
     color: white;
     position: absolute;
@@ -303,8 +268,8 @@ th {
     border-radius: 5px;
     box-shadow: 0 0 6px 0 black;
     flex-direction: column;
-    top: 75%;
-    left: 75%;
+    top: 70%;
+    left: 70%;
 }
 .menu a {
     text-decoration: none;
@@ -317,9 +282,6 @@ th {
 }
 .a {
     display: flex;
-}
-.c {
-    display: none;
 }
 @media (min-width: 992px) and (max-width: 1280px) {
     nav .enlaces #usuario, nav .enlaces2 #usuario {
@@ -381,12 +343,11 @@ th {
         margin-left: 0px;
     }
     .table {
-        flex-direction: column;
+        height: 100vh;
+        justify-content: flex-start;
+        overflow-x: scroll;
     }
-    table {
-        width: 100%;
-    }
-    .cajas {
-        width: 50%;
+    #enlace-pdf {
+        display: none;
     }
 }

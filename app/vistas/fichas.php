@@ -45,7 +45,7 @@ if (!isset($_SESSION['user'])) {
                 <div id="enlaces" class="enlaces">
                     <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
                     <a href="index.php?v=perfil" id="usuario">Bienvenido, <?php echo $_SESSION['user'][1]; ?></a>
-                    <a href="app/models/salir.php" id="salir">Salir</a>
+                    <a href="app/models/salir.php" id="salir">Cerrar Sesión</a>
                 </div>
                 <!-- Icono para la pantalla responsive -->
                 <div class="icono" id="open">

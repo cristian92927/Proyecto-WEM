@@ -13,15 +13,21 @@ window.addEventListener('load', function() {
     });
 
     function quitarColor() {
+        var bg = 'transparent';
         var fondos = document.querySelectorAll('.caja');
+        var herramienta = document.querySelectorAll('.icon-cog');
+        document.querySelectorAll('table')[0].style.background = 'none';
         for (var i = 0; i < fondos.length; i++) {
-            fondos[i].style.background = 'transparent';
+            fondos[i].style.background = bg;
+        }
+        for (var i = 0; i < herramienta.length; i++) {
+            herramienta[i].style.display = 'none';
         }
         for (var i = 0; i < td.length; i++) {
-            td[i].style.background = 'transparent';
+            td[i].style.background = bg;
         }
         for (var i = 0; i < th.length; i++) {
-            th[i].style.background = 'transparent';
+            th[i].style.background = bg;
             th[i].style.color = 'black';
         }
     }
@@ -29,15 +35,9 @@ window.addEventListener('load', function() {
     function generarimg() {
         html2canvas($("table")[0], {
             onrendered: function(canvas) {
-                // canvas.toBlob(function(blob) {
-                //     saveAs(blob, "horario.png");
-                // }, "image/png", 1);
-                var imgData = canvas.toDataURL('image/png');
-                var doc = new jsPDF();
-                doc.setFontSize(40);
-                doc.text(40, 20, "Horario");
-                doc.addImage(imgData, 'png', 10, 40, 180, 180);
-                doc.save('Test.pdf');
+                canvas.toBlob(function(blob) {
+                    saveAs(blob, "horario.png");
+                }, "image/png", 1);
             }
         });
     }
@@ -46,7 +46,6 @@ window.addEventListener('load', function() {
         var pdf = new jsPDF('l', 'mm', [203, 254]);
         html2canvas($("table")[0], {
             onrendered: function(canvas) {
-                var ctx = canvas.getContext('2d');
                 var imgData = canvas.toDataURL("image/png", 1.0);
                 var width = canvas.width;
                 var height = canvas.clientHeight;
@@ -55,7 +54,7 @@ window.addEventListener('load', function() {
                 pdf.setFontSize(30);
                 pdf.text(110, 20, 'Horario');
                 pdf.addImage(imgData, 'PNG', 10, 30, (width - 965), (height + 100));
-                pdf.save('Test.pdf');
+                pdf.save('HorarioTrimestre.pdf');
                 location.reload();
             }
         });

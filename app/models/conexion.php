@@ -1,11 +1,11 @@
 <?php
 
-class Conexion{
+class Conexion {
 
-	private function __construct(){}
-	public function connection(){
-		return mysqli_connect("localhost","root","","proyecto");
-	}
+    private function __construct() {}
+    public function connection() {
+        return mysqli_connect("localhost", "root", "", "proyecto");
+    }
 }
 
 ?>

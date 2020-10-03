@@ -3,9 +3,9 @@
 require_once "app/models/conexion.php";
 use PHPMailer\PHPMailer\PHPMailer;
 
-require 'phpmailer/Exception.php';
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
+require 'lib/phpmailer/Exception.php';
+require 'lib/phpmailer/PHPMailer.php';
+require 'lib/phpmailer/SMTP.php';
 /**
  * login_controller
  *

@@ -134,23 +134,6 @@ nav .enlaces a:hover, nav .enlaces2 a:hover {
     font-size: 24px;
     padding: 21.5px 20px;
 }
-.contenedor {
-    margin: auto;
-    padding: var(--margenes) 0;
-    width: 90%;
-    max-width: 1000px;
-    text-align: center;
-    overflow: hidden;
-}
-.contenedor h3 {
-    font-size: var(--titulos);
-    color: var(--color1);
-    margin-bottom: var(--espacios);
-}
-.contenedor>p {
-    font-size: var(--subtitulos);
-    font-weight: 300;
-}
 /* Main */
 
 /* Ambientes */
@@ -361,5 +344,8 @@ form>button:hover {
     }
     nav .enlaces #usuario, nav .enlaces2 #usuario {
         margin-left: 0px;
+    }
+    .trimestres {
+        width: 100%;
     }
 }

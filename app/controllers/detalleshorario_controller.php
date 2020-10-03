@@ -39,7 +39,7 @@ class detalleshorario_controller {
     public function insert($array) {
         $conexion = Conexion::connection();
         // $sql      = "SELECT * FROM detalles_horario dh INNER JOIN horario h ON dh.id_Horario = h.id_Horario WHERE dia = '$array[0]' AND hora_inicio = '$array[1]' AND (id_Instructor = '$array[5]' OR id_Ambiente = '$array[3]') AND (h.fecha_inicio = '$array[8]' AND h.fecha_fin = '$array[9]')";
-        $sql    = "SELECT * FROM detalles_horario dh INNER JOIN horario h ON dh.id_Horario = h.id_Horario WHERE dia = '$array[0]' AND hora_inicio = '$array[1]' AND id_Instructor = '$array[5]' AND (h.fecha_inicio BETWEEN CAST('$array[8]' AS DATE) AND CAST('$array[9]' AS DATE))";
+        $sql    = "SELECT * FROM detalles_horario dh INNER JOIN horario h ON dh.id_Horario = h.id_Horario WHERE dia = '$array[0]' AND hora_inicio = '$array[1]' AND id_Instructor = '$array[5]' AND (h.Fecha_Inicio BETWEEN CAST('$array[8]' AS DATE) AND CAST('$array[9]' AS DATE))";
         $result = $conexion->query($sql);
         $filas  = $result->num_rows;
         if ($filas === 0) {

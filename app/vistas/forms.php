@@ -10,6 +10,7 @@ if (!isset($_SESSION['user'])) {
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Registros</title>
 	<link rel="stylesheet" href="app/resources/iconos/icomoon/style.css">
 	<link rel="stylesheet" type="text/css" href="app/resources/css/forms.css">
@@ -35,7 +36,7 @@ if (!isset($_SESSION['user'])) {
 					<a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
 					<a id="enlace-atras" class="btn-header">Atrás</a>
 					<a href="index.php?v=perfil" id="usuario"><?php echo $_SESSION['user'][1]; ?></a>
-					<a href="app/models/salir.php" id="salir">Salir</a>
+					<a href="app/models/salir.php" id="salir">Cerrar Sesión</a>
 				</div>
 				<div class="icono" id="open">
 					<span>&#9776;</span>
@@ -53,8 +54,10 @@ if (!isset($_SESSION['user'])) {
 					<a data-class="ambiente">Ambiente</a>
 					<a data-class="competencia">Competencia</a>
 					<a data-class="programa">Programa de Formación</a>
-					<a data-class="ficha">Ficha</a>
 					<a data-class="contrato">Tipo de Contrato</a>
+				</div>
+				<div class="icono icono-form">
+					<span id="enlace-form">&#9776;</span>
 				</div>
 				<div class="cont-forms">
 					<!------------ formulario agregar instrctor------------->
@@ -173,36 +176,7 @@ if (!isset($_SESSION['user'])) {
 						</div>
 					</div>
 
-					<!------------ formulario agregar ficha------------->
-					<div class="form" id="ficha">
-						<form method="POST" id="agregar_ficha">
-							<h1>Registrar Ficha</h1>
-							<input type="hidden" id="id_fic">
-							<input type="text" id="nombre_gestor" placeholder="Nombre del gestor">
-							<input type="text" id="num_ficha" placeholder="Numero de la ficha">
-							<select class="select" id="nombre_prog"></select>
-							<button type="submit">Guardar</button>
-						</form>
-						<div class="lista">
-							<h2>Lista</h2>
-							<table>
-								<thead>
-									<tr>
-										<th>id</th>
-										<th>Numero de ficha</th>
-										<th>Nombre Gestor</th>
-										<th>Nombre del programa de formacion</th>
-										<th>Funciones</th>
-									</tr>
-								</thead>
-								<tbody id="lista_ficha">
-
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-					<!------------ formulario agregar ficha------------->
+					<!------------ formulario agregar contrato------------->
 					<div class="form" id="contrato">
 						<form method="POST" id="agregar_contrato">
 							<h1>Registrar Contrato</h1>
