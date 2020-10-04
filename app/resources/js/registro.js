@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
         validateForm();
     });
     //Resetear o vaciar el formulario cuando el módulo cargue
-    $("form").trigger("reset");
+    $("#form").trigger("reset");
 });
 var inputs = document.querySelectorAll('.input');
 for (var i = 0; i < inputs.length; i++) {

@@ -16,7 +16,7 @@ if (!empty($_POST['correo']) && !empty($_POST['pw'])) {
     }
 }
 
-if (isset($_POST['enviar'])) {
+if (!empty($_POST['receptor']) && isset($_POST['enviar'])) {
     $login = new controller();
     $array = [];
     $token = uniqid();
@@ -29,6 +29,7 @@ if (isset($_POST['enviar'])) {
 
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Inicio de sesión | WEM</title>
     <link rel="stylesheet" href="app/resources/css/login.css">
   </head>
@@ -45,30 +46,31 @@ if (isset($_POST['enviar'])) {
     </div>
     <!------ form -------->
     <div class="container">
+      <p id="alerta" class="alerta"></p>
         <form method="POST" class="formulario" id="containerRecuperar">
          <a href="index.php"><img src="app/resources/img/Logo.png" alt="Avatar Image"></a>
-        <h1>Recuperar Contraseña</h1>
-          <input type="text" class="input" name="receptor" required>
+          <h1>Recuperar Contraseña</h1>
+          <input type="text" class="input" name="receptor" id="email2" required>
           <label>Ingrese su correo</label>
-          <button type="submit" name="enviar">Recuperar Contraseña</button>
+          <button type="submit" name="enviar" id="enviar">Recuperar Contraseña</button>
           <p>Volver a <a id="volver">Inicio de Sesion</a></p>
         </form>
         <form method="POST"  class="formulario" id="containerSesion">
           <a href="index.php"><img src="app/resources/img/Logo.png" alt="Avatar Image"></a>
           <h1>Inicio de sesión</h1>
           <p><?php echo $loginE; ?></p>
-          <input type="text" class="input" name="correo" id="email" required>
+          <input type="text" class="input" name="correo" id="email1" required>
           <label>Correo*</label>
-          <input type="password" class="input" name="pw" required>
+          <input type="password" class="input" name="pw" id="pw" required>
           <label>Contraseña</label>
-          <button type="submit" name="ingresar">Iniciar sesión</button>
+          <button type="submit" name="ingresar" id="ingresar">Iniciar sesión</button>
           <p>¿Has olvidado tu contraseña? <a id="recuperar">Click aqui</a></p>
           <p>¿No tienes una cuenta? <a href="index.php?v=registrar">Registrate</a></p>
         </form>
 
     </div>
 
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="app/resources/js/loader.js"></script>
     <script type="text/javascript" src="app/resources/js/login.js"></script>
   </body>

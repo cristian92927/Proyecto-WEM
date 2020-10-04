@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo $_SESSION['user'][1] . " " . $_SESSION['user'][2]; ?></title>
     <link rel="stylesheet" href="app/resources/css/perfil.css">
     <link rel="stylesheet" href="app/resources/iconos/icomoon/style.css">

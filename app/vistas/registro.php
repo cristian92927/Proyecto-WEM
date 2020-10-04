@@ -18,6 +18,7 @@ if (!empty($_POST['nombres']) && !empty($_POST['apellidos'])) {
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Formulario De Registro | WEM</title>
   <link rel="stylesheet" href="app/resources/css/registro.css">
 
