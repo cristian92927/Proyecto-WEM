@@ -1,28 +1,29 @@
-<?php 
+<?php
+
 @session_start();
 require_once "app/controllers/controller.php";
 $loginE = "";
-if(!empty($_POST['correo']) && !empty($_POST['pw'])){
-  $login = new controller();
-  $array = [];
-  array_push($array,$_POST['correo'],$_POST['pw']);
-  $_SESSION['user'] = $login->Login(0, $array);
-  $resultado = $_SESSION['user'];
-  if($resultado != null){
-    header("Location: index.php?v=fichas");
-  }else{
-    $loginE = "Usuario o contraseña incorrectos";
-  }
+if (!empty($_POST['correo']) && !empty($_POST['pw'])) {
+    $login = new controller();
+    $array = [];
+    array_push($array, $_POST['correo'], $_POST['pw']);
+    $_SESSION['user'] = $login->Login(0, $array);
+    $resultado        = $_SESSION['user'];
+    if ($resultado != null) {
+        header("Location: index.php?v=fichas");
+    } else {
+        $loginE = "Usuario o contraseña incorrectos";
+    }
 }
 
-if(isset($_POST['enviar'])){
-  $login = new controller();
-  $array = [];
-  $token = uniqid();
-  array_push($array,$token,$_POST['receptor']);
-  $login->Login(2, $array);
+if (isset($_POST['enviar'])) {
+    $login = new controller();
+    $array = [];
+    $token = uniqid();
+    array_push($array, $token, $_POST['receptor']);
+    $login->Login(2, $array);
 }
-  ?>
+?>
   <!DOCTYPE html>
   <html lang="en">
 
@@ -42,30 +43,28 @@ if(isset($_POST['enviar'])){
         <h3>Loading...</h3>
       </section>
     </div>
-    <!------ fondo ------->
-    <img src="app/resources/img/header3.jpg" alt="">
     <!------ form -------->
     <div class="container">
-      <div class="login-box" id="containerRecuperar">
+        <form method="POST" class="formulario" id="containerRecuperar">
+         <a href="index.php"><img src="app/resources/img/Logo.png" alt="Avatar Image"></a>
         <h1>Recuperar Contraseña</h1>
-        <form method="POST">
-          <input type="text" name="receptor" placeholder="example@example.edu.co">
+          <input type="text" class="input" name="receptor" required>
+          <label>Ingrese su correo</label>
           <button type="submit" name="enviar">Recuperar Contraseña</button>
           <p>Volver a <a id="volver">Inicio de Sesion</a></p>
         </form>
-      </div>  
-      <div class="login-box" id="containerSesion">
-        <a href="index.php"><img src="app/resources/img/Logo.png" alt="Avatar Image"></a>
-        <h1>Inicio de sesión</h1>
-        <p><?php echo $loginE; ?></p>
-        <form method="POST">
-          <input type="text" name="correo" id="email" placeholder="example@example.edu.co" required>
-          <input type="password" name="pw" placeholder="Ingrese su contraseña" required>
+        <form method="POST"  class="formulario" id="containerSesion">
+          <a href="index.php"><img src="app/resources/img/Logo.png" alt="Avatar Image"></a>
+          <h1>Inicio de sesión</h1>
+          <p><?php echo $loginE; ?></p>
+          <input type="text" class="input" name="correo" id="email" required>
+          <label>Correo*</label>
+          <input type="password" class="input" name="pw" required>
+          <label>Contraseña</label>
           <button type="submit" name="ingresar">Iniciar sesión</button>
           <p>¿Has olvidado tu contraseña? <a id="recuperar">Click aqui</a></p>
           <p>¿No tienes una cuenta? <a href="index.php?v=registrar">Registrate</a></p>
         </form>
-      </div>
 
     </div>
 

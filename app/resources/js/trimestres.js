@@ -4,6 +4,21 @@ window.addEventListener('load', function() {
     var edit_trimestre = false;
     buscarFicha();
     buscarTrimestre();
+    var fechas = document.querySelectorAll(".fecha");
+    for (var i = 0; i < fechas.length; i++) {
+        fechas[i].type = 'text';
+        fechas[i].addEventListener('focus', function() {
+            this.type = 'date';
+        });
+        fechas[i].addEventListener('blur', function() {
+            this.type = 'text';
+            if (this.value) {
+                this.nextElementSibling.classList.add('fijar');
+            } else {
+                this.nextElementSibling.classList.remove('fijar');
+            }
+        });
+    }
     document.querySelector('#agregar').addEventListener('click', function() {
         mostrarForm();
     });
@@ -47,6 +62,16 @@ window.addEventListener('load', function() {
         }
     });
 });
+var inputs = document.querySelectorAll('.input');
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('keyup', function() {
+        if (this.value.length >= 1) {
+            this.nextElementSibling.classList.add('fijar');
+        } else {
+            this.nextElementSibling.classList.remove('fijar');
+        }
+    });
+}
 // Se define la función donde se realizará la petición ajax, la cual recibe la url, el tipo y los datos
 function peticion(lugar, tipo, datos) {
     // se define la variable que será retornada

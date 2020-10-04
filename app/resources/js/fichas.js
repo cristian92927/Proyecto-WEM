@@ -53,6 +53,16 @@ window.addEventListener('load', function() {
         }
     });
 });
+var inputs = document.querySelectorAll('.input');
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('keyup', function() {
+        if (this.value.length >= 1) {
+            this.nextElementSibling.classList.add('fijar');
+        } else {
+            this.nextElementSibling.classList.remove('fijar');
+        }
+    });
+}
 
 function mostrarFichas() {
     // Esta función hace una petición ajax que trae la información de lo ambientes

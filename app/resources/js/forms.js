@@ -50,7 +50,6 @@ $(window).ready(function() { // Función que se ejecuta al cargar la ventana del
         // Condición para validar si se ejecutó la función
         peticion(lugar, "POST", datos);
         buscar_instructor();
-        $(this).trigger('reset');
         $('#documento').attr('disabled', false);
         // Se declara la variable bandera de instructor como false para que la condición del lugar
         // Se pueda cumplir 
@@ -454,3 +453,13 @@ window.addEventListener('resize', function() {
         forms.style.removeProperty('height');
     }
 });
+var inputs = document.querySelectorAll('.input');
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('keyup', function() {
+        if (this.value.length >= 1) {
+            this.nextElementSibling.classList.add('fijar');
+        } else {
+            this.nextElementSibling.classList.remove('fijar');
+        }
+    });
+}

@@ -330,7 +330,7 @@ class redirec_controller {
         case 'agregar':
             $array = [];
             array_push($array, $_POST['dia'], $_POST['hora_inicio'], $_POST['hora_fin'], $_POST['id_Ambiente'], $_POST['id_Competencia'], $_POST['id_Instructor'], $_POST['id_Horario'], $_POST['id_Usuario'], $_POST['fecha_inicio'], $_POST['fecha_fin']);
-            $result = $controller->detalleshorario(1, $array);
+            $controller->detalleshorario(1, $array);
             break;
 
         case 'obtenerInstructor':
@@ -340,8 +340,12 @@ class redirec_controller {
             $resultado = api_response::mostrar($result, ["dia", "hora_inicio", "hora_fin", "color", "ambiente", "competencia", "ficha"]);
             echo $resultado;
             break;
+        case 'eliminar':
+            $array = [];
+            array_push($array, $_POST['id_dh']);
+            $result = $controller->detalleshorario(3, $array);
+            break;
         }
-
     }
 }
 
