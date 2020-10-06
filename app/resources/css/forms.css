@@ -237,7 +237,7 @@ a.active {
     font-size: 1.15em;
     font-weight: bold;
 }
-.formulario input, .formulario select{
+.formulario input[type="text"], .formulario select{
     padding: 10px 20px;
     background: rgba(255,255,255, 0.2);
     border: none;
@@ -281,29 +281,38 @@ a.active {
     font-size: 17px;
     font-family: 'Raleway', sans-serif;
 }
-.formulario input[type="color"]{
-    background: #000;
-}
 .formulario input[type="color"]::-webkit-color-swatch-wrapper {
     padding: 0;
 }
 .formulario input[type="color"]::-webkit-color-swatch {
     border: none;
 }
-.formulario button{
-  width: 60%;
+.formulario .botones{
+    width: 100%;
+    display: flex;
+}
+.formulario .botones button[type="submit"]{
+  background: var(--color2);
+}
+.formulario .botones .cancelar{
+    background: var(--fondo);
+}
+.formulario .botones button{
+  width: 48%;
   font-size: 18px;
   border:none;
   padding: 8px 10px;
   border-radius: 5px;
   cursor: pointer;
-  background: var(--color2);
   margin:20px auto;
   font-family: 'Raleway', sans-serif;
 }
-.formulario button:hover{
+.formulario .botones button[type="submit"]:hover{
   background: var(--color3);
   color: white;
+}
+.formulario .botones .cancelar:hover{
+  background: #B9B8B8;
 }
 .formulario input[type="color"] {
     border: none;

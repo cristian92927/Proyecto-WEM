@@ -91,6 +91,7 @@ $(window).ready(function() { // Función que se ejecuta al cargar la ventana del
         // Variable que permite saber si se editará o se agregará un dato
         // en false lo agrega y en true lo edita
         edit_instructor = true;
+        validarLength();
     });
     // Se define la función submit para el formulario de agregar ambiente
     $('#agregar_ambiente').submit(function(ev) {
@@ -102,6 +103,7 @@ $(window).ready(function() { // Función que se ejecuta al cargar la ventana del
             descripcion_ambiente: $('#descripcion_ambiente').val(),
             id_amb: $('#id_amb').val()
         };
+        console.log(datos);
         // Condición para identificar si se agregará o se ediará información
         let lugar = edit_ambiente === false ? 'peticionesAjaxAmbiente&p=agregar' : 'peticionesAjaxAmbiente&p=editar';
         peticion(lugar, "POST", datos); // Se llama la función que hace la petición ajax
@@ -144,6 +146,7 @@ $(window).ready(function() { // Función que se ejecuta al cargar la ventana del
         $('#descripcion_ambiente').val(ambiente[0].descripcion_ambiente);
         // Se declara la variable bandera de ambiente como true para que el lugar sea editar
         edit_ambiente = true;
+        validarLength();
     });
     // Se define la función submit para el formulario de agregar competencia
     $('#agregar_competencia').submit(function(ev) {
@@ -197,6 +200,7 @@ $(window).ready(function() { // Función que se ejecuta al cargar la ventana del
         $('#descripcion_comp').val(competencia[0].descripcion_comp);
         // Se declara la variable bandera de ambiente como true para que el lugar sea editar
         edit_competencia = true;
+        validarLength();
     });
     $('#agregar_programaformacion').submit(function(ev) {
         ev.preventDefault();
@@ -233,6 +237,7 @@ $(window).ready(function() { // Función que se ejecuta al cargar la ventana del
         $('#nombre_programa').val(programaformacion[0].nombre_programa);
         $('#descripcion_programa').val(programaformacion[0].descripcion_programa);
         edit_programaformacion = true;
+        validarLength();
     });
     $('#agregar_contrato').submit(function(ev) {
         ev.preventDefault();
@@ -269,7 +274,24 @@ $(window).ready(function() { // Función que se ejecuta al cargar la ventana del
         $('#descripcion_contrato').val(contrato[0].descripcion_tipocontrato);
         $('#horas_contrato').val(contrato[0].horas_tipocontrato);
         edit_contrato = true;
+        validarLength();
     });
+    var botones = document.querySelectorAll('.cancelar');
+    for (var i = 0; i < botones.length; i++) {
+        botones[i].addEventListener('click', function() {
+            edit_instructor = false;
+            edit_ambiente = false;
+            edit_competencia = false;
+            edit_programaformacion = false;
+            edit_contrato = false;
+            $('#agregar_instructor').trigger('reset');
+            $('#agregar_ambiente').trigger('reset');
+            $('#agregar_competencia').trigger('reset');
+            $('#agregar_programaformacion').trigger('reset');
+            $('#agregar_contrato').trigger('reset');
+            validarLength();
+        });
+    }
 });
 
 function peticion(lugar, tipo, datos) {
@@ -446,6 +468,17 @@ window.addEventListener('click', function(e) {
         }
     }
 });
+
+function validarLength() {
+    var inputs = document.querySelectorAll('.input');
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value.length >= 1) {
+            inputs[i].nextElementSibling.classList.add('fijar');
+        } else {
+            inputs[i].nextElementSibling.classList.remove('fijar');
+        }
+    }
+}
 window.addEventListener('resize', function() {
     if (screen.width >= 700) {
         abierto = true;
@@ -456,10 +489,6 @@ window.addEventListener('resize', function() {
 var inputs = document.querySelectorAll('.input');
 for (var i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener('keyup', function() {
-        if (this.value.length >= 1) {
-            this.nextElementSibling.classList.add('fijar');
-        } else {
-            this.nextElementSibling.classList.remove('fijar');
-        }
+        validarLength();
     });
 }

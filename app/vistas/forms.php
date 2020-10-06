@@ -75,9 +75,12 @@ if (!isset($_SESSION['user'])) {
 							<input class="input" type="text" id="correo">
 							<label>Correo</label>
 							<select id="tipoContrato"></select>
-							<div class="color">Elige un color: <input type="color" id="color"></div>
+							<div class="color">Elige un color: <input type="color" id="color" value="#000000"></div>
+							<div class="botones">
+								<button type="submit">Guardar</button>
+								<button type="button" class="cancelar">Cancelar</button>
+							</div>
 
-							<button class="btn" type="submit">Guardar</button>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
@@ -102,14 +105,17 @@ if (!isset($_SESSION['user'])) {
 					</div>
 					<!------------ formulario agregar ambiente------------->
 					<div class="form" id="ambiente">
-						<form method="POST" id='agregar_ambiente' class="formulario">
+						<form method="POST" id="agregar_ambiente" class="formulario">
 							<h1>Formulario: Ambiente</h1>
 							<input type="hidden" id="id_amb">
 							<input class="input" type="text" id="nombre_ambiente">
 							<label>Nombre del ambiente</label>
 							<input class="input" type="text" id="descripcion_ambiente">
 							<label>Descripción del ambiente</label>
-							<button class="btn" type="submit">Guardar</button>
+							<div class="botones">
+								<button type="submit">Guardar</button>
+								<button type="button" class="cancelar">Cancelar</button>
+							</div>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
@@ -138,7 +144,10 @@ if (!isset($_SESSION['user'])) {
 							<label>Nombre de la competencia</label>
 							<input class="input" type="text" id="descripcion_comp">
 							<label>Descripción de la competencia</label>
-							<button class="btn" type="submit">Guardar</button>
+							<div class="botones">
+								<button type="submit">Guardar</button>
+								<button type="button" class="cancelar">Cancelar</button>
+							</div>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
@@ -167,7 +176,10 @@ if (!isset($_SESSION['user'])) {
 							<label>Nombre del programa de formación</label>
 							<input class="input" type="text" id="descripcion_programa">
 							<label>Descripción del programa</label>
-							<button class="btn" type="submit">Guardar</button>
+							<div class="botones">
+								<button type="submit">Guardar</button>
+								<button type="button" class="cancelar">Cancelar</button>
+							</div>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>
@@ -196,7 +208,10 @@ if (!isset($_SESSION['user'])) {
 							<label>Descripción del contrato</label>
 							<input class="input" type="text" id="horas_contrato">
 							<label>Cantidad de horas</label>
-							<button class="btn" type="submit">Guardar</button>
+							<div class="botones">
+								<button type="submit">Guardar</button>
+								<button type="button" class="cancelar">Cancelar</button>
+							</div>
 						</form>
 						<div class="lista">
 							<h2>Lista</h2>

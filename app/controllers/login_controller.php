@@ -181,7 +181,7 @@ class login_controller {
             $mail->Body    = $message;
 
             if ($mail->send()) {
-                echo '<script>alert("Se envió un token para cambiar contraseña a su correo."); </script>';
+                echo '<script>alert("Se envió un link a su correo para cambiar contraseña."); </script>';
                 $sqlEvent = "SET GLOBAL event_scheduler = ON";
                 $conexion->query($sqlEvent);
                 $sql2 = "CREATE EVENT borrar_token

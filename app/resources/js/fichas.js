@@ -31,7 +31,7 @@ window.addEventListener('load', function() {
         cont.style.display = 'none';
         edit_ficha = false;
     });
-    $('.fichas').on('click', '.editar', function() {
+    $('#cont_fichas').on('click', '.editar', function() {
         var id_fic = {
             id_fic: $(this)[0].parentElement.parentElement.parentElement.id
         };
@@ -42,8 +42,9 @@ window.addEventListener('load', function() {
         $('#num_ficha').val(ficha[0].num_ficha);
         $('#nombre_prog').val(ficha[0].id_programa);
         edit_ficha = true;
+        validarLength();
     });
-    $(".fichas").on('click', '.eliminar', function(ev) {
+    $("#cont_fichas").on('click', '.eliminar', function(ev) {
         if (confirm("Está seguro que desea eliminar esto?")) {
             let id_fic = {
                 id_fic: $(this)[0].parentElement.parentElement.parentElement.id
@@ -52,15 +53,20 @@ window.addEventListener('load', function() {
             mostrarFichas();
         }
     });
+    cont.addEventListener('click', function(e) { // Evento para esconder el formulario según donde se de clic
+        // condición para cerrar el form si se da por fuera de este o en la X
+        if (abierto == true && ((e.target == cont) || (e.target == cerrar))) {
+            abierto = false; // Se declara la variable como false para cerrar el form
+            cont.style.display = 'none'; // Se esconde el form
+            edit_ficha = false;
+            $("#form_ficha").trigger('reset');
+        }
+    });
 });
 var inputs = document.querySelectorAll('.input');
 for (var i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener('keyup', function() {
-        if (this.value.length >= 1) {
-            this.nextElementSibling.classList.add('fijar');
-        } else {
-            this.nextElementSibling.classList.remove('fijar');
-        }
+        validarLength();
     });
 }
 
@@ -131,15 +137,19 @@ function buscar_programaformacion() { // se define la funcion que busca los prog
     nombre_programa(programasformaciones); // Se llama la función que agrega las funciones y se le pasa el array
 }
 
+function validarLength() {
+    var inputs = document.querySelectorAll('.input');
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value.length >= 1) {
+            inputs[i].nextElementSibling.classList.add('fijar');
+        } else {
+            inputs[i].nextElementSibling.classList.remove('fijar');
+        }
+    }
+}
+
 function mostrarForm() { // Se define la función que se encarga de mostrar el formulario
     cont.style.display = 'flex'; // Se muestra el formulario
     abierto = true; // Se le da el valor true a la variable bandera
+    validarLength();
 }
-cont.addEventListener('click', function(e) { // Evento para esconder el formulario según donde se de clic
-    // condición para cerrar el form si se da por fuera de este o en la X
-    if (abierto == true && ((e.target == cont) || (e.target == cerrar))) {
-        abierto = false; // Se declara la variable como false para cerrar el form
-        cont.style.display = 'none'; // Se esconde el form
-        $("#form_ficha").trigger('reset');
-    }
-});
