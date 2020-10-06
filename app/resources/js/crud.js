@@ -10,7 +10,9 @@ window.addEventListener('load', function() {
     for (var i = 0; i < td.length; i++) {
         td[i].addEventListener('dblclick', mostrarForm);
     }
-    // Función tipo submit para el envío de los datos para guardar el horario
+    /**
+     *  Función tipo submit para el envío de los datos para guardar el horario
+     */
     $('#formulario').submit(function(ev) {
         ev.preventDefault();
         var celda_select = document.querySelector("#" + celdaId);
@@ -98,7 +100,10 @@ function generarpdf() {
         }
     });
 }
-// Se defina la función que hace una petición de los datos de la ficha
+/**
+ *Se defina la función que hace una petición de los datos de la ficha
+ *
+ */
 function datosFichayTrimestre() {
     let id_fic = {
         id_fic: $('.table').attr("id")
