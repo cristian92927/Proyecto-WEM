@@ -1,4 +1,7 @@
 <?php
+/**
+ * Se llama el controlador principal
+ */
 require_once "app/controllers/controller.php";
 $regE = "";
 if (!empty($_POST['nombres']) && !empty($_POST['apellidos'])) {

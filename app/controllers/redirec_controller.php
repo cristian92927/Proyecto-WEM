@@ -1,10 +1,13 @@
 <?php
+/**
+ *Se llama el controlador principal
+ */
 require_once "app/controllers/controller.php";
 /**
  * redirec_controller
  *
  * Clase en la que se redireccionará a las diferentes vistas y
- * que hará las diferentes peticiones llamadas los archivos js
+ * que hará las diferentes peticiones y llamadas los archivos js
  */
 class redirec_controller {
     /**

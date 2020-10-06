@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2020 a las 16:25:40
+-- Tiempo de generación: 05-10-2020 a las 18:09:32
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -40,10 +40,9 @@ CREATE TABLE `ambiente` (
 --
 
 INSERT INTO `ambiente` (`id_Ambiente`, `Nombre_Ambiente`, `Descripcion_Ambiente`) VALUES
-(1, 'Informática 3', 'Pertenece al área adsi'),
+(1, 'Informática 1', 'Pertenece al área adsi'),
 (2, 'Informática 2', 'Pertenece al área adsi'),
-(10, 'Informatica 1', 'aa'),
-(12, 'Aula 5', 'No se');
+(3, 'Informática 3', 'Pertenece al area adsi');
 
 -- --------------------------------------------------------
 
@@ -62,9 +61,9 @@ CREATE TABLE `competencia` (
 --
 
 INSERT INTO `competencia` (`id_Competencia`, `Nombre_Comp`, `Descripcion_Comp`) VALUES
-(1, 'Analizar', 'Analisis del proyecto'),
-(2, 'Especificar', 'Especificar requisitos de proyecto'),
-(6, 'Hola', 'Que tal');
+(1, 'Planear', 'Analizar y especificar requisitos de proyecto'),
+(2, 'Hacer', 'Desarrollo de interfaces'),
+(3, 'Verificar', 'Pruebas de software');
 
 -- --------------------------------------------------------
 
@@ -74,9 +73,9 @@ INSERT INTO `competencia` (`id_Competencia`, `Nombre_Comp`, `Descripcion_Comp`) 
 
 CREATE TABLE `detalles_horario` (
   `id_Detalles_Horario` int(11) NOT NULL,
-  `dia` varchar(50) NOT NULL,
-  `hora_inicio` time NOT NULL,
-  `hora_fin` time NOT NULL,
+  `Dia` varchar(50) NOT NULL,
+  `Hora_Inicio` time NOT NULL,
+  `Hora_Fin` time NOT NULL,
   `id_Ambiente` int(11) NOT NULL,
   `id_Competencia` int(11) NOT NULL,
   `id_Instructor` int(11) NOT NULL,
@@ -88,18 +87,19 @@ CREATE TABLE `detalles_horario` (
 -- Volcado de datos para la tabla `detalles_horario`
 --
 
-INSERT INTO `detalles_horario` (`id_Detalles_Horario`, `dia`, `hora_inicio`, `hora_fin`, `id_Ambiente`, `id_Competencia`, `id_Instructor`, `id_Horario`, `id_Usuario`) VALUES
-(76, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
-(77, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
-(78, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
-(79, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
-(80, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
-(81, 'Martes', '09:00:00', '12:00:00', 1, 1, 49, 26, 2),
-(82, 'Miercoles', '09:00:00', '12:00:00', 2, 2, 49, 26, 2),
-(83, 'Lunes', '09:00:00', '12:00:00', 1, 2, 49, 26, 2),
-(84, 'Viernes', '09:00:00', '12:00:00', 10, 1, 49, 26, 2),
-(85, 'Jueves', '09:00:00', '12:00:00', 12, 6, 40, 26, 2),
-(86, 'Jueves', '09:00:00', '12:00:00', 2, 2, 49, 26, 2);
+INSERT INTO `detalles_horario` (`id_Detalles_Horario`, `Dia`, `Hora_Inicio`, `Hora_Fin`, `id_Ambiente`, `id_Competencia`, `id_Instructor`, `id_Horario`, `id_Usuario`) VALUES
+(2, 'Lunes', '09:00:00', '12:00:00', 1, 1, 1, 1, 1),
+(3, 'Martes', '06:00:00', '09:00:00', 1, 1, 2, 1, 1),
+(4, 'Miercoles', '09:00:00', '12:00:00', 2, 3, 3, 1, 1),
+(5, 'Martes', '15:00:00', '18:00:00', 3, 2, 1, 1, 1),
+(6, 'Jueves', '12:00:00', '15:00:00', 2, 3, 2, 1, 1),
+(7, 'Lunes', '18:00:00', '21:00:00', 2, 2, 3, 1, 1),
+(8, 'Miercoles', '18:00:00', '21:00:00', 3, 1, 3, 1, 1),
+(9, 'Viernes', '15:00:00', '18:00:00', 2, 2, 1, 1, 1),
+(10, 'Viernes', '18:00:00', '21:00:00', 2, 1, 2, 1, 1),
+(11, 'Viernes', '06:00:00', '09:00:00', 1, 1, 3, 1, 1),
+(12, 'Viernes', '09:00:00', '12:00:00', 1, 1, 3, 2, 1),
+(13, 'Jueves', '09:00:00', '12:00:00', 2, 1, 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -119,8 +119,9 @@ CREATE TABLE `ficha` (
 --
 
 INSERT INTO `ficha` (`id_Ficha`, `Nombre_Gestor`, `Numero_Ficha`, `id_Programa`) VALUES
-(29, 'Edwy Alexander Patiño', '1835082', 1),
-(30, 'Juan Pablo', '1234567', 1);
+(1, 'Edwy Alexander Patiño', '1835082', 1),
+(2, 'Juan Pablo', '123456', 1),
+(3, 'Edilfredo Pineda Florez', '1234567', 2);
 
 -- --------------------------------------------------------
 
@@ -141,8 +142,9 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`id_Horario`, `Trimestre`, `Fecha_Inicio`, `Fecha_Fin`, `id_Ficha`) VALUES
-(26, 'Trimestre 1', '2020-09-18', '2020-12-18', 29),
-(27, 'Trimestre 2', '2020-09-18', '2020-09-24', 29);
+(1, 'Trimestre 1', '2020-10-03', '2020-10-31', 1),
+(2, 'Trimestre 2', '2020-10-03', '2020-10-31', 2),
+(3, 'Trimestre 1', '2020-10-07', '2020-10-30', 3);
 
 -- --------------------------------------------------------
 
@@ -165,8 +167,9 @@ CREATE TABLE `instructor` (
 --
 
 INSERT INTO `instructor` (`id_Instructor`, `Nombres`, `Apellidos`, `Documento`, `Correo`, `Color`, `id_TipoContrato`) VALUES
-(40, 'Lee', 'Escobar', '123', 'lee@misena.edu.co', '#eb5505', 1),
-(49, 'Edwy', 'Patiño', '1', 'edwy@misena.edu.co', '#0a47ff', 1);
+(1, 'Edwy', 'Patiño', '123456789', 'edwy@sena.edu.co', '#e70808', 1),
+(2, 'Lee', 'Escobar', '987654321', 'lee@sena.edu.com', '#00bfff', 2),
+(3, 'Edilfredo', 'Pineda', '987612345', 'edilfredo@sena.edu.co', '#3dfd08', 2);
 
 -- --------------------------------------------------------
 
@@ -185,8 +188,8 @@ CREATE TABLE `programa_formacion` (
 --
 
 INSERT INTO `programa_formacion` (`id_Programa`, `Nombre_Programa`, `Descripcion_Programa`) VALUES
-(1, 'ADSI', 'Análisis y Desarrollo de Sistemas de Informacion'),
-(10, 'SST', 'Seguridad y Salud en el Trabajo');
+(1, 'ADSI', 'Análisis y Desarrollo de Sistemas de Informacio'),
+(2, 'SST', 'Seguridad y Salud en el Trabajo');
 
 -- --------------------------------------------------------
 
@@ -240,8 +243,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_Usuario`, `Nombres`, `Apellidos`, `Correo`, `Contrasena`, `Token`, `id_Rol`) VALUES
-(2, 'Juan Pablo', 'Guevara', 'juanpa2062@hotmail.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
-(3, 'Proyecto Wem', 'Sena', 'proyectowemsena@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL);
+(1, 'Juan', 'Guevara', 'juanpa2062@hotmail.com', 'e32f53597fa0afc5afa07fd629314774', NULL, NULL),
+(2, 'Juan', 'Guevara', 'proyectowemsena@gmail.com', 'e32f53597fa0afc5afa07fd629314774', NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -324,43 +327,43 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `ambiente`
 --
 ALTER TABLE `ambiente`
-  MODIFY `id_Ambiente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_Ambiente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `competencia`
 --
 ALTER TABLE `competencia`
-  MODIFY `id_Competencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_Competencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `detalles_horario`
 --
 ALTER TABLE `detalles_horario`
-  MODIFY `id_Detalles_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id_Detalles_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `ficha`
 --
 ALTER TABLE `ficha`
-  MODIFY `id_Ficha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_Ficha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `id_Instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id_Instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `programa_formacion`
 --
 ALTER TABLE `programa_formacion`
-  MODIFY `id_Programa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_Programa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -372,13 +375,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `tipocontrato`
 --
 ALTER TABLE `tipocontrato`
-  MODIFY `id_TipoContrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_TipoContrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
