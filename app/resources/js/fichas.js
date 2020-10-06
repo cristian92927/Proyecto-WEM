@@ -54,7 +54,8 @@ window.addEventListener('load', function() {
             id_fic: $(this)[0].parentElement.parentElement.parentElement.id
         };
         /** 
-         * Se captura las datos del formulario para obtener los datos
+         * Se captura las datos del formulario para obtener los datos y realizar
+         * la peticion
         */
         mostrarForm();
         var ficha = peticion("peticionesAjaxFicha&p=obtenerdatos", "POST", id_fic);
