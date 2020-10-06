@@ -375,7 +375,7 @@ $(window).ready(function() {
             id_cont: $('#id_contrato').val()
         };
         /** 
-         * Condición para identificar si se agregará o se editará información
+         * Condición para identificar si se agregará o se editará información 
         */
         let lugar = edit_contrato === false ? 'peticionesAjaxContrato&p=agregar' : 'peticionesAjaxContrato&p=editar';
         peticion(lugar, "POST", datos)
