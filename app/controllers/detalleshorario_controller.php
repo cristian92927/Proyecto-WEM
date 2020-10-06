@@ -1,11 +1,24 @@
 <?php
-
+/**
+ *Se llama el modelo conexion
+ */
 require_once "app/models/conexion.php";
-
+/**
+ * detalleshorario_controller
+ * 
+ * Se usa para el funcionamiento del CRUD de la clase detalleshorario
+ */
 class detalleshorario_controller {
-
+    /**
+     * @construct
+     */
     public function __construct() {}
-
+    /**
+     * @Main - función que llama los diferentes métodos de la clase
+     * @param type $option recibe un parametro tipo int para hacer el switch
+     * @param type|array $array recibe un array con los diferentes datos que se utilizran
+     * @return type retorna la variable result que retorna true, false o un array de datos
+     */
     public static function Main($option, $array = []) {
         $login = new detalleshorario_controller();
         switch ($option) {
@@ -27,11 +40,21 @@ class detalleshorario_controller {
         }
         return $result;
     }
+    /**
+     * @consult - función que hace la consulta de toda la información de detalleshorario
+     * @return retorna un array de datos
+     */
     public function consult($array) {
         $conexion = Conexion::connection();
         $sql      = "SELECT id_Detalles_Horario, Dia, Hora_Inicio, Hora_Fin, i.id_Instructor ,Nombres, Color, Nombre_Ambiente, Nombre_Comp FROM detalles_horario dh INNER JOIN instructor i on dh.id_Instructor = i.id_Instructor INNER JOIN ambiente a on dh.id_Ambiente = a.id_Ambiente INNER JOIN competencia c on dh.id_Competencia = c.id_Competencia WHERE id_Horario = '$array[0]'";
         return $conexion->query($sql);
     }
+    /**
+     * @insert - función que hace una consulta para verificar que si exista o no ese registro
+     *           en caso negativo hará un inserción de datos
+     * @param type $array recibe un array de datos que se utlizaran para consultar o para insertar
+     * @return type retorna un true o un false
+     */
     public function insert($array) {
         $resp     = [];
         $conexion = Conexion::connection();
@@ -49,11 +72,21 @@ class detalleshorario_controller {
             echo 'Error';
         }
     }
+    /**
+     * @consultInstructor - función que realiza una consulta inner join para buscar informacion en varias tablas
+     * @param $array que recibe una array que trae los datos solicitados
+     * @return type retorna la consulta
+     */
     public function consultInstructor($array) {
         $conexion = Conexion::connection();
         $sql      = "SELECT Dia, Hora_Inicio, Hora_Fin, Color, Nombre_Ambiente, Nombre_Comp, Numero_Ficha FROM detalles_horario dh INNER JOIN instructor i ON dh.id_Instructor = i.id_Instructor INNER JOIN ambiente a ON dh.id_Ambiente = a.id_Ambiente INNER JOIN competencia c ON dh.id_Competencia = c.id_Competencia INNER JOIN horario h ON dh.id_Horario = h.id_Horario INNER JOIN ficha f ON h.id_Ficha = f.id_Ficha WHERE dh.id_Instructor = '$array[0]' AND (h.Fecha_Inicio BETWEEN CAST('$array[1]' AS DATE) AND CAST('$array[2]' AS DATE)) AND (h.Fecha_Fin BETWEEN CAST('$array[1]' AS DATE) AND CAST('$array[2]' AS DATE))";
         return $conexion->query($sql);
     }
+    /**
+     * @delete - función para eliminar una fila de datos según el id
+     * @param type $array recibe un array con el id que se utilizara en la consulta
+     * @return type retorna un true o un false
+     */
     public function delete($array) {
         $conexion = Conexion::connection();
         $sql      = "DELETE FROM detalles_horario WHERE id_Detalles_Horario = ? ";

@@ -1,8 +1,15 @@
 <?php
-
+/**
+ * Se inicia la sesion del usuario
+ * Se llama al controlador principal
+ */
 @session_start();
 require_once "app/controllers/controller.php";
 $loginE = "";
+/**
+ * Se realiza una condición para recibir los datos del formulario
+ * Se compara con los registro existentes para el inicio de sesion
+ */
 if (!empty($_POST['correo']) && !empty($_POST['pw'])) {
     $login = new controller();
     $array = [];

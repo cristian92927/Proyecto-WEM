@@ -1,5 +1,8 @@
 <?php
-
+/**
+ *Se llama el modelo conexion
+ * Se llama y usa la libreria PHPMailer
+ */
 require_once "app/models/conexion.php";
 use PHPMailer\PHPMailer\PHPMailer;
 
