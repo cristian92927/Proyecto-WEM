@@ -73,7 +73,7 @@ $(window).ready(function() {
             id: $('#id').val()
         };
         /** 
-         * Condición para identificar si se agregará o se ediará información
+         * Condición para identificar si se agregará o se editará información
         */
         let lugar = edit_instructor === false ? 'peticionesAjax&p=agregar' : 'peticionesAjax&p=editar';
         /** 
@@ -303,10 +303,15 @@ $(window).ready(function() {
         $('#id_comp').val(competencia[0].id_comp);
         $('#nombre_comp').val(competencia[0].nombre_comp);
         $('#descripcion_comp').val(competencia[0].descripcion_comp);
-        // Se declara la variable bandera de ambiente como true para que el lugar sea editar
+        /** 
+         * Se declara la variable bandera de ambiente como true para que el lugar sea editar
+        */
         edit_competencia = true;
         validarLength();
     });
+    /** 
+     * Se define la función submit para el formulario de agregar programa de formacion
+    */
     $('#agregar_programaformacion').submit(function(ev) {
         ev.preventDefault();
         const datos = {
@@ -314,12 +319,18 @@ $(window).ready(function() {
             descripcion_programa: $('#descripcion_programa').val(),
             id_pf: $('#id_pf').val()
         };
+        /** 
+         * Condición para identificar si se agregará o se editará información
+        */
         let lugar = edit_programaformacion === false ? 'peticionesAjaxProgramaFormacion&p=agregar' : 'peticionesAjaxProgramaFormacion&p=editar';
         peticion(lugar, "POST", datos);
         buscar_programaformacion();
         $(this).trigger('reset');
         edit_programaformacion = false;
     });
+    /** 
+     * Se define el evento click al boton borrar de la lista de programa
+    */
     $("#programa").on('click', '.borrar', function(ev) {
         if (confirm("Are you sure you want to delete it?")) {
             let element = $(this)[0].parentElement.parentElement;
@@ -330,6 +341,9 @@ $(window).ready(function() {
             buscar_programaformacion();
         }
     });
+     /** 
+     * Se define el evento click al boton editar de la lista de programa
+    */
     $("#programa").on("click", ".editar", function() {
         let element = $(this)[0].parentElement.parentElement;
         let id_pf = {
@@ -340,12 +354,19 @@ $(window).ready(function() {
          * Que tiene el formulario4, con una peticion de consulta que se hace en el servlet obtenerId
          */
         var programaformacion = peticion("peticionesAjaxProgramaFormacion&p=obtenerdatos", "POST", id_pf);
+        /** 
+         * Se insertan los datos que se almacenaron en la variable ambiente en los respectivos
+         * inputs del formulario
+        */
         $('#id_pf').val(programaformacion[0].id_pf);
         $('#nombre_programa').val(programaformacion[0].nombre_programa);
         $('#descripcion_programa').val(programaformacion[0].descripcion_programa);
         edit_programaformacion = true;
         validarLength();
     });
+    /** 
+     * Se define la función submit para el formulario de agregar contrato
+    */
     $('#agregar_contrato').submit(function(ev) {
         ev.preventDefault();
         const datos = {
@@ -353,12 +374,18 @@ $(window).ready(function() {
             horas_tipocontrato: $('#horas_contrato').val(),
             id_cont: $('#id_contrato').val()
         };
+        /** 
+         * Condición para identificar si se agregará o se editará información
+        */
         let lugar = edit_contrato === false ? 'peticionesAjaxContrato&p=agregar' : 'peticionesAjaxContrato&p=editar';
         peticion(lugar, "POST", datos)
         buscar_contrato();
         $(this).trigger('reset');
         edit_contrato = false;
     });
+    /** 
+     * Se define el evento click al boton editar de la lista del contrato
+    */
     $("#contrato").on('click', '.borrar', function(ev) {
         if (confirm("Está seguro que quiere eliminar esto?")) {
             let element = $(this)[0].parentElement.parentElement;
@@ -369,6 +396,9 @@ $(window).ready(function() {
             buscar_contrato();
         }
     });
+    /** 
+     * Se define el evento click al boton editar de la lista del contrato
+    */
     $("#contrato").on("click", ".editar", function() {
         let element = $(this)[0].parentElement.parentElement;
         let id_cont = {
@@ -402,7 +432,14 @@ $(window).ready(function() {
         });
     }
 });
-
+/**
+ * Esta funcion esta cumpliendo con el objetivo para utilizar de forma general 
+ * para la diferentes peticiones
+ * @param {*} lugar
+ * @param {*} tipo
+ * @param {*} datos
+ * @return {*} 
+ */
 function peticion(lugar, tipo, datos) {
     let respuesta;
     $.ajax({
@@ -422,7 +459,9 @@ function peticion(lugar, tipo, datos) {
     });
     return respuesta;
 }
-
+/**
+ *Esta funciona solo estamos haciendo la peticion para mostrar los datos del instructor
+ */
 function buscar_instructor() {
     var instructores = peticion("peticionesAjax&p=mostrar", "GET", null);
     let template = '';
@@ -445,6 +484,9 @@ function buscar_instructor() {
     $('#lista_instructor').html(template);
 }
 
+/**
+ *Esta funciona solo estamos haciendo la peticion para mostrar los datos del ambiente
+ */
 function buscar_ambiente() {
     var ambientes = peticion("peticionesAjaxAmbiente&p=mostrar", "GET", null);
     let template = '';
@@ -462,7 +504,9 @@ function buscar_ambiente() {
     });
     $('#lista_ambiente').html(template);
 }
-
+/**
+ *Esta funciona solo estamos haciendo la peticion para mostrar los datos de la competencia
+ */
 function buscar_competencia() {
     var competencias = peticion("peticionesAjaxCompetencia&p=mostrar", "GET", null);
     let template = '';
@@ -480,7 +524,9 @@ function buscar_competencia() {
     });
     $('#lista_competencia').html(template);
 }
-
+/**
+ *Esta funciona solo estamos haciendo la peticion para mostrar los datos de la ficha
+ */
 function buscar_ficha() {
     var fichas = peticion("peticionesAjaxFicha&p=mostrar", "GET", null);
     let template = '';
@@ -499,7 +545,9 @@ function buscar_ficha() {
     });
     $('#lista_ficha').html(template);
 }
-
+/**
+ *Esta funciona solo estamos haciendo la peticion para mostrar los datos del programa formacion
+ */
 function buscar_programaformacion() {
     var programasformaciones = peticion("peticionesAjaxProgramaFormacion&p=mostrar", "GET", null);
     let template = '';
@@ -518,7 +566,10 @@ function buscar_programaformacion() {
     $('#lista_programa').html(template);
 }
 let select_contrato = document.querySelector('#tipoContrato');
-
+/**
+ *llenar el select del formualario del instructor para aisgnar el tipo de contrato
+ * @param {*} [array=[]]
+ */
 function tipoContrato(array = []) {
     $("#tipoContrato option").remove();
     let optionDefault = document.createElement("option");
@@ -531,7 +582,9 @@ function tipoContrato(array = []) {
         select_contrato.add(option);
     }
 }
-
+/**
+ *Esta funciona solo estamos haciendo la peticion para mostrar los datos del contrato
+ */
 function buscar_contrato() {
     var contratos = peticion("peticionesAjaxContrato&p=mostrar", "GET", null);
     let template = '';
@@ -556,8 +609,10 @@ let abierto = true;
 mostrar.addEventListener('click', function() {
     menuforms();
 });
-
-function menuforms() { // Función para abrir o cerrar el menú del nav cuando está responsive
+/** 
+ *  Función para abrir o cerrar el menú del nav cuando está responsive
+*/
+function menuforms() { 
     if (abierto) {
         forms.style.height = '170px';
         abierto = false;
@@ -569,7 +624,9 @@ function menuforms() { // Función para abrir o cerrar el menú del nav cuando e
 }
 window.addEventListener('click', function(e) {
     if (abierto == false) {
-        // condición para cerrar el menú si se da por fuera o en el icono
+        /** 
+         * condición para cerrar el menú si se da por fuera o en el icono
+        */
         if (e.target !== mostrar) {
             forms.style.height = '0px';
             forms.style.overflow = 'hidden';
@@ -577,7 +634,10 @@ window.addEventListener('click', function(e) {
         }
     }
 });
-
+/**
+ * Esta fucncion devuelve el número de caracteres de una cadena segun 
+ * la cantidad.
+ */
 function validarLength() {
     var inputs = document.querySelectorAll('.input');
     for (var i = 0; i < inputs.length; i++) {
@@ -588,6 +648,10 @@ function validarLength() {
         }
     }
 }
+/** 
+ * Registra un evento a un objeto en específico. 
+ * El ObJeto especifico puede ser un simple elemento en un archivo
+*/
 window.addEventListener('resize', function() {
     if (screen.width >= 700) {
         abierto = true;
