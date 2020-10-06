@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
     });
     document.getElementById("enviar").addEventListener('click', function(e) {
         //Este comando evita recargar la página
-        // e.preventDefault();
+        e.preventDefault();
         validateForm2();
     });
     //Resetear o vaciar el formulario cuando el módulo cargue

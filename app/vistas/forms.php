@@ -87,7 +87,6 @@ if (!isset($_SESSION['user'])) {
 							<table>
 								<thead>
 									<tr>
-										<th>id</th>
 										<th>Nombres</th>
 										<th>Apellidos</th>
 										<th>CC</th>
@@ -122,7 +121,6 @@ if (!isset($_SESSION['user'])) {
 							<table>
 								<thead>
 									<tr>
-										<th>id</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
 										<th>Funciones</th>
@@ -154,7 +152,6 @@ if (!isset($_SESSION['user'])) {
 							<table>
 								<thead>
 									<tr>
-										<th>id</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
 										<th>Funciones</th>
@@ -186,7 +183,6 @@ if (!isset($_SESSION['user'])) {
 							<table>
 								<thead>
 									<tr>
-										<th>id</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
 										<th>Funciones</th>
@@ -218,7 +214,6 @@ if (!isset($_SESSION['user'])) {
 							<table>
 								<thead>
 									<tr>
-										<th>id</th>
 										<th>Descripcion</th>
 										<th>Horas</th>
 										<th>Funciones</th>

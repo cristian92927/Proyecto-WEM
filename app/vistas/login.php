@@ -23,7 +23,7 @@ if (!empty($_POST['correo']) && !empty($_POST['pw'])) {
     }
 }
 
-if (!empty($_POST['receptor']) && isset($_POST['enviar'])) {
+if (!empty($_POST['receptor'])) {
     $login = new controller();
     $array = [];
     $token = uniqid();
