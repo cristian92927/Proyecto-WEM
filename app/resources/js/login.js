@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
     });
     document.getElementById("enviar").addEventListener('click', function(e) {
         //Este comando evita recargar la página
-        e.preventDefault();
+        // e.preventDefault();
         validateForm2();
     });
     //Resetear o vaciar el formulario cuando el módulo cargue
@@ -74,14 +74,12 @@ function  validateForm1()  {
 
 function validateForm2() {
     var  correo2  =  $("#email2").val();
+    const expresionCorreo2 = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     //Validación del campo correo no esté vacío
     if  (correo2  ==  ""  ||  correo2  ==  null)  {
         call("email2", "El campo del email es obligatorio.");
         return  false;
         //Validación del campo correo que cumpla con el formato example_12@example.com
-    } else if (!expresionCorreo.test(correo2)) {
-        call("email2", "Ingresa un email válido como: example@example.com");
-        return false;
     } else {
         colorDefault("email2");
     }
