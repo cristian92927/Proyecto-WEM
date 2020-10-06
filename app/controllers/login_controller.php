@@ -156,6 +156,7 @@ class login_controller {
             $message .= "
             <div class='container-msg'>
                 <h1>Restablecer contraseña</h1>
+                <p>Este correo solo sera valido por 3 minutos </p>
                 <p>Para restablecer su contraseña haga click en el siguiente boton: </p>
 
                 <a href='http://localhost/Proyecto-WEM/index.php?v=recuperarPw&token=" . $array[0] . "'><button class='boton'>Restablecer Contraseña</button></a>
