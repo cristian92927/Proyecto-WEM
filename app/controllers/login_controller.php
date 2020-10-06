@@ -188,7 +188,7 @@ class login_controller {
                 $sqlEvent = "SET GLOBAL event_scheduler = ON";
                 $conexion->query($sqlEvent);
                 $sql2 = "CREATE EVENT borrar_token
-                        ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE
+                        ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 3 MINUTE
                         DO UPDATE usuario SET token = null WHERE token = '$array[0]'";
                 $conexion->query($sql2);
 
