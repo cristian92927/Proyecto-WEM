@@ -5,6 +5,7 @@ require_once "app/controllers/controller.php";
 if (!isset($_SESSION['user'])) {
     header("Location: index.php");
 }
+if ($_SESSION['user'][6]==1){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +34,7 @@ if (!isset($_SESSION['user'])) {
 					<img src="app/resources/img/logo.png" alt="">
 				</div>
 				<div id="enlaces" class="enlaces">
-					<a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
+					<a href="index.php?v=adminFichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
 					<a id="enlace-atras" class="btn-header">Atrás</a>
 					<a href="index.php?v=perfil" id="usuario"><?php echo $_SESSION['user'][1]; ?></a>
 					<a href="app/models/salir.php" id="salir">Cerrar Sesión</a>
@@ -238,3 +239,8 @@ crossorigin="anonymous"></script>
 <script src="app/resources/js/nav.js"></script>
 <script src="app/resources/js/forms.js"></script>
 </html>
+<?php 
+}else if ($_SESSION['user'][6]==2){
+	header('Location: index.php?v=fichas');
+}
+?>

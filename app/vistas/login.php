@@ -17,7 +17,7 @@ if (!empty($_POST['correo']) && !empty($_POST['pw'])) {
     $_SESSION['user'] = $login->Login(0, $array);
     $resultado        = $_SESSION['user'];
     if ($resultado != null) {
-        header("Location: index.php?v=fichas");
+        header("Location: index.php?v=adminFichas");
     } else {
         $loginE = "Usuario o contraseña incorrectos";
     }

@@ -37,6 +37,9 @@ class detalleshorario_controller {
         case 3:
             $result = $login->delete($array);
             break;
+        case 4:
+            $result = $login->horas($array);
+            break;
         }
         return $result;
     }
@@ -93,6 +96,11 @@ class detalleshorario_controller {
         $stmt     = $conexion->prepare($sql);
         $stmt->bind_param("i", $array[0]);
         $stmt->execute();
+    }
+    public function horas($array) {
+        $conexion = Conexion::connection();
+        $sql    = "SELECT COUNT(id_Instructor) FROM detalles_horario dh INNER JOIN horario h ON dh.id_Horario = h.id_Horario WHERE id_Instructor = '$array[0]' AND (h.Fecha_Inicio BETWEEN CAST('$array[1]' AS DATE) AND CAST('$array[2]' AS DATE))";
+        return $conexion->query($sql);
     }
 }
 

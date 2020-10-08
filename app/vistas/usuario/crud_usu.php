@@ -5,7 +5,7 @@ require_once "app/controllers/controller.php";
 if (!isset($_SESSION['user'])) {
     header("Location: index.php");
 }
-
+if ($_SESSION['user'][6]==2){
 if (isset($_GET["n"]) && isset($_GET['t'])) {
     ?>
 <!DOCTYPE html>
@@ -43,8 +43,7 @@ if (isset($_GET["n"]) && isset($_GET['t'])) {
                     <img src="app/resources/img/logo.png" alt="">
                 </div>
                 <div id="enlaces" class="enlaces">
-                    <a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Mis Fichas</a>
-                    <a href="index.php?v=forms" id="enlace-registros" class="btn-header">Registros</a>
+                    <a href="index.php?v=fichas" id="enlace-ambientes" class="btn-header">Fichas</a>
                     <a id="enlace-atras" class="btn-header">Atrás</a>
                     <a href="index.php?v=perfil" id="usuario"><?php echo $_SESSION['user'][1]; ?></a>
                     <a href="app/models/salir.php" id="salir">Cerrar Sesión</a>
@@ -57,36 +56,7 @@ if (isset($_GET["n"]) && isset($_GET['t'])) {
     </header>
     <!---------- MAIN -------------->
     <main data-user="<?php echo $_SESSION['user'][0]; ?>">
-        <div id="cont_form">
-            <div id="form">
-                <i class="icon-cross" id="cerrar"></i>
-                <form method="POST" id="formulario">
-                    <h1>Seleccionar</h1>
-                    <div class="select">
-                        <label for="">Instructor:</label>
-                        <select id="select_instructor">
-                            <option selected disabled>Seleccione alguno</option>
-                        </select>
-                    </div>
-
-                    <div class="select">
-                        <label for="">Competencia:</label>
-                        <select id="select_competencia">
-                            <option selected disabled>Seleccione alguno</option>
-                        </select>
-                    </div>
-
-                    <div class="select">
-                        <label for="">Ambiente:</label>
-                        <select id="select_ambiente">
-                            <option selected disabled>Seleccione alguno</option>
-                        </select>
-                    </div>
-
-                    <button type="submit">Guardar</button>
-                </form>
-            </div>
-        </div>
+        
         <div class="table" id="<?php echo $_GET['n']; ?>">
 
             <table id="<?php echo $_GET['t']; ?>">
@@ -159,12 +129,15 @@ crossorigin="anonymous"></script>
 <script type="text/javascript" src="app/resources/libjs/jspdf.min.js"></script>
 <script src="app/resources/js/nav.js"></script>
 <script src="app/resources/js/loader.js"></script>
-<script src="app/resources/js/crud.js"></script>
+<script src="app/resources/js/crud_usu.js"></script>
 
 </body>
 </html>
 <?php
 } else {
     header("Location: index.php?v=fichas");
+}
+}else if($_SESSION['user'][6]==1){
+    header('Location: index.php?v=adminCrud');
 }
 ?>

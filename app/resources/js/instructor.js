@@ -75,10 +75,26 @@ function datosFichayTrimestre() {
             // Se inserta el numero de la ficha en el título de la tabla
             $('#fecha').html(`<p inicio="${trimestre[0].fecha_inicio}" fin="${trimestre[0].fecha_fin}">Fecha: ${trimestre[0].fecha_inicio} / ${trimestre[0].fecha_fin}</p>`);
             buscarHorario(trimestre[0].fecha_inicio, trimestre[0].fecha_fin);
+            hora(trimestre[0].fecha_inicio, trimestre[0].fecha_fin);
         }
     });
 }
-
+function hora(inicio, fin) {
+    var datos = {
+        id_instructor: $('.table')[0].id,
+        fecha_inicio: inicio,
+        fecha_fin: fin
+    }
+    $.ajax({
+        url: "http://localhost/Proyecto-WEM/index.php?v=peticionesAjaxDetallesHorario&p=horas",
+        type: "POST",
+        data: datos,
+        success: function(response) {
+            const horas=JSON.parse(response);
+            $('#horasp').html( `<p>Horas: ${horas[0].horas * 3}</p>`);
+        }
+    });
+}
 function buscarHorario(inicio, fin) {
     const datos = {
         id_instructor: $('.table')[0].id,

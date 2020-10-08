@@ -94,7 +94,7 @@ class login_controller {
         $result   = $conexion->query($sql);
         $filas    = $result->num_rows;
         if ($filas === 0) {
-            $stmt = $conexion->prepare("INSERT INTO usuario(Nombres,Apellidos,Correo,Contrasena) VALUES( ?, ?, ?, MD5(?))");
+            $stmt = $conexion->prepare("INSERT INTO usuario(Nombres,Apellidos,Correo,Contrasena,id_Rol) VALUES( ?, ?, ?, MD5(?),2)");
             $stmt->bind_param("ssss", $array[0], $array[1], $array[2], $array[3]);
             $stmt->execute();
             echo "<script>

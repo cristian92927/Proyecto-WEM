@@ -45,44 +45,12 @@ class redirec_controller {
         $this->redireccion('registro');
     }
     /**
-     * @crud
-     *
-     * Función para redireccionar a la vista crud.php
-     */
-    public function crud() {
-        $this->redireccion('crud');
-    }
-    /**
-     * @forms
-     *
-     * Función para redireccionar a la vista forms.php
-     */
-    public function forms() {
-        $this->redireccion('forms');
-    }
-    /**
      * @recuperarPw
      *
      * Función para redireccionar a la vista recuperarPw.php
      */
     public function recuperarPw() {
         $this->redireccion('recuperarPw');
-    }
-    /**
-     * @fichas
-     *
-     * Función para redireccionar a la vista fichas.php
-     */
-    public function fichas() {
-        $this->redireccion('fichas');
-    }
-    /**
-     * @trimestre
-     *
-     * Función para redireccionar a la vista trimestres.php
-     */
-    public function trimestre() {
-        $this->redireccion('trimestres');
     }
     /**
      * @detallesinstructor
@@ -99,6 +67,63 @@ class redirec_controller {
      */
     public function perfil() {
         $this->redireccion('perfil');
+    }
+    /**
+     * @adminCrud
+     *
+     * Función para redireccionar a la vista crud.php
+     */
+    public function adminCrud() {
+        $this->redireccion('/administrador/crud');
+    }
+    /**
+     * @adminForms
+     *
+     * Función para redireccionar a la vista forms.php
+     */
+    public function adminForms() {
+        $this->redireccion('/administrador/forms');
+    }
+    
+    /**
+     * @adminFichas
+     *
+     * Función para redireccionar a la vista fichas.php
+     */
+    public function adminFichas() {
+        $this->redireccion('/administrador/fichas');
+    }
+    /**
+     * @adminTrimestre
+     *
+     * Función para redireccionar a la vista trimestres.php
+     */
+    public function adminTrimestre() {
+        $this->redireccion('/administrador/trimestres');
+    }
+     /**
+     * @crud
+     *
+     * Función para redireccionar a la vista crud.php
+     */
+    public function crud() {
+        $this->redireccion('/usuario/crud_usu');
+    }
+    /**
+     * @fichas
+     *
+     * Función para redireccionar a la vista fichas.php
+     */
+    public function fichas() {
+        $this->redireccion('/usuario/fichas_usu');
+    }
+    /**
+     * @trimestre
+     *
+     * Función para redireccionar a la vista trimestres.php
+     */
+    public function trimestre() {
+        $this->redireccion('/usuario/trimestres_usu');
     }
     /**
      * @peticionUsuario
@@ -463,6 +488,13 @@ class redirec_controller {
             $array = [];
             array_push($array, $_POST['id_dh']);
             $result = $controller->detalleshorario(3, $array);
+            break;
+        case 'horas':
+             $array = [];
+            array_push($array, $_POST['id_instructor'],$_POST['fecha_inicio'],$_POST['fecha_fin']);
+            $result    = $controller->detalleshorario(4, $array);
+            $resultado = api_response::mostrar($result, ["horas"]);
+            echo $resultado;
             break;
         }
     }

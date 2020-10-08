@@ -123,7 +123,7 @@ function mostrarFichas() {
         <p>${ficha['nombre_gestor']}</p>
         </div>
         <div class="info">
-        <p><a href="index.php?v=trimestre&n=${ficha["id_fic"]}" class="abrir">Abrir</a></p>
+        <p><a href="index.php?v=adminTrimestre&n=${ficha["id_fic"]}" class="abrir">Abrir</a></p>
         <p><a class="editar">Editar</a></p>
         <p><a class="eliminar">Eliminar</a></p>
         </div>
