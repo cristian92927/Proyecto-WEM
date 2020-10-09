@@ -84,7 +84,7 @@ class redirec_controller {
     public function adminForms() {
         $this->redireccion('/administrador/forms');
     }
-    
+
     /**
      * @adminFichas
      *
@@ -101,7 +101,7 @@ class redirec_controller {
     public function adminTrimestre() {
         $this->redireccion('/administrador/trimestres');
     }
-     /**
+    /**
      * @crud
      *
      * Función para redireccionar a la vista crud.php
@@ -490,10 +490,17 @@ class redirec_controller {
             $result = $controller->detalleshorario(3, $array);
             break;
         case 'horas':
-             $array = [];
-            array_push($array, $_POST['id_instructor'],$_POST['fecha_inicio'],$_POST['fecha_fin']);
+            $array = [];
+            array_push($array, $_POST['id_instructor'], $_POST['fecha_inicio'], $_POST['fecha_fin']);
             $result    = $controller->detalleshorario(4, $array);
             $resultado = api_response::mostrar($result, ["horas"]);
+            echo $resultado;
+            break;
+        case 'existe':
+            $array = [];
+            array_push($array, $_POST['dia'], $_POST['hora_inicio'], $_POST['hora_fin'], $_POST['fecha_inicio'], $_POST['fecha_fin'], $_POST['id_horario']);
+            $result    = $controller->detalleshorario(5, $array);
+            $resultado = api_response::mostrar($result, ["dia", "hora_inicio", "hora_fin", "fecha_inicio", "fecha_fin", "id_horario"]);
             echo $resultado;
             break;
         }

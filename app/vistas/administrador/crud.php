@@ -5,9 +5,9 @@ require_once "app/controllers/controller.php";
 if (!isset($_SESSION['user'])) {
     header("Location: index.php");
 }
-if ($_SESSION['user'][6]==1){
+if ($_SESSION['user'][6] == 1) {
     if (isset($_GET["n"]) && isset($_GET['t'])) {
-    ?>
+        ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -88,7 +88,7 @@ if ($_SESSION['user'][6]==1){
             </div>
         </div>
         <div class="table" id="<?php echo $_GET['n']; ?>">
-
+            <p id="alerta" class="alerta"></p>
             <table id="<?php echo $_GET['t']; ?>">
                 <tr>
                     <th colspan="6" id="num_ficha"></th>
@@ -164,10 +164,10 @@ crossorigin="anonymous"></script>
 </body>
 </html>
 <?php
-    } else {
+} else {
         header("Location: index.php?v=adminFichas");
     }
-}else if ($_SESSION['user'][6]==2){
+} else if ($_SESSION['user'][6] == 2) {
     header('Location: index.php?v=crud');
 }
 ?>

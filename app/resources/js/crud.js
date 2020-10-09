@@ -8,7 +8,37 @@ window.addEventListener('load', function() {
     mostrarDatos();
     buscarHorario();
     for (var i = 0; i < td.length; i++) {
-        td[i].addEventListener('dblclick', mostrarForm);
+        td[i].addEventListener('dblclick', function(ev) {
+            if (ev.target.className == 'drops') {
+                celdaId = ev.target.id;
+            } else if (ev.target.className == 'caja') {
+                celdaId = ev.target.parentElement.id;
+            } else if (ev.target.className == 'icon-cog') {
+                celdaId = ev.target.parentElement.parentElement.parentElement.id;
+            } else {
+                celdaId = ev.target.parentElement.parentElement.id;
+            }
+            // celdaId = ev.target.className === 'drops' ? ev.target.id : ev.target.parentElement.id;
+            // celdaId = ev.target.parentElement.id;
+            var celda_select = document.querySelector("#" + celdaId);
+            const datos = {
+                dia: celda_select.getAttribute('data-dia'),
+                hora_inicio: celda_select.parentElement.getAttribute('data-inicio'),
+                hora_fin: celda_select.parentElement.getAttribute('data-fin'),
+                fecha_inicio: $('#fecha p').attr('inicio'),
+                fecha_fin: $('#fecha p').attr('fin'),
+                id_horario: $('table')[0].id
+            }
+            var resultado = peticion("peticionesAjaxDetallesHorario&p=existe", "POST", datos);
+            if (resultado.length > 0) {
+                var texto = 'El dia ' + resultado[0].dia + ' de ' + resultado[0].hora_inicio + ' a ' + resultado[0].hora_fin + ' ya se encuentra programado.';
+                document.querySelector("#alerta").style.display = "flex";
+                document.querySelector("#alerta").innerHTML = texto;
+            } else {
+                mostrarForm(ev);
+                document.querySelector("#alerta").style.display = "none";
+            }
+        });
     }
     /**
      *  Función tipo submit para el envío de los datos para guardar el horario
