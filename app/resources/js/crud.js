@@ -43,7 +43,7 @@ window.addEventListener('load', function() {
     /**
      *  Función tipo submit para el envío de los datos para guardar el horario
      */
-    $('#formulario').submit(function(ev) {
+     $('#formulario').submit(function(ev) {
         ev.preventDefault();
         var celda_select = document.querySelector("#" + celdaId);
         const datos = {
@@ -65,21 +65,21 @@ window.addEventListener('load', function() {
             success: function(response) {
                 switch (response) {
                     case "Error":
-                        alert('El instructor ya está programado el ' + celda_select.getAttribute('data-dia') + " a las " + celda_select.parentElement.getAttribute('data-inicio'));
-                        cont.style.display = 'none';
-                        break;
+                    alert('El instructor ya está programado el ' + celda_select.getAttribute('data-dia') + " a las " + celda_select.parentElement.getAttribute('data-inicio'));
+                    cont.style.display = 'none';
+                    break;
                     case "Ok":
-                        cont.style.display = 'none';
-                        $("#formulario").trigger('reset');
-                        buscarHorario();
-                        break;
+                    cont.style.display = 'none';
+                    $("#formulario").trigger('reset');
+                    buscarHorario();
+                    break;
                     default:
-                        break;
+                    break;
                 }
             }
         });
     });
-});
+ });
 document.querySelector('#enlace-pdf').addEventListener('click', function() {
     quitarColor();
     generarpdf();
@@ -134,7 +134,7 @@ function generarpdf() {
  *Se defina la función que hace una petición de los datos de la ficha
  *
  */
-function datosFichayTrimestre() {
+ function datosFichayTrimestre() {
     let id_fic = {
         id_fic: $('.table').attr("id")
     };
@@ -180,19 +180,19 @@ function buscarHorario() {
             var array = document.querySelectorAll('.drops');
             horarios.forEach(horario => {
                 template = `
-                    <div class='caja' style='background-color:${horario['color']};'>
-                    <h3>${horario['instructor']}</h3>
-                    <p>${horario['competencia']}</p>
-                    <p>${horario['ambiente']}</p>
-                    <div class='opciones'>
-                    <i id=op${horario['id']} class='icon-cog'></i>
-                    <div class='menu'>
-                    <a class='detalles' id=${horario['id_instructor']}>Detalles</a>
-                    <a class='eliminar' id=${horario['id']}>Eliminar</a>
-                    </div>
-                    </div>
-                    </div>
-                 `;
+                <div class='caja' style='background-color:${horario['color']};'>
+                <h3>${horario['instructor']}</h3>
+                <p>${horario['competencia']}</p>
+                <p>${horario['ambiente']}</p>
+                <div class='opciones'>
+                <i id=op${horario['id']} class='icon-cog'></i>
+                <div class='menu'>
+                <a class='detalles' id=${horario['id_instructor']}>Detalles</a>
+                <a class='eliminar' id=${horario['id']}>Eliminar</a>
+                </div>
+                </div>
+                </div>
+                `;
                 array.forEach(ar => {
                     if ((ar.dataset.dia == horario['dia']) && (ar.parentElement.dataset.inicio == horario['hora_inicio'])) {
                         $("#" + ar.id).html(template);
@@ -290,10 +290,9 @@ $(document).on('click', '.detalles', function(e) {
 });
 // Evento click que eliminará el elemento arrastrado de la tabla
 $(document).on('click', '.eliminar', function(e) {
-    console.log(e.target.id);
     if (confirm("Está seguro de eliminar esto?")) {
         // Variables donde se almacena el atributo data-id de la fila donde se dio click
-        let element = $(this)[0].parentElement.parentElement;
+        let element = $(this)[0].parentElement.parentElement.parentElement.parentElement.innerHTML = '';
         let id_dh = {
             id_dh: e.target.id
         };
@@ -303,6 +302,7 @@ $(document).on('click', '.eliminar', function(e) {
             type: "POST",
             data: id_dh,
             success: function(response) {
+                element;
                 buscarHorario();
             }
         });
